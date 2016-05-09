@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		576067FE82498A757BC8A3BD /* Pods_POP_Nutshell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD22C9D8E38B21AAF032A3D5 /* Pods_POP_Nutshell.framework */; };
+		BA573F371CD7A70B00BEED8E /* PNSVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */; };
 		BA9653CF1CD1553A00ACEE28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */; };
-		BA9653D11CD1553A00ACEE28 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653D01CD1553A00ACEE28 /* ViewController.swift */; };
+		BA9653D11CD1553A00ACEE28 /* PNSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653D01CD1553A00ACEE28 /* PNSViewController.swift */; };
 		BA9653D41CD1553A00ACEE28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA9653D21CD1553A00ACEE28 /* Main.storyboard */; };
 		BA9653D61CD1553A00ACEE28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA9653D51CD1553A00ACEE28 /* Assets.xcassets */; };
 		BA9653D91CD1553A00ACEE28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA9653D71CD1553A00ACEE28 /* LaunchScreen.storyboard */; };
 		BA9653E41CD1553A00ACEE28 /* POP_NutshellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653E31CD1553A00ACEE28 /* POP_NutshellTests.swift */; };
 		BA9653EF1CD1553A00ACEE28 /* POP_NutshellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653EE1CD1553A00ACEE28 /* POP_NutshellUITests.swift */; };
+		BA9653FD1CD157FB00ACEE28 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653FC1CD157FB00ACEE28 /* Video.swift */; };
+		BA9653FF1CD158DC00ACEE28 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */; };
+		D00113DD471CDC4D38A7D5B6 /* Pods_POP_NutshellUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF6BA90CAC2F76605105FCF /* Pods_POP_NutshellUITests.framework */; };
+		D99351AE856A29D4B1567D9B /* Pods_POP_NutshellTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132BD504D048E07F33016E4B /* Pods_POP_NutshellTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +40,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		132BD504D048E07F33016E4B /* Pods_POP_NutshellTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POP_NutshellTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20B2E247482A29B2FA71ECFD /* Pods-POP NutshellTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POP NutshellTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POP NutshellTests/Pods-POP NutshellTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4BD27E988138FB162C1F8F40 /* Pods-POP NutshellUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POP NutshellUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POP NutshellUITests/Pods-POP NutshellUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4CAACC411E1DC57C942427FA /* Pods-POP Nutshell.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POP Nutshell.release.xcconfig"; path = "Pods/Target Support Files/Pods-POP Nutshell/Pods-POP Nutshell.release.xcconfig"; sourceTree = "<group>"; };
+		74C13A0C2A5C7061419023D4 /* Pods-POP Nutshell.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POP Nutshell.debug.xcconfig"; path = "Pods/Target Support Files/Pods-POP Nutshell/Pods-POP Nutshell.debug.xcconfig"; sourceTree = "<group>"; };
+		8CF6BA90CAC2F76605105FCF /* Pods_POP_NutshellUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POP_NutshellUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD22C9D8E38B21AAF032A3D5 /* Pods_POP_Nutshell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POP_Nutshell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSVideoDetailViewController.swift; sourceTree = "<group>"; };
 		BA9653CB1CD1553A00ACEE28 /* POP Nutshell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "POP Nutshell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BA9653D01CD1553A00ACEE28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA9653D01CD1553A00ACEE28 /* PNSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNSViewController.swift; sourceTree = "<group>"; };
 		BA9653D31CD1553A00ACEE28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BA9653D51CD1553A00ACEE28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BA9653D81CD1553A00ACEE28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +61,10 @@
 		BA9653EA1CD1553A00ACEE28 /* POP NutshellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "POP NutshellUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9653EE1CD1553A00ACEE28 /* POP_NutshellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POP_NutshellUITests.swift; sourceTree = "<group>"; };
 		BA9653F01CD1553A00ACEE28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA9653FC1CD157FB00ACEE28 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
+		CD377EBDBDA604CFE3B1369B /* Pods-POP NutshellTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POP NutshellTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POP NutshellTests/Pods-POP NutshellTests.release.xcconfig"; sourceTree = "<group>"; };
+		DF1F3D29E4DB47F5F2A42403 /* Pods-POP NutshellUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POP NutshellUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POP NutshellUITests/Pods-POP NutshellUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576067FE82498A757BC8A3BD /* Pods_POP_Nutshell.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D99351AE856A29D4B1567D9B /* Pods_POP_NutshellTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +88,64 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D00113DD471CDC4D38A7D5B6 /* Pods_POP_NutshellUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2FF670FC67498C1189C21B2D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				74C13A0C2A5C7061419023D4 /* Pods-POP Nutshell.debug.xcconfig */,
+				4CAACC411E1DC57C942427FA /* Pods-POP Nutshell.release.xcconfig */,
+				20B2E247482A29B2FA71ECFD /* Pods-POP NutshellTests.debug.xcconfig */,
+				CD377EBDBDA604CFE3B1369B /* Pods-POP NutshellTests.release.xcconfig */,
+				4BD27E988138FB162C1F8F40 /* Pods-POP NutshellUITests.debug.xcconfig */,
+				DF1F3D29E4DB47F5F2A42403 /* Pods-POP NutshellUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		58A82B5E3C4E00B00CD81ACF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AD22C9D8E38B21AAF032A3D5 /* Pods_POP_Nutshell.framework */,
+				132BD504D048E07F33016E4B /* Pods_POP_NutshellTests.framework */,
+				8CF6BA90CAC2F76605105FCF /* Pods_POP_NutshellUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA2ECB471CDA99620023EE4B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BA9653D01CD1553A00ACEE28 /* PNSViewController.swift */,
+				BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		BA2ECB481CDA997D0023EE4B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */,
+				BA9653FC1CD157FB00ACEE28 /* Video.swift */,
+				BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BA2ECB491CDA99960023EE4B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BA9653D21CD1553A00ACEE28 /* Main.storyboard */,
+				BA9653D71CD1553A00ACEE28 /* LaunchScreen.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		BA9653C21CD1553A00ACEE28 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +153,8 @@
 				BA9653E21CD1553A00ACEE28 /* POP NutshellTests */,
 				BA9653ED1CD1553A00ACEE28 /* POP NutshellUITests */,
 				BA9653CC1CD1553A00ACEE28 /* Products */,
+				2FF670FC67498C1189C21B2D /* Pods */,
+				58A82B5E3C4E00B00CD81ACF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,11 +171,10 @@
 		BA9653CD1CD1553A00ACEE28 /* POP Nutshell */ = {
 			isa = PBXGroup;
 			children = (
-				BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */,
-				BA9653D01CD1553A00ACEE28 /* ViewController.swift */,
-				BA9653D21CD1553A00ACEE28 /* Main.storyboard */,
+				BA2ECB481CDA997D0023EE4B /* Model */,
+				BA2ECB491CDA99960023EE4B /* View */,
+				BA2ECB471CDA99620023EE4B /* Controllers */,
 				BA9653D51CD1553A00ACEE28 /* Assets.xcassets */,
-				BA9653D71CD1553A00ACEE28 /* LaunchScreen.storyboard */,
 				BA9653DA1CD1553A00ACEE28 /* Info.plist */,
 			);
 			path = "POP Nutshell";
@@ -132,9 +205,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA9653F31CD1553A00ACEE28 /* Build configuration list for PBXNativeTarget "POP Nutshell" */;
 			buildPhases = (
+				E7759580F54F375CFAEF0DE9 /* 📦 Check Pods Manifest.lock */,
 				BA9653C71CD1553A00ACEE28 /* Sources */,
 				BA9653C81CD1553A00ACEE28 /* Frameworks */,
 				BA9653C91CD1553A00ACEE28 /* Resources */,
+				E4F731A29DDF3A26095E82DB /* 📦 Embed Pods Frameworks */,
+				12A36EE86C6A7015641B2324 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -149,9 +225,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA9653F61CD1553A00ACEE28 /* Build configuration list for PBXNativeTarget "POP NutshellTests" */;
 			buildPhases = (
+				610110F328621C13657ED099 /* 📦 Check Pods Manifest.lock */,
 				BA9653DB1CD1553A00ACEE28 /* Sources */,
 				BA9653DC1CD1553A00ACEE28 /* Frameworks */,
 				BA9653DD1CD1553A00ACEE28 /* Resources */,
+				A834C4B80623C0CEAD71BC27 /* 📦 Embed Pods Frameworks */,
+				6FB8A54A2A2DCF5C700AF3C9 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -167,9 +246,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA9653F91CD1553A00ACEE28 /* Build configuration list for PBXNativeTarget "POP NutshellUITests" */;
 			buildPhases = (
+				82998A10A2007E2E6C2B6B36 /* 📦 Check Pods Manifest.lock */,
 				BA9653E61CD1553A00ACEE28 /* Sources */,
 				BA9653E71CD1553A00ACEE28 /* Frameworks */,
 				BA9653E81CD1553A00ACEE28 /* Resources */,
+				869CC8624B11220997DFD972 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,13 +332,139 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		12A36EE86C6A7015641B2324 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-POP Nutshell/Pods-POP Nutshell-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		610110F328621C13657ED099 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6FB8A54A2A2DCF5C700AF3C9 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-POP NutshellTests/Pods-POP NutshellTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82998A10A2007E2E6C2B6B36 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		869CC8624B11220997DFD972 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-POP NutshellUITests/Pods-POP NutshellUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A834C4B80623C0CEAD71BC27 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-POP NutshellTests/Pods-POP NutshellTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4F731A29DDF3A26095E82DB /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-POP Nutshell/Pods-POP Nutshell-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7759580F54F375CFAEF0DE9 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BA9653C71CD1553A00ACEE28 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA9653D11CD1553A00ACEE28 /* ViewController.swift in Sources */,
+				BA9653D11CD1553A00ACEE28 /* PNSViewController.swift in Sources */,
+				BA9653FD1CD157FB00ACEE28 /* Video.swift in Sources */,
 				BA9653CF1CD1553A00ACEE28 /* AppDelegate.swift in Sources */,
+				BA9653FF1CD158DC00ACEE28 /* VideoModel.swift in Sources */,
+				BA573F371CD7A70B00BEED8E /* PNSVideoDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +604,7 @@
 		};
 		BA9653F41CD1553A00ACEE28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74C13A0C2A5C7061419023D4 /* Pods-POP Nutshell.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "POP Nutshell/Info.plist";
@@ -408,8 +616,13 @@
 		};
 		BA9653F51CD1553A00ACEE28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4CAACC411E1DC57C942427FA /* Pods-POP Nutshell.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+				);
 				INFOPLIST_FILE = "POP Nutshell/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.patrickBellot.POP-Nutshell";
@@ -419,6 +632,7 @@
 		};
 		BA9653F71CD1553A00ACEE28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 20B2E247482A29B2FA71ECFD /* Pods-POP NutshellTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "POP NutshellTests/Info.plist";
@@ -431,6 +645,7 @@
 		};
 		BA9653F81CD1553A00ACEE28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD377EBDBDA604CFE3B1369B /* Pods-POP NutshellTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = "POP NutshellTests/Info.plist";
@@ -443,6 +658,7 @@
 		};
 		BA9653FA1CD1553A00ACEE28 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4BD27E988138FB162C1F8F40 /* Pods-POP NutshellUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "POP NutshellUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -454,6 +670,7 @@
 		};
 		BA9653FB1CD1553A00ACEE28 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF1F3D29E4DB47F5F2A42403 /* Pods-POP NutshellUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = "POP NutshellUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -482,6 +699,7 @@
 				BA9653F51CD1553A00ACEE28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA9653F61CD1553A00ACEE28 /* Build configuration list for PBXNativeTarget "POP NutshellTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +708,7 @@
 				BA9653F81CD1553A00ACEE28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA9653F91CD1553A00ACEE28 /* Build configuration list for PBXNativeTarget "POP NutshellUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +717,7 @@
 				BA9653FB1CD1553A00ACEE28 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
