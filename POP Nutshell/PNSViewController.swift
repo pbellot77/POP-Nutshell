@@ -49,7 +49,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         // Get the width of the screen to calculate the height of the row
-        return (self.view.frame.size.width / 320) * 180
+        return self.view.frame.size.width
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
