@@ -51,8 +51,8 @@ class VideoModel: NSObject {
                 videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as! String
                 videoObj.videoTitle = video.valueForKeyPath("snippet.title") as! String
                 videoObj.videoDescription = video.valueForKeyPath("snippet.description") as! String
-                    if let maxresurl = video.valueForKeyPath("snippet.thumbnails.maxres.url") as? String {
-                        videoObj.videoThumbnailUrl = maxresurl
+                    if let mediumUrl = video.valueForKeyPath("snippet.thumbnails.medium.url") as? String {
+                        videoObj.videoThumbnailUrl = mediumUrl
                     }
                 
                 arrayOfVideos.append(videoObj)

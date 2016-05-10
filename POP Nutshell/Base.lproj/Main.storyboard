@@ -32,22 +32,22 @@
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fSi-kh-leU">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWw-A1-fuL">
-                                                    <rect key="frame" x="8" y="91" width="584" height="80"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.49057749155405406" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="2Hv-by-0vY"/>
-                                                    </constraints>
-                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="seg-Uj-bdk">
-                                                    <rect key="frame" x="20" y="99" width="560" height="80"/>
+                                                    <rect key="frame" x="20" y="139" width="560" height="40"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="078-Fr-k9u"/>
+                                                        <constraint firstAttribute="height" constant="40" id="078-Fr-k9u"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.49057749160000003" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWw-A1-fuL">
+                                                    <rect key="frame" x="8" y="131" width="584" height="40"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.49057749155405406" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="2Hv-by-0vY"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="nWw-A1-fuL" firstAttribute="bottom" secondItem="pci-b2-zYF" secondAttribute="bottomMargin" id="2FW-CD-aZ9"/>
