@@ -49,7 +49,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
         // Get the width of the screen to calculate the height of the row
-        return (self.view.frame.size.width/320 * 180)
+        return (self.view.frame.size.width / 480) * 360
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,12 +63,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         // Get the label for the cell
         let label = cell.viewWithTag(2) as! UILabel
         label.text = videoTitle
-        
-        // Customize the cell to display the video title
-        cell.textLabel?.text = videoTitle
-        
+               
         // Construct the video thumbnail url
-        let videoThumbnailUrlString = videos[indexPath.row].videoThumbnailUrl
+        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + videos[indexPath.row].videoId + "/hqdefault.jpg"
         
         // Create an NSURL object
         let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString)
