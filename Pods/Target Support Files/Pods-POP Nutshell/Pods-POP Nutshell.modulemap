@@ -1,0 +1,6 @@
+framework module Pods_POP_Nutshell {
+  umbrella header "Pods-POP Nutshell-umbrella.h"
+
+  export *
+  module * { export * }
+}

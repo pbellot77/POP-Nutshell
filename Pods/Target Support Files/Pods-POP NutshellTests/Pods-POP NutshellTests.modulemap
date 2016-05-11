@@ -1,0 +1,6 @@
+framework module Pods_POP_NutshellTests {
+  umbrella header "Pods-POP NutshellTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
