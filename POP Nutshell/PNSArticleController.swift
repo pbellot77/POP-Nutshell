@@ -10,14 +10,15 @@ import UIKit
 
 class PNSArticleController: UIViewController {
     
-    
     @IBOutlet weak var articleView: UIWebView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = NSURL(string: "http://www.popnutshell.com/articles.html")!
-        self.articleView.loadRequest(NSURLRequest(URL: url))
+        let url = "http://www.popnutshell.com/articles.html"
+        let requestUrl = NSURL(string: url)
+        let request = NSURLRequest(URL: requestUrl!)
+        articleView.loadRequest(request)
     }
 
     override func didReceiveMemoryWarning() {
