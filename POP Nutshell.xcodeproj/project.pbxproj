@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		576067FE82498A757BC8A3BD /* Pods_POP_Nutshell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD22C9D8E38B21AAF032A3D5 /* Pods_POP_Nutshell.framework */; };
 		BA339EEC1CF3A05C004A0613 /* PNSTwitterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA339EEB1CF3A05C004A0613 /* PNSTwitterController.swift */; };
+		BA4C4CD01CF4A77100BC53DA /* PNSArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C4CCF1CF4A77100BC53DA /* PNSArticleController.swift */; };
 		BA573F371CD7A70B00BEED8E /* PNSVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */; };
 		BA9653CF1CD1553A00ACEE28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */; };
 		BA9653D11CD1553A00ACEE28 /* PNSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653D01CD1553A00ACEE28 /* PNSViewController.swift */; };
@@ -49,6 +50,7 @@
 		8CF6BA90CAC2F76605105FCF /* Pods_POP_NutshellUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POP_NutshellUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD22C9D8E38B21AAF032A3D5 /* Pods_POP_Nutshell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_POP_Nutshell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA339EEB1CF3A05C004A0613 /* PNSTwitterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSTwitterController.swift; sourceTree = "<group>"; };
+		BA4C4CCF1CF4A77100BC53DA /* PNSArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSArticleController.swift; sourceTree = "<group>"; };
 		BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSVideoDetailViewController.swift; sourceTree = "<group>"; };
 		BA9653CB1CD1553A00ACEE28 /* POP Nutshell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "POP Nutshell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				BA9653D01CD1553A00ACEE28 /* PNSViewController.swift */,
 				BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */,
 				BA339EEB1CF3A05C004A0613 /* PNSTwitterController.swift */,
+				BA4C4CCF1CF4A77100BC53DA /* PNSArticleController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				BA9653FD1CD157FB00ACEE28 /* Video.swift in Sources */,
 				BA9653CF1CD1553A00ACEE28 /* AppDelegate.swift in Sources */,
 				BA339EEC1CF3A05C004A0613 /* PNSTwitterController.swift in Sources */,
+				BA4C4CD01CF4A77100BC53DA /* PNSArticleController.swift in Sources */,
 				BA9653FF1CD158DC00ACEE28 /* VideoModel.swift in Sources */,
 				BA573F371CD7A70B00BEED8E /* PNSVideoDetailViewController.swift in Sources */,
 			);

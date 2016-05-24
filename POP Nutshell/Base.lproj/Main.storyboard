@@ -75,6 +75,40 @@
             </objects>
             <point key="canvasLocation" x="1787" y="227"/>
         </scene>
+        <!--POP Nutshell-->
+        <scene sceneID="kWI-ht-q2I">
+            <objects>
+                <viewController id="mgm-85-LKu" customClass="PNSArticleController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5Zc-9p-aQr"/>
+                        <viewControllerLayoutGuide type="bottom" id="dHn-KX-wVU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6ar-ZD-Hyu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X70-ny-gwy">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="X70-ny-gwy" secondAttribute="trailing" id="FfP-6Y-EuY"/>
+                            <constraint firstItem="dHn-KX-wVU" firstAttribute="top" secondItem="X70-ny-gwy" secondAttribute="bottom" id="SVc-Bx-yUF"/>
+                            <constraint firstItem="X70-ny-gwy" firstAttribute="leading" secondItem="6ar-ZD-Hyu" secondAttribute="leading" id="gTR-GI-1UH"/>
+                            <constraint firstItem="X70-ny-gwy" firstAttribute="top" secondItem="5Zc-9p-aQr" secondAttribute="bottom" id="vfc-5e-kUQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="POP Nutshell" id="Lwa-gP-p5e"/>
+                    <connections>
+                        <outlet property="articleView" destination="X70-ny-gwy" id="86G-2y-3Hi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lcq-1n-Byr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1787" y="891"/>
+        </scene>
         <!--Video Detail View Controller-->
         <scene sceneID="8HJ-np-yyu">
             <objects>
@@ -288,20 +322,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mPw-Nc-XTz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1787" y="918"/>
+            <point key="canvasLocation" x="1787" y="1561"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N6f-6Z-ieE">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="BN2-mS-99R" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="F4o-FD-RmE"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="K1m-Am-Znv">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
                         <segue destination="pCA-Cv-5Ew" kind="relationship" relationship="viewControllers" id="4kR-cI-KbR"/>
-                        <segue destination="8W0-Sg-vZ1" kind="relationship" relationship="viewControllers" id="zRa-qK-iYn"/>
+                        <segue destination="Lez-KE-6zB" kind="relationship" relationship="viewControllers" id="G2F-Bc-aOV"/>
+                        <segue destination="8W0-Sg-vZ1" kind="relationship" relationship="viewControllers" id="ttE-0V-Rjt"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPd-W5-dWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -325,7 +361,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4wo-gJ-Bxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1107" y="918"/>
+            <point key="canvasLocation" x="1100" y="1561"/>
+        </scene>
+        <!--Articles-->
+        <scene sceneID="iac-6b-HOM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lez-KE-6zB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Articles" id="Msv-W2-dbj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a0U-fE-pEh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mgm-85-LKu" kind="relationship" relationship="rootViewController" id="Bua-Dv-yqj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a3l-wi-6AN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1107" y="891"/>
         </scene>
     </scenes>
 </document>
