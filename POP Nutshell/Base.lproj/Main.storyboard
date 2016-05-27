@@ -172,7 +172,7 @@
         <scene sceneID="bOq-8I-jCW">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pCA-Cv-5Ew" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="f43-e0-Bir"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="Home" id="f43-e0-Bir"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TE3-62-XJl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -348,7 +348,7 @@
         <scene sceneID="XNJ-Ib-yO8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8W0-Sg-vZ1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Connect" id="2CG-OZ-Z9u"/>
+                    <tabBarItem key="tabBarItem" title="Connect" image="@" id="2CG-OZ-Z9u"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Im2-jl-ivg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -367,7 +367,7 @@
         <scene sceneID="iac-6b-HOM">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lez-KE-6zB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Articles" id="Msv-W2-dbj"/>
+                    <tabBarItem key="tabBarItem" title="Articles" image="Document" id="Msv-W2-dbj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a0U-fE-pEh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -383,4 +383,9 @@
             <point key="canvasLocation" x="1107" y="891"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="@" width="30" height="28"/>
+        <image name="Document" width="23" height="31"/>
+        <image name="Home" width="30" height="29"/>
+    </resources>
 </document>
