@@ -8,9 +8,10 @@
 
 import UIKit
 
-class PNSArticleController: UIViewController {
+class PNSArticleController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var articleView: UIWebView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,7 @@ class PNSArticleController: UIViewController {
         let requestUrl = NSURL(string: url)
         let request = NSURLRequest(URL: requestUrl!)
         articleView.loadRequest(request)
+        articleView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,4 +28,14 @@ class PNSArticleController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func webViewDidStartLoad(webView: UIWebView) {
+        activityIndicator.startAnimating()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        activityIndicator.stopAnimating()
+    }
+    @IBAction func refreshButtonTapped(sender: AnyObject) {
+        articleView.reload()
+    }
 } // End of Class

@@ -91,17 +91,30 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="M2b-oT-24e">
+                                <rect key="frame" x="290" y="298" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="X70-ny-gwy" secondAttribute="trailing" id="FfP-6Y-EuY"/>
                             <constraint firstItem="dHn-KX-wVU" firstAttribute="top" secondItem="X70-ny-gwy" secondAttribute="bottom" id="SVc-Bx-yUF"/>
+                            <constraint firstItem="M2b-oT-24e" firstAttribute="centerY" secondItem="X70-ny-gwy" secondAttribute="centerY" id="YBs-W9-jGa"/>
+                            <constraint firstItem="M2b-oT-24e" firstAttribute="centerX" secondItem="X70-ny-gwy" secondAttribute="centerX" id="fXD-J8-7uf"/>
                             <constraint firstItem="X70-ny-gwy" firstAttribute="leading" secondItem="6ar-ZD-Hyu" secondAttribute="leading" id="gTR-GI-1UH"/>
                             <constraint firstItem="X70-ny-gwy" firstAttribute="top" secondItem="5Zc-9p-aQr" secondAttribute="bottom" id="vfc-5e-kUQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="POP Nutshell" id="Lwa-gP-p5e"/>
+                    <navigationItem key="navigationItem" title="POP Nutshell" id="Lwa-gP-p5e">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="hDt-Jd-qVG">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="mgm-85-LKu" id="sq9-41-F4h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="M2b-oT-24e" id="hi2-Mi-usf"/>
                         <outlet property="articleView" destination="X70-ny-gwy" id="86G-2y-3Hi"/>
                     </connections>
                 </viewController>
