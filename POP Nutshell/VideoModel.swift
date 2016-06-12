@@ -18,7 +18,7 @@ class VideoModel: NSObject {
     let API_KEY = "AIzaSyD4vD0hzDQb_6YZ5e8c74RqxT7-Mc0Vb2o"
     let UPLOADS_PLAYLIST_ID = "UUFVIFIL74C2zW-9tABzKCAg"
     let URL = "https://www.googleapis.com/youtube/v3/playlistItems"
-    let maxResults = 25
+    let maxResults = 50
     
     var videoArray = [Video]()
     var delegate: VideoModelDelegate?
