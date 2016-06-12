@@ -170,6 +170,8 @@
                             <constraint firstItem="lBl-C9-Rsy" firstAttribute="top" secondItem="xLw-rC-fc9" secondAttribute="top" constant="64" id="mNu-2e-b7I"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="9Nj-k7-v2F" id="21e-xG-ytr"/>
                         <outlet property="titleLabel" destination="2T1-cc-EU0" id="nGu-xO-ibV"/>

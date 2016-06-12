@@ -117,6 +117,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         detailViewController.selectedVideo = self.selectedVideo
     }
 
-
+  
 } // End of Class
 
