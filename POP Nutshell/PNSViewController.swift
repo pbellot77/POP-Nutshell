@@ -68,12 +68,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + videos[indexPath.row].videoId + "/hqdefault.jpg"
         
         // Create an NSURL object
-        let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString)
-        
-        if videoThumbnailUrl != nil {
+        if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {
             
             // Create an NSURLRequest object
-            let request = NSURLRequest(URL: videoThumbnailUrl!)
+            let request = NSURLRequest(URL: videoThumbnailUrl)
             
             // Create NSURLSession
             let session = NSURLSession.sharedSession()

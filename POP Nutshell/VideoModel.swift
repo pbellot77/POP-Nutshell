@@ -15,11 +15,6 @@ protocol VideoModelDelegate {
 
 class VideoModel: NSObject {
     
-    let API_KEY = "AIzaSyD4vD0hzDQb_6YZ5e8c74RqxT7-Mc0Vb2o"
-    let UPLOADS_PLAYLIST_ID = "UUFVIFIL74C2zW-9tABzKCAg"
-    let URL = "https://www.googleapis.com/youtube/v3/playlistItems"
-    let maxResults = 50
-    
     var videoArray = [Video]()
     var delegate: VideoModelDelegate?
 
@@ -27,7 +22,7 @@ class VideoModel: NSObject {
     func getFeedVideos() {
         
         // Fetch the videos dynamically through the YouTube Data API
-        Alamofire.request(.GET, URL, parameters: ["part": "snippet", "playlistId": UPLOADS_PLAYLIST_ID, "key": API_KEY, "maxResults": maxResults], encoding: .URL, headers: nil).responseJSON { (response) in
+        Alamofire.request(.GET, Constants.YouTubeURL, parameters: [Parameters.Part: Parameters.Snippet, Parameters.PlaylistId: Constants.UPLOADS_PLAYLIST_ID, Parameters.Key: Constants.API_KEY, Parameters.MaxResults : 50], encoding: .URL, headers: nil).responseJSON { (response) in
             
             switch response.result {
             case .Success(let JSON):
