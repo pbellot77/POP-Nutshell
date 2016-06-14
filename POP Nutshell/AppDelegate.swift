@@ -17,12 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-        let navigationController = window!.rootViewController as! UINavigationController
-        let viewController = navigationController.topViewController as! FavoritesViewController
-        
-        viewController.managedContext = coreDataStack.context
-        
         return true
     }
 

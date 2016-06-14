@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--POP Nutshell-->
+        <!--POP! Nutshell-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="PNSViewController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,7 +63,7 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Z4I-UQ-oh8" secondAttribute="bottom" id="yFp-iU-7SZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="POP Nutshell" id="s3b-UK-jo0">
+                    <navigationItem key="navigationItem" title="POP! Nutshell" id="s3b-UK-jo0">
                         <barButtonItem key="backBarButtonItem" title="Back" id="Lyw-Mv-t82"/>
                     </navigationItem>
                     <connections>
@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="1787" y="-160"/>
         </scene>
-        <!--POP Nutshell-->
+        <!--POP! Nutshell-->
         <scene sceneID="kWI-ht-q2I">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="mgm-85-LKu" customClass="PNSArticleController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
@@ -105,7 +105,7 @@
                             <constraint firstItem="X70-ny-gwy" firstAttribute="top" secondItem="5Zc-9p-aQr" secondAttribute="bottom" id="vfc-5e-kUQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="POP Nutshell" id="Lwa-gP-p5e">
+                    <navigationItem key="navigationItem" title="POP! Nutshell" id="Lwa-gP-p5e">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="hDt-Jd-qVG">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -202,7 +202,7 @@
             </objects>
             <point key="canvasLocation" x="1114" y="-160"/>
         </scene>
-        <!--POP Nutshell-->
+        <!--POP! Nutshell-->
         <scene sceneID="3OZ-dK-Gaa">
             <objects>
                 <viewController id="O7S-av-P0O" customClass="PNSTwitterController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
@@ -228,7 +228,7 @@
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <state key="normal" title="POP Nutshell @popnutshell">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.22616792929292928" green="0.22616792929292928" blue="0.22616792929292928" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="connectWithPNS:" destination="O7S-av-P0O" eventType="touchUpInside" id="COw-cs-3fp"/>
@@ -242,7 +242,7 @@
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <state key="normal" title="Malcolm @AniMalcolm79">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.22616792929292928" green="0.22616792929292928" blue="0.22616792929292928" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="connectWithMalcolm:" destination="O7S-av-P0O" eventType="touchUpInside" id="DL4-8h-OQk"/>
@@ -256,7 +256,7 @@
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <state key="normal" title="Dylan @TheRealDill2112">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.22616792929292928" green="0.22616792929292928" blue="0.22616792929292928" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="connectWithDylan:" destination="O7S-av-P0O" eventType="touchUpInside" id="2gB-tS-xdQ"/>
@@ -270,7 +270,7 @@
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <state key="normal" title="Willie @willmcg7">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.22616792929292928" green="0.22616792929292928" blue="0.22616792929292928" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="connectWithWillie:" destination="O7S-av-P0O" eventType="touchUpInside" id="2E1-2l-hNV"/>
@@ -284,7 +284,7 @@
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <state key="normal" title="Patrick @pbellot">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.22616792929292928" green="0.22616792929292928" blue="0.22616792929292928" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="connectWithPatrick:" destination="O7S-av-P0O" eventType="touchUpInside" id="fDl-cw-gmG"/>
@@ -298,7 +298,7 @@
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="15"/>
                                 <state key="normal" title="Anthony @AnthonyPitalo">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.22616792929292928" green="0.22616792929292928" blue="0.22616792929292928" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="connectWithAnthony:" destination="O7S-av-P0O" eventType="touchUpInside" id="uzy-yg-rSH"/>
@@ -330,7 +330,7 @@
                             <constraint firstItem="S2S-cR-jl4" firstAttribute="top" secondItem="rcM-LT-iJX" secondAttribute="bottom" constant="20" id="sfR-9i-hBg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="POP Nutshell" id="nji-HF-mGy"/>
+                    <navigationItem key="navigationItem" title="POP! Nutshell" id="nji-HF-mGy"/>
                     <connections>
                         <outlet property="anthonyBtn" destination="S2S-cR-jl4" id="DyF-FN-eeS"/>
                         <outlet property="connectWithUs" destination="KkO-OS-ajv" id="QYh-el-mO3"/>
@@ -345,10 +345,10 @@
             </objects>
             <point key="canvasLocation" x="1787" y="1183"/>
         </scene>
-        <!--View Controller-->
+        <!--POP! Nutshell-->
         <scene sceneID="vnv-7A-DdJ">
             <objects>
-                <viewController id="Mst-mn-YZY" sceneMemberID="viewController">
+                <viewController id="Mst-mn-YZY" customClass="FavoritesViewController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sYd-W0-BaL"/>
                         <viewControllerLayoutGuide type="bottom" id="qvz-xa-c67"/>
@@ -370,7 +370,7 @@
                             <constraint firstItem="qvz-xa-c67" firstAttribute="top" secondItem="o1c-ik-qqb" secondAttribute="bottom" id="x6g-71-CHC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="PVN-vN-BC9"/>
+                    <navigationItem key="navigationItem" title="POP! Nutshell" id="PVN-vN-BC9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUm-iA-dJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -390,7 +390,7 @@
                         <segue destination="pCA-Cv-5Ew" kind="relationship" relationship="viewControllers" id="4kR-cI-KbR"/>
                         <segue destination="Lez-KE-6zB" kind="relationship" relationship="viewControllers" id="G2F-Bc-aOV"/>
                         <segue destination="8W0-Sg-vZ1" kind="relationship" relationship="viewControllers" id="ttE-0V-Rjt"/>
-                        <segue destination="pgU-VH-xi9" kind="relationship" relationship="viewControllers" id="hOg-wQ-APy"/>
+                        <segue destination="pgU-VH-xi9" kind="relationship" relationship="viewControllers" id="YMX-gd-Tnn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yPd-W5-dWM" userLabel="First Responder" sceneMemberID="firstResponder"/>
