@@ -97,6 +97,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         return cell
     }
     
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Take note of which video the user selected
