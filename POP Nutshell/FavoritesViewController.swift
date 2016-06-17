@@ -12,6 +12,10 @@ import CoreData
 class FavoritesViewController: UIViewController {
     
     var managedContext: NSManagedObjectContext!
+    
+    // TODO: Create Entity Model
+    // TODO: Implemnet Core Data
+    // TODO: Add editing to delete videos in FavoritesViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()

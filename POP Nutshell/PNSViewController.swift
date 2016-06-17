@@ -105,6 +105,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let favorite = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
             
+            // TODO: Push favorite videos to FavoritesViewController
         }
         
         favorite.backgroundColor = UIColor.blueColor()
