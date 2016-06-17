@@ -97,9 +97,18 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         return cell
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
+    
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        let favorite = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
+            print("favorite button tapped")
+        }
+        favorite.backgroundColor = UIColor.blueColor()
+        return [favorite]
+    }
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
