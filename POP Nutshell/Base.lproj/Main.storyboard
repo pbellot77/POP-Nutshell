@@ -348,7 +348,7 @@
         <!--POP! Nutshell-->
         <scene sceneID="vnv-7A-DdJ">
             <objects>
-                <viewController id="Mst-mn-YZY" customClass="FavoritesViewController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritesViewController" id="Mst-mn-YZY" customClass="FavoritesViewController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sYd-W0-BaL"/>
                         <viewControllerLayoutGuide type="bottom" id="qvz-xa-c67"/>
