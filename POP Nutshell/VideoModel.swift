@@ -15,7 +15,7 @@ protocol VideoModelDelegate {
 
 class VideoModel: NSObject {
     
-    var videoArray = [Video]()
+    var videoArray = [Videos]()
     var delegate: VideoModelDelegate?
 
     
@@ -38,12 +38,12 @@ class VideoModel: NSObject {
         
             if let JSON = response.result.value {
                 
-                var arrayOfVideos = [Video]()
+                var arrayOfVideos = [Videos]()
                 
                 for video in JSON["items"] as! NSArray {
                     print(video)
                 
-                let videoObj = Video()
+                let videoObj = Videos()
                 videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as! String
                 videoObj.videoTitle = video.valueForKeyPath("snippet.title") as! String
                 videoObj.videoDescription = video.valueForKeyPath("snippet.description") as! String

@@ -18,10 +18,12 @@
 		BA9653D91CD1553A00ACEE28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA9653D71CD1553A00ACEE28 /* LaunchScreen.storyboard */; };
 		BA9653E41CD1553A00ACEE28 /* POP_NutshellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653E31CD1553A00ACEE28 /* POP_NutshellTests.swift */; };
 		BA9653EF1CD1553A00ACEE28 /* POP_NutshellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653EE1CD1553A00ACEE28 /* POP_NutshellUITests.swift */; };
-		BA9653FD1CD157FB00ACEE28 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653FC1CD157FB00ACEE28 /* Video.swift */; };
+		BA9653FD1CD157FB00ACEE28 /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653FC1CD157FB00ACEE28 /* Videos.swift */; };
 		BA9653FF1CD158DC00ACEE28 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */; };
 		BAA43D1D1D14AEF10011AD3B /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D1C1D14AEF10011AD3B /* FavoritesManager.swift */; };
-		BAA43D201D15EEAF0011AD3B /* Favorites.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D1E1D15EEAF0011AD3B /* Favorites.xcdatamodeld */; };
+		BAA43D201D15EEAF0011AD3B /* Video.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D1E1D15EEAF0011AD3B /* Video.xcdatamodeld */; };
+		BAA43D371D16063C0011AD3B /* Video+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D341D16063C0011AD3B /* Video+CoreDataProperties.swift */; };
+		BAA43D381D16063C0011AD3B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D351D16063C0011AD3B /* Video.swift */; };
 		BAFD46F51D10560A005A4A63 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F41D10560A005A4A63 /* URL.swift */; };
 		BAFD46F71D109E4D005A4A63 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */; };
 		BAFD46F91D10A61A005A4A63 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F81D10A61A005A4A63 /* FavoritesViewController.swift */; };
@@ -70,10 +72,12 @@
 		BA9653EA1CD1553A00ACEE28 /* POP NutshellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "POP NutshellUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9653EE1CD1553A00ACEE28 /* POP_NutshellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POP_NutshellUITests.swift; sourceTree = "<group>"; };
 		BA9653F01CD1553A00ACEE28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA9653FC1CD157FB00ACEE28 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		BA9653FC1CD157FB00ACEE28 /* Videos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
 		BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		BAA43D1C1D14AEF10011AD3B /* FavoritesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
-		BAA43D1F1D15EEAF0011AD3B /* Favorites.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Favorites.xcdatamodel; sourceTree = "<group>"; };
+		BAA43D1F1D15EEAF0011AD3B /* Video.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Video.xcdatamodel; sourceTree = "<group>"; };
+		BAA43D341D16063C0011AD3B /* Video+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Video+CoreDataProperties.swift"; path = "Pods/Video+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		BAA43D351D16063C0011AD3B /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = Pods/Video.swift; sourceTree = "<group>"; };
 		BAFD46F41D10560A005A4A63 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		BAFD46F81D10A61A005A4A63 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
@@ -148,12 +152,12 @@
 			isa = PBXGroup;
 			children = (
 				BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */,
-				BA9653FC1CD157FB00ACEE28 /* Video.swift */,
+				BA9653FC1CD157FB00ACEE28 /* Videos.swift */,
 				BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */,
 				BAFD46F41D10560A005A4A63 /* URL.swift */,
 				BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */,
 				BAA43D1C1D14AEF10011AD3B /* FavoritesManager.swift */,
-				BAA43D1E1D15EEAF0011AD3B /* Favorites.xcdatamodeld */,
+				BAA43D1E1D15EEAF0011AD3B /* Video.xcdatamodeld */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -192,6 +196,7 @@
 		BA9653CD1CD1553A00ACEE28 /* POP Nutshell */ = {
 			isa = PBXGroup;
 			children = (
+				BAA43D361D16063C0011AD3B /* NSManagedObjects */,
 				BA2ECB481CDA997D0023EE4B /* Model */,
 				BA2ECB491CDA99960023EE4B /* View */,
 				BA2ECB471CDA99620023EE4B /* Controllers */,
@@ -217,6 +222,16 @@
 				BA9653F01CD1553A00ACEE28 /* Info.plist */,
 			);
 			path = "POP NutshellUITests";
+			sourceTree = "<group>";
+		};
+		BAA43D361D16063C0011AD3B /* NSManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				BAA43D341D16063C0011AD3B /* Video+CoreDataProperties.swift */,
+				BAA43D351D16063C0011AD3B /* Video.swift */,
+			);
+			name = NSManagedObjects;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -483,16 +498,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA9653D11CD1553A00ACEE28 /* PNSViewController.swift in Sources */,
-				BA9653FD1CD157FB00ACEE28 /* Video.swift in Sources */,
+				BA9653FD1CD157FB00ACEE28 /* Videos.swift in Sources */,
 				BA9653CF1CD1553A00ACEE28 /* AppDelegate.swift in Sources */,
 				BAFD46F71D109E4D005A4A63 /* CoreDataStack.swift in Sources */,
 				BA339EEC1CF3A05C004A0613 /* PNSTwitterController.swift in Sources */,
+				BAA43D381D16063C0011AD3B /* Video.swift in Sources */,
 				BAA43D1D1D14AEF10011AD3B /* FavoritesManager.swift in Sources */,
 				BA4C4CD01CF4A77100BC53DA /* PNSArticleController.swift in Sources */,
 				BA9653FF1CD158DC00ACEE28 /* VideoModel.swift in Sources */,
 				BA573F371CD7A70B00BEED8E /* PNSVideoDetailViewController.swift in Sources */,
-				BAA43D201D15EEAF0011AD3B /* Favorites.xcdatamodeld in Sources */,
+				BAA43D201D15EEAF0011AD3B /* Video.xcdatamodeld in Sources */,
 				BAFD46F91D10A61A005A4A63 /* FavoritesViewController.swift in Sources */,
+				BAA43D371D16063C0011AD3B /* Video+CoreDataProperties.swift in Sources */,
 				BAFD46F51D10560A005A4A63 /* URL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -757,13 +774,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		BAA43D1E1D15EEAF0011AD3B /* Favorites.xcdatamodeld */ = {
+		BAA43D1E1D15EEAF0011AD3B /* Video.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				BAA43D1F1D15EEAF0011AD3B /* Favorites.xcdatamodel */,
+				BAA43D1F1D15EEAF0011AD3B /* Video.xcdatamodel */,
 			);
-			currentVersion = BAA43D1F1D15EEAF0011AD3B /* Favorites.xcdatamodel */;
-			path = Favorites.xcdatamodeld;
+			currentVersion = BAA43D1F1D15EEAF0011AD3B /* Video.xcdatamodel */;
+			path = Video.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

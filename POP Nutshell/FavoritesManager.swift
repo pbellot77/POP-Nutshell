@@ -12,12 +12,9 @@ import CoreData
 class FavoritesManager {
     
     var managedContext: NSManagedObjectContext!
+    var coreDataStack: CoreDataStack!
     
-    func addFavorites() {
         
-        
-    }
-    
     func getAllFavorites() {
         
     }

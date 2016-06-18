@@ -8,13 +8,14 @@
 
 import UIKit
 import Alamofire
+import CoreData
 
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, VideoModelDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
-    var videos: [Video] = [Video]()
-    var selectedVideo: Video?
+    var videos: [Videos] = [Videos]()
+    var selectedVideo: Videos?
     let model: VideoModel = VideoModel()
     
     override func viewDidLoad() {
@@ -105,7 +106,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let favorite = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
             
-            // TODO: Push favorite videos to FavoritesViewController
         }
         
         favorite.backgroundColor = UIColor.blueColor()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Video: NSObject {
+class Videos: NSObject {
     
     var videoId: String = ""
     var videoTitle: String = ""

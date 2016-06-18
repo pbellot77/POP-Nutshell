@@ -371,6 +371,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="POP! Nutshell" id="PVN-vN-BC9"/>
+                    <connections>
+                        <outlet property="favoritesTableView" destination="o1c-ik-qqb" id="Z6O-cC-Hp8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUm-iA-dJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

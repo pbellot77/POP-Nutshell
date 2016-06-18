@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <Group
+      location = "container:"
+      name = "NSManagedObjects">
+      <FileRef
+         location = "group:Pods/Video+CoreDataProperties.swift">
+      </FileRef>
+      <FileRef
+         location = "group:Pods/Video.swift">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:POP Nutshell.xcodeproj">
    </FileRef>
