@@ -112,6 +112,11 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         return [favorite]
     }
     
+    func addToFavorites() {
+        
+        //TODO: Create function to update core data stack
+    }
+    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
