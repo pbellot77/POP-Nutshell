@@ -2,7 +2,7 @@
 //  FavoritesManager.swift
 //  POP Nutshell
 //
-//  Created by Patrick Bellot & Thomas Hanning www.twitter.com/@hanning_thomas on 6/17/16.
+//  Created by Patrick Bellot & Thomas Hanning http://www.twitter.com/@hanning_thomas on 6/17/16.
 //  Copyright © 2016 Bell OS, LLC. All rights reserved.
 //
 
@@ -15,9 +15,10 @@ class FavoritesManager {
     
     func addFavorites() {
         
+        
     }
     
     func getAllFavorites() {
         
     }
-}
+}// End of Class
