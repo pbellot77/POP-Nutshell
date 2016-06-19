@@ -14,8 +14,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
 
     @IBOutlet weak var tableView: UITableView!
     
-    var videos: [Videos] = [Videos]()
-    var selectedVideo: Videos?
+    var videos: [PNSVideos] = [PNSVideos]()
+    var selectedVideo: PNSVideos?
     let model: VideoModel = VideoModel()
     
     override func viewDidLoad() {
@@ -103,13 +103,13 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let favorite = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
+        let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
             
         }
         
-        favorite.backgroundColor = UIColor.blueColor()
-        return [favorite]
+        favoriteButton.backgroundColor = UIColor.blueColor()
+        return [favoriteButton]
     }
     
     func addToFavorites() {

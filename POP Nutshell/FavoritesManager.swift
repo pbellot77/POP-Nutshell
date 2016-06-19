@@ -9,13 +9,31 @@
 import Foundation
 import CoreData
 
-class FavoritesManager {
+class FavoritesManager: NSObject {
     
-    var managedContext: NSManagedObjectContext!
     var coreDataStack: CoreDataStack!
+    var managedContext: NSManagedObjectContext!
     
-        
-    func getAllFavorites() {
+    class var sharedInstance: FavoritesManager {
+        struct Static {
+            static let instance: FavoritesManager = FavoritesManager()
+        }
+        return Static.instance
+    }
+    
+    //MARK: - Insert
+    func insertEntityForName(entityName: String) -> AnyObject {
+        return NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: self.managedContext)
+    }
+    
+    //MARK: - Fetch
+    func fetchEntitiesForName(entityName: String) -> NSArray{
         
     }
+    
+    //MARK: - Delete
+    func deleteObject(object:NSManagedObject) {
+        self.managedContext.deleteObject(object)
+    }
+        
 }// End of Class

@@ -17,7 +17,7 @@ class PNSVideoDetailViewController: UIViewController {
 
     @IBOutlet weak var webViewHeightConstraint: NSLayoutConstraint!
     
-    var selectedVideo: Videos?
+    var selectedVideo: PNSVideos?
     
     override func viewDidLoad() {
         super.viewDidLoad()

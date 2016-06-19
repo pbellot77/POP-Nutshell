@@ -18,7 +18,7 @@
 		BA9653D91CD1553A00ACEE28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA9653D71CD1553A00ACEE28 /* LaunchScreen.storyboard */; };
 		BA9653E41CD1553A00ACEE28 /* POP_NutshellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653E31CD1553A00ACEE28 /* POP_NutshellTests.swift */; };
 		BA9653EF1CD1553A00ACEE28 /* POP_NutshellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653EE1CD1553A00ACEE28 /* POP_NutshellUITests.swift */; };
-		BA9653FD1CD157FB00ACEE28 /* Videos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653FC1CD157FB00ACEE28 /* Videos.swift */; };
+		BA9653FD1CD157FB00ACEE28 /* PNSVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653FC1CD157FB00ACEE28 /* PNSVideos.swift */; };
 		BA9653FF1CD158DC00ACEE28 /* VideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */; };
 		BAA43D1D1D14AEF10011AD3B /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D1C1D14AEF10011AD3B /* FavoritesManager.swift */; };
 		BAA43D201D15EEAF0011AD3B /* Video.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D1E1D15EEAF0011AD3B /* Video.xcdatamodeld */; };
@@ -72,7 +72,7 @@
 		BA9653EA1CD1553A00ACEE28 /* POP NutshellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "POP NutshellUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9653EE1CD1553A00ACEE28 /* POP_NutshellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POP_NutshellUITests.swift; sourceTree = "<group>"; };
 		BA9653F01CD1553A00ACEE28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA9653FC1CD157FB00ACEE28 /* Videos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Videos.swift; sourceTree = "<group>"; };
+		BA9653FC1CD157FB00ACEE28 /* PNSVideos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSVideos.swift; sourceTree = "<group>"; };
 		BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; };
 		BAA43D1C1D14AEF10011AD3B /* FavoritesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		BAA43D1F1D15EEAF0011AD3B /* Video.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Video.xcdatamodel; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */,
-				BA9653FC1CD157FB00ACEE28 /* Videos.swift */,
+				BA9653FC1CD157FB00ACEE28 /* PNSVideos.swift */,
 				BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */,
 				BAFD46F41D10560A005A4A63 /* URL.swift */,
 				BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */,
@@ -498,7 +498,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA9653D11CD1553A00ACEE28 /* PNSViewController.swift in Sources */,
-				BA9653FD1CD157FB00ACEE28 /* Videos.swift in Sources */,
+				BA9653FD1CD157FB00ACEE28 /* PNSVideos.swift in Sources */,
 				BA9653CF1CD1553A00ACEE28 /* AppDelegate.swift in Sources */,
 				BAFD46F71D109E4D005A4A63 /* CoreDataStack.swift in Sources */,
 				BA339EEC1CF3A05C004A0613 /* PNSTwitterController.swift in Sources */,

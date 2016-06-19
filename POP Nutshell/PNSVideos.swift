@@ -1,5 +1,5 @@
 //
-//  Video.swift
+//  PNSVideos.swift
 //  POP Nutshell
 //
 //  Created by Patrick Bellot on 4/27/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Videos: NSObject {
+class PNSVideos: NSObject {
     
     var videoId: String = ""
     var videoTitle: String = ""
