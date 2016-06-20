@@ -357,22 +357,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o1c-ik-qqb">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="180" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-7A-XVl">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavoriteCell" id="Cue-aL-jiq">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cue-aL-jiq" id="qbp-ns-7Mm">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MPQ-8w-Z1O">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2a-Hs-LSK">
+                                                    <rect key="frame" x="20" y="99" width="560" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="J7m-rl-14m"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="MPQ-8w-Z1O" secondAttribute="bottom" id="2Ec-XB-ToZ"/>
+                                                <constraint firstItem="MPQ-8w-Z1O" firstAttribute="top" secondItem="qbp-ns-7Mm" secondAttribute="top" id="FTL-gs-7Se"/>
+                                                <constraint firstItem="MPQ-8w-Z1O" firstAttribute="leading" secondItem="qbp-ns-7Mm" secondAttribute="leading" id="M25-5o-urC"/>
+                                                <constraint firstAttribute="trailing" secondItem="Y2a-Hs-LSK" secondAttribute="trailing" constant="20" id="NjW-Sf-jtl"/>
+                                                <constraint firstAttribute="bottom" secondItem="Y2a-Hs-LSK" secondAttribute="bottom" id="Xdt-xO-SLg"/>
+                                                <constraint firstAttribute="trailing" secondItem="MPQ-8w-Z1O" secondAttribute="trailing" id="cBc-cX-COz"/>
+                                                <constraint firstItem="Y2a-Hs-LSK" firstAttribute="leading" secondItem="qbp-ns-7Mm" secondAttribute="leading" constant="20" id="cr7-y4-L0O"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="o1c-ik-qqb" firstAttribute="top" secondItem="sYd-W0-BaL" secondAttribute="bottom" id="0JK-WF-57G"/>
-                            <constraint firstItem="o1c-ik-qqb" firstAttribute="leading" secondItem="cBK-cB-REk" secondAttribute="leading" id="Rv0-I8-RWY"/>
-                            <constraint firstAttribute="trailing" secondItem="o1c-ik-qqb" secondAttribute="trailing" id="a23-2y-cCd"/>
-                            <constraint firstItem="qvz-xa-c67" firstAttribute="top" secondItem="o1c-ik-qqb" secondAttribute="bottom" id="x6g-71-CHC"/>
+                            <constraint firstItem="tkV-7A-XVl" firstAttribute="leading" secondItem="cBK-cB-REk" secondAttribute="leading" id="unG-t5-5fX"/>
+                            <constraint firstItem="tkV-7A-XVl" firstAttribute="top" secondItem="sYd-W0-BaL" secondAttribute="bottom" id="vmX-GM-0bi"/>
+                            <constraint firstItem="qvz-xa-c67" firstAttribute="top" secondItem="tkV-7A-XVl" secondAttribute="bottom" id="weV-Pa-N34"/>
+                            <constraint firstAttribute="trailing" secondItem="tkV-7A-XVl" secondAttribute="trailing" id="yH4-Gz-uP2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="POP! Nutshell" id="PVN-vN-BC9"/>
                     <connections>
-                        <outlet property="favoritesTableView" destination="o1c-ik-qqb" id="Z6O-cC-Hp8"/>
+                        <outlet property="favoritesTableView" destination="tkV-7A-XVl" id="420-Fx-vHN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUm-iA-dJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -450,7 +483,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Mst-mn-YZY" kind="relationship" relationship="rootViewController" id="Z3b-Oo-ypz"/>
+                        <segue destination="Mst-mn-YZY" kind="relationship" relationship="rootViewController" id="2jF-Gw-fSt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EwT-JV-G7h" userLabel="First Responder" sceneMemberID="firstResponder"/>

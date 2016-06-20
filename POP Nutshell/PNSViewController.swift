@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import CoreData
 
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, VideoModelDelegate {
 

@@ -13,6 +13,7 @@ class FavoritesManager: NSObject {
     
     var coreDataStack: CoreDataStack!
     var managedContext: NSManagedObjectContext!
+    var favoriteVideos:[Video] = [Video]()
     
     class var sharedInstance: FavoritesManager {
         struct Static {
@@ -40,10 +41,12 @@ class FavoritesManager: NSObject {
     //MARK: - Get video
     func getAllFavoritedVideos() -> [Video] {
         
+        return favoriteVideos
     }
     
     //MARK: - Create a favorite video
     func createVideoFavorite() -> Video {
+        try! managedContext.save()
         
     }
         
