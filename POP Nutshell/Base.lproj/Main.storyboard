@@ -348,7 +348,7 @@
         <!--POP! Nutshell-->
         <scene sceneID="vnv-7A-DdJ">
             <objects>
-                <viewController storyboardIdentifier="FavoritesViewController" id="Mst-mn-YZY" customClass="FavoritesViewController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FavoritesViewController" id="Mst-mn-YZY" customClass="FavoritesTableViewController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sYd-W0-BaL"/>
                         <viewControllerLayoutGuide type="bottom" id="qvz-xa-c67"/>
@@ -357,22 +357,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="180" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-7A-XVl">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="179" sectionHeaderHeight="20" sectionFooterHeight="23" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-7A-XVl">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavoriteCell" id="Cue-aL-jiq">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="180"/>
+                                        <rect key="frame" x="0.0" y="84" width="600" height="179"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cue-aL-jiq" id="qbp-ns-7Mm">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="178"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MPQ-8w-Z1O">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="178"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2a-Hs-LSK">
-                                                    <rect key="frame" x="20" y="99" width="560" height="80"/>
+                                                    <rect key="frame" x="20" y="98" width="560" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="J7m-rl-14m"/>
                                                     </constraints>

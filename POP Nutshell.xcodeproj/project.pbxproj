@@ -26,7 +26,7 @@
 		BAA43D381D16063C0011AD3B /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D351D16063C0011AD3B /* Video.swift */; };
 		BAFD46F51D10560A005A4A63 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F41D10560A005A4A63 /* URL.swift */; };
 		BAFD46F71D109E4D005A4A63 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */; };
-		BAFD46F91D10A61A005A4A63 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F81D10A61A005A4A63 /* FavoritesViewController.swift */; };
+		BAFD46F91D10A61A005A4A63 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F81D10A61A005A4A63 /* FavoritesTableViewController.swift */; };
 		D00113DD471CDC4D38A7D5B6 /* Pods_POP_NutshellUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF6BA90CAC2F76605105FCF /* Pods_POP_NutshellUITests.framework */; };
 		D99351AE856A29D4B1567D9B /* Pods_POP_NutshellTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 132BD504D048E07F33016E4B /* Pods_POP_NutshellTests.framework */; };
 /* End PBXBuildFile section */
@@ -80,7 +80,7 @@
 		BAA43D351D16063C0011AD3B /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Video.swift; path = Pods/Video.swift; sourceTree = "<group>"; };
 		BAFD46F41D10560A005A4A63 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		BAFD46F81D10A61A005A4A63 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		BAFD46F81D10A61A005A4A63 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		CD377EBDBDA604CFE3B1369B /* Pods-POP NutshellTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POP NutshellTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POP NutshellTests/Pods-POP NutshellTests.release.xcconfig"; sourceTree = "<group>"; };
 		DF1F3D29E4DB47F5F2A42403 /* Pods-POP NutshellUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POP NutshellUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POP NutshellUITests/Pods-POP NutshellUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,7 +143,7 @@
 				BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */,
 				BA339EEB1CF3A05C004A0613 /* PNSTwitterController.swift */,
 				BA4C4CCF1CF4A77100BC53DA /* PNSArticleController.swift */,
-				BAFD46F81D10A61A005A4A63 /* FavoritesViewController.swift */,
+				BAFD46F81D10A61A005A4A63 /* FavoritesTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -508,7 +508,7 @@
 				BA9653FF1CD158DC00ACEE28 /* VideoModel.swift in Sources */,
 				BA573F371CD7A70B00BEED8E /* PNSVideoDetailViewController.swift in Sources */,
 				BAA43D201D15EEAF0011AD3B /* Video.xcdatamodeld in Sources */,
-				BAFD46F91D10A61A005A4A63 /* FavoritesViewController.swift in Sources */,
+				BAFD46F91D10A61A005A4A63 /* FavoritesTableViewController.swift in Sources */,
 				BAA43D371D16063C0011AD3B /* Video+CoreDataProperties.swift in Sources */,
 				BAFD46F51D10560A005A4A63 /* URL.swift in Sources */,
 			);
