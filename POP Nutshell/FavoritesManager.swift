@@ -24,6 +24,7 @@ class FavoritesManager: NSObject {
     //MARK: - Insert
     func insertEntityForName(entityName: String) -> AnyObject {
         return NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: self.managedContext)
+        
     }
     
     //MARK: - Fetch
@@ -32,8 +33,18 @@ class FavoritesManager: NSObject {
     }
     
     //MARK: - Delete
-    func deleteObject(object:NSManagedObject) {
-        self.managedContext.deleteObject(object)
+    func deleteFavoritedVideo(video: Video) {
+        self.managedContext.deleteObject(video)
+    }
+    
+    //MARK: - Get video
+    func getAllFavoritedVideos() -> [Video] {
+        
+    }
+    
+    //MARK: - Create a favorite video
+    func createVideoFavorite() -> Video {
+        
     }
         
 }// End of Class
