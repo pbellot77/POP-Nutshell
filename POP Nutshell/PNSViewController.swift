@@ -105,17 +105,12 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
             
+            _ = UIAlertController(title: "Saved!", message: "Added to Favorites", preferredStyle: .Alert) // Don't know if this is correct??
         }
         
         favoriteButton.backgroundColor = UIColor.blueColor()
         return [favoriteButton]
     }
-    
-    func addToFavorites() {
-        
-        //TODO: Create function to update core data stack
-    }
-    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         

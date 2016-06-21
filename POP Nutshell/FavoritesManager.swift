@@ -15,6 +15,9 @@ class FavoritesManager: NSObject, UITableViewDataSource {
     var coreDataStack: CoreDataStack!
     var managedContext: NSManagedObjectContext!
     var favoriteVideos:[Video] = [Video]()
+    var fetchRequest: NSFetchRequest!
+    var videos: [Video]!
+    
     
     class var sharedInstance: FavoritesManager {
         struct Static {
@@ -26,12 +29,27 @@ class FavoritesManager: NSObject, UITableViewDataSource {
     //MARK: - Insert
     func insertEntityForName(entityName: String) -> AnyObject {
         return NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: self.managedContext)
-        
     }
     
     //MARK: - Fetch
     func fetchEntitiesForName(entityName: String) -> NSArray{
         
+        //let model = coreDataStack.context.persistentStoreCoordinator!.managedObjectModel
+        //fetchRequest = model.fetchRequestTemplateForName("FetchRequest")
+        fetchRequest = NSFetchRequest(entityName: "Video")
+        fetchAndReload()
+        
+        return videos
+    }
+    
+    //MARK: - Fetch Helper Methods
+    func fetchAndReload() {
+        
+        do{
+            videos = try coreDataStack.context.executeFetchRequest(fetchRequest) as! [Video]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
     }
     
     //MARK: - Delete
@@ -47,8 +65,12 @@ class FavoritesManager: NSObject, UITableViewDataSource {
     
     //MARK: - Create a favorite video
     func createVideoFavorite() -> Video {
-        try! managedContext.save()
-        
+        do {
+        try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save: \(error)")
+        }
+        return Video()
     }
     
     //MARK: - FavoritesTableView DataSource
