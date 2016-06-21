@@ -87,19 +87,16 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 
                 // Create an image object from the data and assign it into the imageview
                 imageView.image = UIImage(data: data!)
-                    
                 })
             })
             
             dataTask.resume()
-
         }
         
         return cell
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
