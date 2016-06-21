@@ -16,6 +16,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var videos: [PNSVideos] = [PNSVideos]()
     var selectedVideo: PNSVideos?
     let model: VideoModel = VideoModel()
+    var favoritesManager = FavoritesManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +106,11 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
             
-            _ = UIAlertController(title: "Saved!", message: "Added to Favorites", preferredStyle: .Alert) // Don't know if this is correct??
+            let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
+            alert.addAction(okAction)
+            
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         
         favoriteButton.backgroundColor = UIColor.blueColor()
