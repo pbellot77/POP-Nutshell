@@ -16,7 +16,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var videos: [PNSVideos] = [PNSVideos]()
     var selectedVideo: PNSVideos?
     let model: VideoModel = VideoModel()
-    var favoritesManager = FavoritesManager()
+    let favoritesManager = FavoritesManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
