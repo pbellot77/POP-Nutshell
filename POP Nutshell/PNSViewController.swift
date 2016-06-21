@@ -103,6 +103,13 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
             
+            let video = self.videos[indexPath.row]
+            
+            let favoritedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
+            favoritedVideo.videoId = video.videoId
+            favoritedVideo.videoThumbnail = video.videoThumbnailUrl
+            favoritedVideo.videoTitle = video.videoTitle
+            
             let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
             alert.addAction(okAction)

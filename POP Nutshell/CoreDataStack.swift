@@ -6,11 +6,12 @@
 //  Copyright © 2016 Bell OS, LLC. All rights reserved.
 //
 
+import Foundation
 import CoreData
 
+private let SQLITE_FILE_NAME = "POP_Nutshell.sqlite"
+
 class CoreDataStack {
-    
-    let modelName = "POP Nutshell"
     
     private lazy var applicationDocumentsDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
@@ -24,22 +25,29 @@ class CoreDataStack {
         return managedObjectContext
     }()
     
-    private lazy var psc: NSPersistentStoreCoordinator = {
-        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(self.modelName)
-        
+    private lazy var psc: NSPersistentStoreCoordinator? = {
+        let coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(SQLITE_FILE_NAME)
+        var failureReason = "There was an error creating or loading the application's saved data."
         do {
             let options = [NSMigratePersistentStoresAutomaticallyOption : true]
             
-            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
+            try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
         } catch {
-            print("Error adding persistent store.")
+            var dict = [String: AnyObject]()
+            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
+            dict[NSLocalizedFailureReasonErrorKey] = failureReason
+            
+            dict[NSUnderlyingErrorKey] = error as NSError
+            let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
+            abort()
         }
         return coordinator
     }()
     
     private lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = NSBundle.mainBundle().URLForResource(self.modelName, withExtension: "momd")!
+        let modelURL = NSBundle.mainBundle().URLForResource(SQLITE_FILE_NAME, withExtension: "momd")! // Getting error here
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
