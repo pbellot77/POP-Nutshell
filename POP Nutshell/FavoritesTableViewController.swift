@@ -9,9 +9,7 @@
 import UIKit
 import CoreData
 
-
-
-class FavoritesTableViewController: UIViewController, UITableViewDataSource {
+class FavoritesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
@@ -39,11 +37,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(favoritesCellIndentifier)!
         let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
-        
-        // Get the label for the cell
-        let label = cell.viewWithTag(3) as! UILabel
-        label.text = favoritedVideo.videoTitle
-        
+        cell.textLabel?.text = favoritedVideo.videoTitle
         return cell
     }
     
