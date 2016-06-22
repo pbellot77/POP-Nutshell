@@ -2,7 +2,7 @@
 //  FavoritesTableViewController.swift
 //  POP Nutshell
 //
-//  Created by Patrick Bellot and Thomas Hanning http://thomasHanning.com on 6/14/16.
+//  Created by Patrick Bellot and Thomas Hanning http://www.thomasHanning.com on 6/14/16.
 //  Copyright © 2016 Bell OS, LLC. All rights reserved.
 //
 
@@ -19,9 +19,6 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         self.favoritesTableView.dataSource = self
-        self.favoritesTableView.delegate = self
-        
-        favoritesTableView.reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {

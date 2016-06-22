@@ -31,12 +31,7 @@ class FavoritesManager: NSObject {
     
     //MARK: - Get video
     func getAllFavoritedVideos() -> [Video] {
-        do {
-            try coreDataStack.context.executeFetchRequest(NSFetchRequest(entityName: "Video")) as! [Video]
-        } catch {
-            print("Could not fetch favorite video")
-        }
-        return [Video]()
+        return try! coreDataStack.context.executeFetchRequest(NSFetchRequest(entityName: "Video")) as! [Video]
     }
     
     //MARK: - Create a favorite video
