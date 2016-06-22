@@ -20,6 +20,8 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         self.favoritesTableView.dataSource = self
         self.favoritesTableView.delegate = self
+        
+        favoritesTableView.reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {
