@@ -2,7 +2,7 @@
 //  FavoritesTableViewController.swift
 //  POP Nutshell
 //
-//  Created by Patrick Bellot on 6/14/16.
+//  Created by Patrick Bellot and Thomas Hanning http://thomasHanning.com on 6/14/16.
 //  Copyright © 2016 Bell OS, LLC. All rights reserved.
 //
 
