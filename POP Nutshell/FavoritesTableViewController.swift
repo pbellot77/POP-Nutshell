@@ -15,12 +15,15 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     private let favoritesCellIndentifier = "FavoriteCell"
     private let favoritesManager = FavoritesManager.sharedInstance
+    var currentVideo: Video!
     
     override func viewDidLoad() {
         self.favoritesTableView.dataSource = self
+        self.favoritesTableView.delegate = self
     }
     
     override func viewWillAppear(animated: Bool) {
+        favoritesManager.getAllFavoritedVideos()
         favoritesTableView.reloadData()
     }
     
@@ -38,6 +41,9 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCellWithIdentifier(favoritesCellIndentifier)!
         let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
         cell.textLabel?.text = favoritedVideo.videoTitle
+        // Need to add thumbnail
+        
+        
         return cell
     }
     
@@ -46,6 +52,22 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+
+            favoritesManager.deleteFavoritedVideo(currentVideo)
+            
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         
     }
     

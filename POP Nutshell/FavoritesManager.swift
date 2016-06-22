@@ -11,7 +11,7 @@ import CoreData
 class FavoritesManager: NSObject {
     
     var coreDataStack = CoreDataStack()
-    
+        
     class var sharedInstance: FavoritesManager {
         struct Static {
             static let instance: FavoritesManager = FavoritesManager()
@@ -41,6 +41,7 @@ class FavoritesManager: NSObject {
     
     //MARK: - Create a favorite video
     func createVideoFavorite() -> Video {
+        coreDataStack.saveContext()
         return insertEntityForName("Video") as! Video
     }
     
