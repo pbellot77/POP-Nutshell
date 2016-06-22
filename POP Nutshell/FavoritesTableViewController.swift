@@ -16,6 +16,8 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     private let favoritesCellIndentifier = "FavoriteCell"
     private let favoritesManager = FavoritesManager.sharedInstance
     var currentVideo: Video!
+    var favData: Array<Video> = []
+    
     
     override func viewDidLoad() {
         self.favoritesTableView.dataSource = self
@@ -40,7 +42,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         let cell = tableView.dequeueReusableCellWithIdentifier(favoritesCellIndentifier)!
         let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
         cell.textLabel?.text = favoritedVideo.videoTitle
-        // Need to add thumbnail
+        //FIX ME: Configure FavoriteCell
         
         
         return cell
@@ -51,12 +53,21 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if editingStyle == UITableViewCellEditingStyle.Delete {
-
-            favoritesManager.deleteFavoritedVideo(currentVideo)
+        switch editingStyle {
+        case .Delete:
+            let favoritesManager:FavoritesManager = FavoritesManager.sharedInstance
+            let context:NSManagedObjectContext = favoritesManager.coreDataStack.context
+            context.deleteObject(favData[indexPath.row])//FIX ME: fatal error -index out of range
+            favData.removeAtIndex(indexPath.row)
+            do {
+                try context.save()
+            } catch _ {
+                
+            }
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        default:
+            return
         }
     }
     
