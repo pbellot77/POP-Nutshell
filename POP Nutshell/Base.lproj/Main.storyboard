@@ -393,6 +393,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Mst-mn-YZY" id="m9g-PN-fAK"/>
+                                    <outlet property="delegate" destination="Mst-mn-YZY" id="GX4-oK-fJg"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
