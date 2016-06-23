@@ -44,7 +44,6 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         cell.textLabel?.text = favoritedVideo.videoTitle
         //FIX ME: Configure FavoriteCell
         
-        
         return cell
     }
     
