@@ -18,7 +18,6 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     var currentVideo: Video!
     var favData: Array<Video> = []
     
-    
     override func viewDidLoad() {
         self.favoritesTableView.dataSource = self
     }
@@ -38,11 +37,42 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         return favoritesManager.getAllFavoritedVideos().count
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return (self.view.frame.size.width / 480) * 360
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(favoritesCellIndentifier)!
         let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
-        cell.textLabel?.text = favoritedVideo.videoTitle
-        //FIX ME: Configure FavoriteCell
+        
+        let videoTitle = favoritedVideo.videoTitle
+        let label = cell.viewWithTag(3) as! UILabel
+        label.text = videoTitle
+        
+        let thumbnailString = "https://i.ytimg.com/vi/" + favoritedVideo.videoId! + "/hqdefault.jpg"
+        if let videoThumbnailUrl = NSURL(string: thumbnailString) {
+            
+            // Create an NSURLRequest object
+            let request = NSURLRequest(URL: videoThumbnailUrl)
+            
+            // Create NSURLSession
+            let session = NSURLSession.sharedSession()
+            
+            // Create a datatask and pass in the request
+            let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    // Get a reference to the image view element of the cell
+                    let imageView = cell.viewWithTag(4) as! UIImageView
+                    
+                    // Create an image object from the data and assign it into the imageview
+                    imageView.image = UIImage(data: data!)
+                })
+            })
+            
+            dataTask.resume()
+        }
         
         return cell
     }
@@ -66,7 +96,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         default:
-            return
+            return 
         }
     }
     
@@ -79,6 +109,4 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         
         
     }
-    
-        
 }// End of Class
