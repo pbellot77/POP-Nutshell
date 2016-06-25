@@ -116,15 +116,15 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             self.presentViewController(alert, animated: true, completion: nil)
         }
+        favoriteButton.backgroundColor = UIColor.blueColor()
         
         let shareButton = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
             print("share button tapped")
-            
-            //TODO: Add shareButton
         }
+        shareButton.backgroundColor = UIColor.lightGrayColor()
         
-        favoriteButton.backgroundColor = UIColor.blueColor()
-        return [favoriteButton]
+        
+        return [favoriteButton, shareButton]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
