@@ -50,16 +50,11 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         let label = cell.viewWithTag(3) as! UILabel
         label.text = videoTitle
         
+        // Add thumbnail
         let thumbnailString = "https://i.ytimg.com/vi/" + favoritedVideo.videoId! + "/hqdefault.jpg"
         if let videoThumbnailUrl = NSURL(string: thumbnailString) {
-            
-            // Create an NSURLRequest object
             let request = NSURLRequest(URL: videoThumbnailUrl)
-            
-            // Create NSURLSession
             let session = NSURLSession.sharedSession()
-            
-            // Create a datatask and pass in the request
             let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -87,7 +82,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         case .Delete:
             let favoritesManager:FavoritesManager = FavoritesManager.sharedInstance
             let context:NSManagedObjectContext = favoritesManager.coreDataStack.context
-            context.deleteObject(favData[indexPath.row])//FIX ME: fatal error -index out of range
+            context.deleteObject(favData[indexPath.row])
             favData.removeAtIndex(indexPath.row)
             do {
                 try context.save()
