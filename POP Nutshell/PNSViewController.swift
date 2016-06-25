@@ -117,6 +117,12 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             self.presentViewController(alert, animated: true, completion: nil)
         }
         
+        let shareButton = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
+            print("share button tapped")
+            
+            //TODO: Add shareButton
+        }
+        
         favoriteButton.backgroundColor = UIColor.blueColor()
         return [favoriteButton]
     }
