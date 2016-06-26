@@ -44,6 +44,15 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(favoritesCellIndentifier)!
         let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
+        
+        if favData.isEmpty {
+            let alert = UIAlertController(title: "No Favorites Added", message: "Swipe left in Home to add Favorites", preferredStyle: .Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
+            alert.addAction(okAction)
+        } else {
+            return cell
+        }
+        
         favData.append(favoritedVideo)
         
         let videoTitle = favoritedVideo.videoTitle

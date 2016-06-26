@@ -11,6 +11,7 @@
 		BA339EEC1CF3A05C004A0613 /* PNSTwitterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA339EEB1CF3A05C004A0613 /* PNSTwitterController.swift */; };
 		BA4C4CD01CF4A77100BC53DA /* PNSArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C4CCF1CF4A77100BC53DA /* PNSArticleController.swift */; };
 		BA573F371CD7A70B00BEED8E /* PNSVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */; };
+		BA71B5481D201E770081F3C5 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA71B5471D201E770081F3C5 /* Social.framework */; };
 		BA9653CF1CD1553A00ACEE28 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */; };
 		BA9653D11CD1553A00ACEE28 /* PNSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA9653D01CD1553A00ACEE28 /* PNSViewController.swift */; };
 		BA9653D41CD1553A00ACEE28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA9653D21CD1553A00ACEE28 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		BA339EEB1CF3A05C004A0613 /* PNSTwitterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSTwitterController.swift; sourceTree = "<group>"; };
 		BA4C4CCF1CF4A77100BC53DA /* PNSArticleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSArticleController.swift; sourceTree = "<group>"; };
 		BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSVideoDetailViewController.swift; sourceTree = "<group>"; };
+		BA71B5471D201E770081F3C5 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		BA9653CB1CD1553A00ACEE28 /* POP Nutshell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "POP Nutshell.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA9653D01CD1553A00ACEE28 /* PNSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNSViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA71B5481D201E770081F3C5 /* Social.framework in Frameworks */,
 				576067FE82498A757BC8A3BD /* Pods_POP_Nutshell.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,6 +132,7 @@
 		58A82B5E3C4E00B00CD81ACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BA71B5471D201E770081F3C5 /* Social.framework */,
 				AD22C9D8E38B21AAF032A3D5 /* Pods_POP_Nutshell.framework */,
 				132BD504D048E07F33016E4B /* Pods_POP_NutshellTests.framework */,
 				8CF6BA90CAC2F76605105FCF /* Pods_POP_NutshellUITests.framework */,

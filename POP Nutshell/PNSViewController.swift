@@ -120,6 +120,17 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         let shareButton = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
             print("share button tapped")
+            
+            let shareItem = self.videos[indexPath.row]
+            
+            let sharedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
+            sharedVideo.videoId = shareItem.videoId
+            sharedVideo.videoThumbnail = shareItem.videoThumbnailUrl
+            sharedVideo.videoTitle = shareItem.videoTitle
+            
+            let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)
+            self.presentViewController(activityViewController, animated: true, completion: nil)
+            
         }
         shareButton.backgroundColor = UIColor.lightGrayColor()
         
