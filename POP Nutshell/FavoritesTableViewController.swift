@@ -102,9 +102,9 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
             return 
         }
         
-//        if favData.isEmpty {
-//            sendAlert()
-//        }
+        if favData.isEmpty {
+            sendAlert()
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -119,5 +119,47 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
             alert.addAction(okAction)
             self.presentViewController(alert, animated: true, completion: nil)
         
+            unwindForSegue(<#T##unwindSegue: UIStoryboardSegue##UIStoryboardSegue#>, towardsViewController: <#T##UIViewController#>)
         }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }// End of Class
