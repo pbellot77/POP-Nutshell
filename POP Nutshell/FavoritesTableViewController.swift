@@ -19,12 +19,20 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     var favData: Array<Video> = []
     
     override func viewDidLoad() {
-        self.favoritesTableView.dataSource = self
+        favoritesTableView.dataSource = self
     }
     
     override func viewWillAppear(animated: Bool) {
         favoritesManager.getAllFavoritedVideos()
         favoritesTableView.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        favData = favoritesManager.getAllFavoritedVideos()
+        
+        if favData.isEmpty{
+            sendAlert()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -43,17 +51,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(favoritesCellIndentifier)!
-        let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
-        
-        if favData.isEmpty {
-            let alert = UIAlertController(title: "No Favorites Added", message: "Swipe left in Home to add Favorites", preferredStyle: .Alert)
-            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
-            alert.addAction(okAction)
-        } else {
-            return cell
-        }
-        
-        favData.append(favoritedVideo)
+        let favoritedVideo = favData[indexPath.row]
         
         let videoTitle = favoritedVideo.videoTitle
         let label = cell.viewWithTag(3) as! UILabel
@@ -103,15 +101,23 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         default:
             return 
         }
+        
+//        if favData.isEmpty {
+//            sendAlert()
+//        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        
     }
+    
+    func sendAlert() {
+        let alert = UIAlertController(title: "No Favorites Added", message: "Swipe left in Home to add Favorites", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
+            alert.addAction(okAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        
+        }
 }// End of Class
