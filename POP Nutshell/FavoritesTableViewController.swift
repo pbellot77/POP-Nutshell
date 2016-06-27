@@ -13,6 +13,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
+    
     private let favoritesCellIndentifier = "FavoriteCell"
     private let favoritesManager = FavoritesManager.sharedInstance
     var currentVideo: Video!
@@ -20,15 +21,14 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         favoritesTableView.dataSource = self
+        
     }
     
     override func viewWillAppear(animated: Bool) {
-        favoritesManager.getAllFavoritedVideos()
         favoritesTableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
-        favData = favoritesManager.getAllFavoritedVideos()
         
         if favData.isEmpty{
             sendAlert()
@@ -51,7 +51,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(favoritesCellIndentifier)!
-        let favoritedVideo = favData[indexPath.row]
+        let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
         
         let videoTitle = favoritedVideo.videoTitle
         let label = cell.viewWithTag(3) as! UILabel
@@ -73,7 +73,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
                     imageView.image = UIImage(data: data!)
                 })
             })
-            
+            favData.append(favoritedVideo)
             dataTask.resume()
         }
         
@@ -115,51 +115,9 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func sendAlert() {
         let alert = UIAlertController(title: "No Favorites Added", message: "Swipe left in Home to add Favorites", preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
+        let okAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in }
             alert.addAction(okAction)
             self.presentViewController(alert, animated: true, completion: nil)
-        
-            unwindForSegue(<#T##unwindSegue: UIStoryboardSegue##UIStoryboardSegue#>, towardsViewController: <#T##UIViewController#>)
-        }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    }
     
 }// End of Class
