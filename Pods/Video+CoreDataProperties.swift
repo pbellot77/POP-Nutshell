@@ -17,5 +17,6 @@ extension Video {
     @NSManaged var videoId: String?
     @NSManaged var videoTitle: String?
     @NSManaged var videoThumbnail: String?
+    @NSManaged var videoDescription: String?
 
 }

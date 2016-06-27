@@ -16,11 +16,13 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     private let favoritesCellIndentifier = "FavoriteCell"
     private let favoritesManager = FavoritesManager.sharedInstance
-    var currentVideo: Video!
+    var favVideos: [Video] = [Video]()
+    var currentVideo: Video?
     var favData: Array<Video> = []
     
     override func viewDidLoad() {
         favoritesTableView.dataSource = self
+        favoritesTableView.delegate = self
         
     }
     
@@ -108,14 +110,22 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.currentVideo = favData[indexPath.row]
+        performSegueWithIdentifier("toDetail", sender: self)
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let detailViewController = segue.destinationViewController as! PNSVideoDetailViewController
+        detailViewController.currentVideo = self.currentVideo
     }
     
+    
     func sendAlert() {
-        let alert = UIAlertController(title: "No Favorites Added", message: "Swipe left in Home to add Favorites", preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in }
+        let alert = UIAlertController(title: "No Favorites Added", message: "To Add Favorites Tap Home and Swipe Left", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: { [weak self] (action) -> Void in
+            self?.performSegueWithIdentifier("unwindToHome", sender: self)
+            })
             alert.addAction(okAction)
             self.presentViewController(alert, animated: true, completion: nil)
     }

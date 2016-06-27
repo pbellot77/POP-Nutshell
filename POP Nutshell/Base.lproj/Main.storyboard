@@ -125,7 +125,7 @@
         <!--Video Detail View Controller-->
         <scene sceneID="8HJ-np-yyu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="NLX-GQ-HXf" customClass="PNSVideoDetailViewController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PNSVideoDetailViewController" automaticallyAdjustsScrollViewInsets="NO" id="NLX-GQ-HXf" customClass="PNSVideoDetailViewController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AOD-89-9K0"/>
                         <viewControllerLayoutGuide type="bottom" id="ie4-jF-IOA"/>
@@ -412,6 +412,8 @@
                     <navigationItem key="navigationItem" title="POP! Nutshell" id="PVN-vN-BC9"/>
                     <connections>
                         <outlet property="favoritesTableView" destination="tkV-7A-XVl" id="420-Fx-vHN"/>
+                        <segue destination="BN2-mS-99R" kind="presentation" identifier="unwindToHome" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="h1N-Ry-d9U"/>
+                        <segue destination="NLX-GQ-HXf" kind="show" identifier="toDetail" id="dJJ-H5-Jm5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUm-iA-dJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -503,4 +505,7 @@
         <image name="Favorites" width="30" height="30"/>
         <image name="Home" width="30" height="29"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="dJJ-H5-Jm5"/>
+    </inferredMetricsTieBreakers>
 </document>
