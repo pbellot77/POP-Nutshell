@@ -392,6 +392,9 @@
                                                 <constraint firstItem="Y2a-Hs-LSK" firstAttribute="leading" secondItem="qbp-ns-7Mm" secondAttribute="leading" constant="20" id="cr7-y4-L0O"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="pZS-9D-7gD" kind="show" identifier="toDetail" id="jQw-va-1lW"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -418,6 +421,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUm-iA-dJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1787" y="1841"/>
+        </scene>
+        <!--Favorites Detail View Controller-->
+        <scene sceneID="J1a-3R-YMf">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="pZS-9D-7gD" customClass="FavoritesDetailViewController" customModule="POP_Nutshell" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TRi-gJ-vHz"/>
+                        <viewControllerLayoutGuide type="bottom" id="GDF-mj-8R8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="R8J-gd-L0D">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jC-lk-xRI">
+                                <rect key="frame" x="20" y="174" width="560" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="LS3-qM-vse"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m12-M0-T0i">
+                                <rect key="frame" x="20" y="244" width="560" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wi-rD-Tr5">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="oSZ-5h-xtO"/>
+                                </constraints>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5wi-rD-Tr5" secondAttribute="trailing" id="2ao-Cj-IN0"/>
+                            <constraint firstAttribute="trailing" secondItem="9jC-lk-xRI" secondAttribute="trailing" constant="20" id="5aE-Bs-5ck"/>
+                            <constraint firstItem="5wi-rD-Tr5" firstAttribute="leading" secondItem="R8J-gd-L0D" secondAttribute="leading" id="S86-8V-4fv"/>
+                            <constraint firstItem="m12-M0-T0i" firstAttribute="top" secondItem="9jC-lk-xRI" secondAttribute="bottom" constant="15" id="T9T-Jc-Jia"/>
+                            <constraint firstItem="m12-M0-T0i" firstAttribute="leading" secondItem="R8J-gd-L0D" secondAttribute="leading" constant="20" id="UUL-AD-XP7"/>
+                            <constraint firstItem="9jC-lk-xRI" firstAttribute="top" secondItem="5wi-rD-Tr5" secondAttribute="bottom" constant="10" id="c3U-Iw-cqV"/>
+                            <constraint firstAttribute="trailing" secondItem="m12-M0-T0i" secondAttribute="trailing" constant="20" id="eOX-7g-zod"/>
+                            <constraint firstItem="5wi-rD-Tr5" firstAttribute="top" secondItem="TRi-gJ-vHz" secondAttribute="bottom" id="eZl-Wr-bWk"/>
+                            <constraint firstItem="9jC-lk-xRI" firstAttribute="leading" secondItem="R8J-gd-L0D" secondAttribute="leading" constant="20" id="hrd-WI-zeB"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="m12-M0-T0i" id="fSP-0g-GFj"/>
+                        <outlet property="titleLabel" destination="9jC-lk-xRI" id="Ybl-p6-yfL"/>
+                        <outlet property="webView" destination="5wi-rD-Tr5" id="hRk-l5-Oob"/>
+                        <outlet property="webViewHeightConstraint" destination="oSZ-5h-xtO" id="NnU-1y-9cn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="grr-Eo-mb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2469" y="1841"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N6f-6Z-ieE">

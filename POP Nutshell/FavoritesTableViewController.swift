@@ -116,8 +116,9 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let detailVC = segue.destinationViewController as! FavoritesDetailViewController
-        detailVC.currentVideo = self.currentVideo
+        let destinationVC = segue.destinationViewController as! FavoritesDetailViewController
+        destinationVC.currentVideo = self.currentVideo
+        
     }
     
     

@@ -106,6 +106,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             let video = self.videos[indexPath.row]
             
             let favoritedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
+            favoritedVideo.videoDescription = video.videoDescription
             favoritedVideo.videoId = video.videoId
             favoritedVideo.videoThumbnail = video.videoThumbnailUrl
             favoritedVideo.videoTitle = video.videoTitle
@@ -134,17 +135,16 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         shareButton.backgroundColor = UIColor.lightGrayColor()
         
-        
         return [favoriteButton, shareButton]
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Take note of which video the user selected
-        self.selectedVideo = self.videos[indexPath.row]
+        selectedVideo = self.videos[indexPath.row]
         
         // Call the segue
-        self.performSegueWithIdentifier("goToDetail", sender: self)
+        performSegueWithIdentifier("goToDetail", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
