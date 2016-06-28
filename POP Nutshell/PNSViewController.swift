@@ -2,7 +2,7 @@
 //  PNSViewController.swift
 //  POP Nutshell
 //
-//  Created by Patrick Bellot on 4/27/16.
+//  Created by Patrick Bellot, inspired by CodeWithChris https://www.youtube.com/playlist?list=PLMRqhzcHGw1aLoz4pM_Mg2TewmJcMg9uaon 4/27/16.
 //  Copyright © 2016 Bell OS, LLC. All rights reserved.
 //
 
