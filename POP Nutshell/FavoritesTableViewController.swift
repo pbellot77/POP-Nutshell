@@ -115,10 +115,10 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destinationVC = segue.destinationViewController as! FavoritesDetailViewController
-        destinationVC.currentVideo = self.currentVideo
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let destinationVC = segue.destinationViewController as! FavoritesDetailViewController
+//        destinationVC.currentVideo = self.currentVideo
+//    }
     
     func sendAlert() {
         let alert = UIAlertController(title: "No Favorites Added", message: "To Add Favorites Tap Home and Swipe Left", preferredStyle: .Alert)
