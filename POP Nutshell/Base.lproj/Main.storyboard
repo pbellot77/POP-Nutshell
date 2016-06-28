@@ -392,9 +392,6 @@
                                                 <constraint firstItem="Y2a-Hs-LSK" firstAttribute="leading" secondItem="qbp-ns-7Mm" secondAttribute="leading" constant="20" id="cr7-y4-L0O"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="pZS-9D-7gD" kind="show" identifier="toDetail" id="jQw-va-1lW"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -416,6 +413,7 @@
                     <connections>
                         <outlet property="favoritesTableView" destination="tkV-7A-XVl" id="420-Fx-vHN"/>
                         <segue destination="BN2-mS-99R" kind="presentation" identifier="unwindToHome" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="h1N-Ry-d9U"/>
+                        <segue destination="pZS-9D-7gD" kind="show" identifier="toDetail" id="MTx-Xu-T4z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qUm-iA-dJ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -440,13 +438,13 @@
                                     <constraint firstAttribute="height" constant="55" id="LS3-qM-vse"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m12-M0-T0i">
                                 <rect key="frame" x="20" y="244" width="560" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5wi-rD-Tr5">
@@ -479,7 +477,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="grr-Eo-mb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2469" y="1841"/>
+            <point key="canvasLocation" x="2476" y="1841"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="N6f-6Z-ieE">

@@ -110,7 +110,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.currentVideo = favData[indexPath.row]
+        currentVideo = favData[indexPath.row]
         performSegueWithIdentifier("toDetail", sender: self)
         
     }
@@ -118,9 +118,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destinationVC = segue.destinationViewController as! FavoritesDetailViewController
         destinationVC.currentVideo = self.currentVideo
-        
     }
-    
     
     func sendAlert() {
         let alert = UIAlertController(title: "No Favorites Added", message: "To Add Favorites Tap Home and Swipe Left", preferredStyle: .Alert)
