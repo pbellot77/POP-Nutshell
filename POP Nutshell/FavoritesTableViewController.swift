@@ -104,7 +104,6 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         default:
             return 
         }
-        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

@@ -155,7 +155,5 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         // Set the selected video property of the destination view controller
         detailViewController.selectedVideo = self.selectedVideo
     }
-
-  
 } // End of Class
 

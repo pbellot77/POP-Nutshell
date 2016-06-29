@@ -10,7 +10,6 @@ import UIKit
 
 class PNSTwitterController: UIViewController {
     
-    
     @IBOutlet weak var connectWithUs: UILabel!
     @IBOutlet weak var popNutshellBtn: UIButton!
     @IBOutlet weak var anthonyBtn: UIButton!
@@ -18,12 +17,9 @@ class PNSTwitterController: UIViewController {
     @IBOutlet weak var dylanBtn: UIButton!
     @IBOutlet weak var willieBtn: UIButton!
     @IBOutlet weak var patrickBtn: UIButton!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func connectWithPNS(sender: UIButton) {
@@ -35,7 +31,6 @@ class PNSTwitterController: UIViewController {
         } else {
             UIApplication.sharedApplication().openURL(twURLWeb)
         }
-        
     }
     
     @IBAction func connectWithAnthony(sender: UIButton) {
@@ -47,7 +42,6 @@ class PNSTwitterController: UIViewController {
         } else {
             UIApplication.sharedApplication().openURL(twURLWeb)
         }
-
     }
     
     @IBAction func connectWithMalcolm(sender: UIButton) {
@@ -59,7 +53,6 @@ class PNSTwitterController: UIViewController {
         } else {
             UIApplication.sharedApplication().openURL(twURLWeb)
         }
-
     }
     
     @IBAction func connectWithDylan(sender: UIButton) {
@@ -71,7 +64,6 @@ class PNSTwitterController: UIViewController {
         } else {
             UIApplication.sharedApplication().openURL(twURLWeb)
         }
-
     }
     
     @IBAction func connectWithWillie(sender: UIButton) {
@@ -83,7 +75,6 @@ class PNSTwitterController: UIViewController {
         } else {
             UIApplication.sharedApplication().openURL(twURLWeb)
         }
-
     }
     
     @IBAction func connectWithPatrick(sender: UIButton) {
@@ -95,9 +86,5 @@ class PNSTwitterController: UIViewController {
         } else {
             UIApplication.sharedApplication().openURL(twURLWeb)
         }
-
     }
-    
-
-   
 } // End of Class
