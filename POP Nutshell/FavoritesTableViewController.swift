@@ -23,11 +23,11 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         favoritesTableView.dataSource = self
         favoritesTableView.delegate = self
-        
-    }
+        }
     
     override func viewWillAppear(animated: Bool) {
         favoritesTableView.reloadData()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -95,18 +95,16 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
             favData.removeAtIndex(indexPath.row)
             do {
                 try context.save()
+                sendAlert()
             } catch _ {
-                
             }
+            
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         default:
             return 
         }
         
-        if favData.isEmpty {
-            sendAlert()
-        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -115,10 +113,13 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let destinationVC = segue.destinationViewController as! FavoritesDetailViewController
-//        destinationVC.currentVideo = self.currentVideo
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "toDetail" {
+            if let destinationVC = segue.destinationViewController as? FavoritesDetailViewController {
+                destinationVC.currentVideo = self.currentVideo
+            }
+        }
+    }
     
     func sendAlert() {
         let alert = UIAlertController(title: "No Favorites Added", message: "To Add Favorites Tap Home and Swipe Left", preferredStyle: .Alert)
