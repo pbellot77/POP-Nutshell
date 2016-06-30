@@ -10,7 +10,7 @@ import CoreData
 
 class FavoritesManager: NSObject {
     
-    var coreDataStack = CoreDataStack()
+    var coreDataStack = CoreDataStack.sharedInstance
         
     class var sharedInstance: FavoritesManager {
         struct Static {
@@ -39,6 +39,4 @@ class FavoritesManager: NSObject {
         coreDataStack.saveContext()
         return insertEntityForName("Video") as! Video
     }
-    
-      
 }// End of Class

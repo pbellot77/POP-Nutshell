@@ -23,6 +23,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         favoritesTableView.dataSource = self
         favoritesTableView.delegate = self
+        
         }
     
     override func viewWillAppear(animated: Bool) {
@@ -99,7 +100,6 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
             } catch _ {
             }
             
-            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
         default:
             return 
@@ -123,7 +123,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     func sendAlert() {
         let alert = UIAlertController(title: "No Favorites Added", message: "To Add Favorites Tap Home and Swipe Left", preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "OK", style: .Default, handler: { [weak self] (action) -> Void in
-            self?.performSegueWithIdentifier("unwindToHome", sender: self)
+            self?.tabBarController?.selectedIndex = 0
             })
             alert.addAction(okAction)
             self.presentViewController(alert, animated: true, completion: nil)

@@ -18,7 +18,6 @@ class VideoModel: NSObject {
     var videoArray = [PNSVideos]()
     var delegate: VideoModelDelegate?
 
-    
     func getFeedVideos() {
         
         // Fetch the videos dynamically through the YouTube Data API
@@ -52,7 +51,6 @@ class VideoModel: NSObject {
                     }
                 
                 arrayOfVideos.append(videoObj)
-                
             }
             
             // When all the video objects have been constructed, assign the array to the VideoModel property

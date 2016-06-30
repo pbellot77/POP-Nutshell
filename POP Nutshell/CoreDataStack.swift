@@ -10,6 +10,13 @@ import CoreData
 
 class CoreDataStack {
     
+    class var sharedInstance: CoreDataStack {
+        struct Static {
+            static let instance: CoreDataStack = CoreDataStack()
+        }
+        return Static.instance
+    }
+    
     let modelName = "Video"
     
     private lazy var applicationDocumentsDirectory: NSURL = {
