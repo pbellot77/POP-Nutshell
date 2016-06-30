@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 
+//TODO: Delete VideoModelDelegate by using NSFetchResultsControllerDelegate
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, VideoModelDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -18,6 +19,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     let model: VideoModel = VideoModel()
     let favoritesManager = FavoritesManager()
     
+    
+//TODO: Put fetch in viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,8 +30,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         // Fire off request to get videos
         model.getFeedVideos()
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,7 +67,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         // Get the label for the cell
         let label = cell.viewWithTag(2) as! UILabel
         label.text = videoTitle
-               
+        
+    //TODO: Remove the networking from cellForRowAtIndexPath and add it to the client
         // Construct the video thumbnail url
         let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + videos[indexPath.row].videoId + "/hqdefault.jpg"
         

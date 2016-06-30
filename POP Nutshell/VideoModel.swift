@@ -18,6 +18,7 @@ class VideoModel: NSObject {
     var videoArray = [PNSVideos]()
     var delegate: VideoModelDelegate?
 
+    //TODO: Create network client and singleton
     func getFeedVideos() {
         
         // Fetch the videos dynamically through the YouTube Data API
@@ -63,4 +64,4 @@ class VideoModel: NSObject {
          }
        }
     }
-   } // End of Class
+} // End of Class

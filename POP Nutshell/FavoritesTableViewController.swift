@@ -23,8 +23,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     override func viewDidLoad() {
         favoritesTableView.dataSource = self
         favoritesTableView.delegate = self
-        
-        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         favoritesTableView.reloadData()
@@ -60,6 +59,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         let label = cell.viewWithTag(3) as! UILabel
         label.text = videoTitle
         
+    //TODO: Remove networking from cellForRowAtIndexPath and add it to the network client
         // Add thumbnail
         let thumbnailString = "https://i.ytimg.com/vi/" + favoritedVideo.videoId! + "/hqdefault.jpg"
         if let videoThumbnailUrl = NSURL(string: thumbnailString) {

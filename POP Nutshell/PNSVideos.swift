@@ -8,6 +8,8 @@
 
 import UIKit
 
+
+//TODO: Return PNSVideos to Video and use Video to store Core Data Objects
 class PNSVideos: NSObject {
     
     var videoId: String = ""
