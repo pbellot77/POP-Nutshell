@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Alamofire
+import CoreData
 
 //TODO: Delete VideoModelDelegate by using NSFetchResultsControllerDelegate
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
@@ -18,9 +18,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var selectedVideo: Video?
     let model: PNSClient = PNSClient()
     let coreDataStack = CoreDataStack.sharedInstance
-    internal var context: CoreDataStack!
+    var context: NSManagedObjectContext!
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
+     var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
         let videoIDSortDescriptor = NSSortDescriptor(key: "videoId", ascending: true)
         let videoTitleSortDescriptor = NSSortDescriptor(key: "videoTitle", ascending: false)
@@ -28,7 +28,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let videoThumbnailSortDescriptor = NSSortDescriptor(key: "videoThumbnail", ascending: false)
         videoFetchRequest.sortDescriptors = [videoIDSortDescriptor, videoTitleSortDescriptor, videoDescriptionSortDescriptor, videoThumbnailSortDescriptor]
         
-        let frc = NSFetchedResultsController(fetchRequest: videoFetchRequest, managedObjectContext: self.context, sectionNameForKeyPath: "", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: videoFetchRequest, managedObjectContext: CoreDataStack.sharedInstance, sectionNameKeyPath: "", cacheName: nil)
         
         frc.delegate = self
         
@@ -45,7 +45,16 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         
         tableView.dataSource = self
-        tableView.delegate = self
+        
+    }
+    
+    public func controllerWillChangeContent(controller: NSFetchedResultsController){
+        self.tableView.beginUpdates()
+    }
+    
+    public func controller(controller: NSFetchedResultsController, didChangeObject anyObject: AnyObject, atIndexPath indexPath: NSIndexPath?, foChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

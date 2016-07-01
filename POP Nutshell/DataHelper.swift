@@ -23,7 +23,12 @@ class DataHelper: NSObject {
     }
     
     private func seedVideos() {
-        let videos = [PNSClient]()
+        var videoArray = PNSClient().videoArray
+        let video = PNSClient().getFeedVideos()
+        
+        if let JSON = PNSClient().getFeedVideos().reponse.result.value {
+            var arrayOfVideos = [Video]()
+        }
         
         for video in JSON["items"] as! NSArray {
             print(video)
@@ -72,7 +77,7 @@ class DataHelper: NSObject {
     
     class var sharedInstance: DataHelper {
         struct Singleton {
-            static let instance: DataHelper = DataHelper()
+            static let instance: DataHelper = DataHelper(context: NSManagedObjectContext)
         }
         return Singleton.instance
     }

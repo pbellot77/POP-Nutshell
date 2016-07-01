@@ -32,10 +32,6 @@ class PNSClient: NSObject {
             case .Failure(let error):
                 print("Request failed with error: \(error)")
             }
-            
-            if let JSON = response.result.value {
-                var arrayOfVideos = [Video]()
-            }
         }
     }
     //create a thumbnail

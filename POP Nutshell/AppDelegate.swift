@@ -23,8 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         dataHelper.printAllVideos()
         
-        let rootViewController = self.window!.rootViewController as! PNSViewController
-        rootViewController.context = coreDataStack.context
         return true
     }
 
