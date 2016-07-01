@@ -25,7 +25,7 @@
 		BAA43D201D15EEAF0011AD3B /* Video.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D1E1D15EEAF0011AD3B /* Video.xcdatamodeld */; };
 		BAEE21371D261F6200F77589 /* PNSVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE21361D261F6200F77589 /* PNSVideo.swift */; };
 		BAEE21391D26280500F77589 /* PNSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE21381D26280500F77589 /* PNSClient.swift */; };
-		BAFD46F51D10560A005A4A63 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F41D10560A005A4A63 /* URL.swift */; };
+		BAFD46F51D10560A005A4A63 /* PNSConvience.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F41D10560A005A4A63 /* PNSConvience.swift */; };
 		BAFD46F71D109E4D005A4A63 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */; };
 		BAFD46F91D10A61A005A4A63 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F81D10A61A005A4A63 /* FavoritesTableViewController.swift */; };
 		D00113DD471CDC4D38A7D5B6 /* Pods_POP_NutshellUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CF6BA90CAC2F76605105FCF /* Pods_POP_NutshellUITests.framework */; };
@@ -80,7 +80,7 @@
 		BAA43D1F1D15EEAF0011AD3B /* Video.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Video.xcdatamodel; sourceTree = "<group>"; };
 		BAEE21361D261F6200F77589 /* PNSVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSVideo.swift; sourceTree = "<group>"; };
 		BAEE21381D26280500F77589 /* PNSClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSClient.swift; sourceTree = "<group>"; };
-		BAFD46F41D10560A005A4A63 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		BAFD46F41D10560A005A4A63 /* PNSConvience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSConvience.swift; sourceTree = "<group>"; };
 		BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		BAFD46F81D10A61A005A4A63 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		CD377EBDBDA604CFE3B1369B /* Pods-POP NutshellTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-POP NutshellTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-POP NutshellTests/Pods-POP NutshellTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 				BA9653FC1CD157FB00ACEE28 /* PNSVideo+CoreDataProperties.swift */,
 				BAEE21361D261F6200F77589 /* PNSVideo.swift */,
 				BAEE21381D26280500F77589 /* PNSClient.swift */,
-				BAFD46F41D10560A005A4A63 /* URL.swift */,
+				BAFD46F41D10560A005A4A63 /* PNSConvience.swift */,
 				BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */,
 				BAA43D1C1D14AEF10011AD3B /* DataHelper.swift */,
 				BAA43D1E1D15EEAF0011AD3B /* Video.xcdatamodeld */,
@@ -505,7 +505,7 @@
 				BAA43D201D15EEAF0011AD3B /* Video.xcdatamodeld in Sources */,
 				BAEE21371D261F6200F77589 /* PNSVideo.swift in Sources */,
 				BAFD46F91D10A61A005A4A63 /* FavoritesTableViewController.swift in Sources */,
-				BAFD46F51D10560A005A4A63 /* URL.swift in Sources */,
+				BAFD46F51D10560A005A4A63 /* PNSConvience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

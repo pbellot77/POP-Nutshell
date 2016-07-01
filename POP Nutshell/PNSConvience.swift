@@ -1,5 +1,5 @@
 //
-//  URL.swift
+//  PNSConvience.swift
 //  POP Nutshell
 //
 //  Created by Patrick Bellot on 6/14/16.
