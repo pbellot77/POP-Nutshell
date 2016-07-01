@@ -13,7 +13,6 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
-    
     private let favoritesCellIndentifier = "FavoriteCell"
     private let favoritesManager = FavoritesManager.sharedInstance
     var favVideos: [Video] = [Video]()

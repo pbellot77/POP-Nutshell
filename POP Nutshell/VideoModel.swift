@@ -37,17 +37,16 @@ class VideoModel: NSObject {
         }
         
             if let JSON = response.result.value {
-                
                 var arrayOfVideos = [Video]()
                 
                 for video in JSON["items"] as! NSArray {
                     print(video)
                 
-                let videoObj = Video()
-                videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
-                videoObj.videoTitle = video.valueForKeyPath("snippet.title") as? String
-                videoObj.videoDescription = video.valueForKeyPath("snippet.description") as? String
-                    if let highUrl = video.valueForKeyPath("snippet.thumbnails.high.url") as? String {
+                    let videoObj = Video()
+                    videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
+                    videoObj.videoTitle = video.valueForKeyPath("snippet.title") as? String
+                    videoObj.videoDescription = video.valueForKeyPath("snippet.description") as? String
+                        if let highUrl = video.valueForKeyPath("snippet.thumbnails.high.url") as? String {
                         videoObj.videoThumbnail = highUrl
                     }
                 
