@@ -13,10 +13,10 @@ class FavoritesManager: NSObject {
     var coreDataStack = CoreDataStack.sharedInstance
         
     class var sharedInstance: FavoritesManager {
-        struct Static {
+        struct Singleton {
             static let instance: FavoritesManager = FavoritesManager()
         }
-        return Static.instance
+        return Singleton.instance
     }
     
     //MARK: - Insert

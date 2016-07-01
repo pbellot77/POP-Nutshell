@@ -17,7 +17,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var videos: [Video] = [Video]()
     var selectedVideo: Video?
     let model: VideoModel = VideoModel()
-    let favoritesManager = FavoritesManager()
+    let favoritesManager = FavoritesManager.sharedInstance
     
     
 //TODO: Put fetch in viewDidLoad

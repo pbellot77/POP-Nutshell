@@ -12,14 +12,14 @@ import Alamofire
 
 class PNSClient: NSObject {
     
-    let favoritesManager = FavoritesManager.sharedInstance
-    
     class var sharedInstance: PNSClient {
         struct Singleton {
             static let instance: PNSClient = PNSClient()
         }
         return Singleton.instance
     }
+    
+    let favoritesManager = FavoritesManager.sharedInstance
     
     //Put networking here
     
