@@ -14,8 +14,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
 
     @IBOutlet weak var tableView: UITableView!
     
-    var videos: [PNSVideos] = [PNSVideos]()
-    var selectedVideo: PNSVideos?
+    var videos: [Video] = [Video]()
+    var selectedVideo: Video?
     let model: VideoModel = VideoModel()
     let favoritesManager = FavoritesManager()
     
@@ -70,7 +70,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
     //TODO: Remove the networking from cellForRowAtIndexPath and add it to the client
         // Construct the video thumbnail url
-        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + videos[indexPath.row].videoId + "/hqdefault.jpg"
+        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + videos[indexPath.row].videoId! + "/hqdefault.jpg"
         
         // Create an NSURL object
         if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {
@@ -112,7 +112,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             let favoritedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
             favoritedVideo.videoDescription = video.videoDescription
             favoritedVideo.videoId = video.videoId
-            favoritedVideo.videoThumbnail = video.videoThumbnailUrl
+            favoritedVideo.videoThumbnail = video.videoThumbnail
             favoritedVideo.videoTitle = video.videoTitle
             
             let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
@@ -130,7 +130,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             let sharedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
             sharedVideo.videoId = shareItem.videoId
-            sharedVideo.videoThumbnail = shareItem.videoThumbnailUrl
+            sharedVideo.videoThumbnail = shareItem.videoThumbnail
             sharedVideo.videoTitle = shareItem.videoTitle
             
             let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)

@@ -15,7 +15,7 @@ protocol VideoModelDelegate {
 
 class VideoModel: NSObject {
     
-    var videoArray = [PNSVideos]()
+    var videoArray = [Video]()
     var delegate: VideoModelDelegate?
 
     //TODO: Create network client and singleton
@@ -38,17 +38,17 @@ class VideoModel: NSObject {
         
             if let JSON = response.result.value {
                 
-                var arrayOfVideos = [PNSVideos]()
+                var arrayOfVideos = [Video]()
                 
                 for video in JSON["items"] as! NSArray {
                     print(video)
                 
-                let videoObj = PNSVideos()
-                videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as! String
-                videoObj.videoTitle = video.valueForKeyPath("snippet.title") as! String
-                videoObj.videoDescription = video.valueForKeyPath("snippet.description") as! String
+                let videoObj = Video()
+                videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
+                videoObj.videoTitle = video.valueForKeyPath("snippet.title") as? String
+                videoObj.videoDescription = video.valueForKeyPath("snippet.description") as? String
                     if let highUrl = video.valueForKeyPath("snippet.thumbnails.high.url") as? String {
-                        videoObj.videoThumbnailUrl = highUrl
+                        videoObj.videoThumbnail = highUrl
                     }
                 
                 arrayOfVideos.append(videoObj)
