@@ -17,6 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        let dataHelper = DataHelper(context: coreDataStack.context)
+        dataHelper.seedDataStore()
+        
+        dataHelper.printAllVideos()
+        
+        let rootViewController = self.window!.rootViewController as! PNSViewController
+        rootViewController.context = coreDataStack.context
         return true
     }
 

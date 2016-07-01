@@ -10,13 +10,6 @@ import CoreData
 
 class CoreDataStack {
     
-    class var sharedInstance: CoreDataStack {
-        struct Static {
-            static let instance: CoreDataStack = CoreDataStack()
-        }
-        return Static.instance
-    }
-    
     let modelName = "Video"
     
     private lazy var applicationDocumentsDirectory: NSURL = {
@@ -66,6 +59,13 @@ class CoreDataStack {
                 abort()
             }
         }
+    }
+    
+    class var sharedInstance: CoreDataStack {
+        struct Static {
+            static let instance: CoreDataStack = CoreDataStack()
+        }
+        return Static.instance
     }
     
 }// End of Class

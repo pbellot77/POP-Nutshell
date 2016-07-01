@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension VideoModel {
+extension PNSClient {
     
     struct Constants {
         

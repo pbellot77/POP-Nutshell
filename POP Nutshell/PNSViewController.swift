@@ -10,25 +10,39 @@ import UIKit
 import Alamofire
 
 //TODO: Delete VideoModelDelegate by using NSFetchResultsControllerDelegate
-class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, VideoModelDelegate {
+class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var videos: [Video] = [Video]()
     var selectedVideo: Video?
-    let model: VideoModel = VideoModel()
-    let favoritesManager = FavoritesManager.sharedInstance
+    let model: PNSClient = PNSClient()
+    let coreDataStack = CoreDataStack.sharedInstance
+    internal var context: CoreDataStack!
     
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let videoFetchRequest = NSFetchRequest(entityName: "Video")
+        let videoIDSortDescriptor = NSSortDescriptor(key: "videoId", ascending: true)
+        let videoTitleSortDescriptor = NSSortDescriptor(key: "videoTitle", ascending: false)
+        let videoDescriptionSortDescriptor = NSSortDescriptor(key: "videoDescription", ascending: false)
+        let videoThumbnailSortDescriptor = NSSortDescriptor(key: "videoThumbnail", ascending: false)
+        videoFetchRequest.sortDescriptors = [videoIDSortDescriptor, videoTitleSortDescriptor, videoDescriptionSortDescriptor, videoThumbnailSortDescriptor]
+        
+        let frc = NSFetchedResultsController(fetchRequest: videoFetchRequest, managedObjectContext: self.context, sectionNameForKeyPath: "", cacheName: nil)
+        
+        frc.delegate = self
+        
+        return frc
+    }()
     
-//TODO: Put fetch in viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        self.model.delegate = self
-        
-        // Fire off request to get videos
-        model.getFeedVideos()
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print("Error occured during fetch")
+        }
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,15 +53,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: -VideoModel Delegate Methods
-    func dataReady() {
-        
-        // Access the video objects that have been dowloaded
-        self.videos = self.model.videoArray
-        
-        // Tell the tableVies to reload
-        self.tableView.reloadData()
-    }
     
     // Tableview Delegate methods
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -61,8 +66,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell")!
-        let videoTitle = videos[indexPath.row].videoTitle
+        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
+        let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
+        let videoTitle = video.videoTitle
+        let thumbnail = video.videoThumbnail
         
         // Get the label for the cell
         let label = cell.viewWithTag(2) as! UILabel
@@ -70,7 +77,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
     //TODO: Remove the networking from cellForRowAtIndexPath and add it to the client
         // Construct the video thumbnail url
-        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + videos[indexPath.row].videoId! + "/hqdefault.jpg"
+        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video.videoID + "/hqdefault.jpg"
         
         // Create an NSURL object
         if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {
@@ -109,7 +116,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             let video = self.videos[indexPath.row]
             
-            let favoritedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
+            let favoritedVideo = DataHelper.sharedInstance.createVideoFavorite()
             favoritedVideo.videoDescription = video.videoDescription
             favoritedVideo.videoId = video.videoId
             favoritedVideo.videoThumbnail = video.videoThumbnail
@@ -128,7 +135,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             let shareItem = self.videos[indexPath.row]
             
-            let sharedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
+            let sharedVideo = DataHelper.sharedInstance.createVideoFavorite()
             sharedVideo.videoId = shareItem.videoId
             sharedVideo.videoThumbnail = shareItem.videoThumbnail
             sharedVideo.videoTitle = shareItem.videoTitle
