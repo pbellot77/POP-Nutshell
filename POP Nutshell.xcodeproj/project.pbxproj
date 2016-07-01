@@ -25,6 +25,7 @@
 		BAA43D1D1D14AEF10011AD3B /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D1C1D14AEF10011AD3B /* FavoritesManager.swift */; };
 		BAA43D201D15EEAF0011AD3B /* Video.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BAA43D1E1D15EEAF0011AD3B /* Video.xcdatamodeld */; };
 		BAEE21371D261F6200F77589 /* PNSVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE21361D261F6200F77589 /* PNSVideo.swift */; };
+		BAEE21391D26280500F77589 /* PNSClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAEE21381D26280500F77589 /* PNSClient.swift */; };
 		BAFD46F51D10560A005A4A63 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F41D10560A005A4A63 /* URL.swift */; };
 		BAFD46F71D109E4D005A4A63 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */; };
 		BAFD46F91D10A61A005A4A63 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAFD46F81D10A61A005A4A63 /* FavoritesTableViewController.swift */; };
@@ -80,6 +81,7 @@
 		BAA43D1C1D14AEF10011AD3B /* FavoritesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		BAA43D1F1D15EEAF0011AD3B /* Video.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Video.xcdatamodel; sourceTree = "<group>"; };
 		BAEE21361D261F6200F77589 /* PNSVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSVideo.swift; sourceTree = "<group>"; };
+		BAEE21381D26280500F77589 /* PNSClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PNSClient.swift; sourceTree = "<group>"; };
 		BAFD46F41D10560A005A4A63 /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		BAFD46F81D10A61A005A4A63 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */,
 				BA9653FC1CD157FB00ACEE28 /* PNSVideo+CoreDataProperties.swift */,
 				BAEE21361D261F6200F77589 /* PNSVideo.swift */,
+				BAEE21381D26280500F77589 /* PNSClient.swift */,
 				BA9653FE1CD158DC00ACEE28 /* VideoModel.swift */,
 				BAFD46F41D10560A005A4A63 /* URL.swift */,
 				BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */,
@@ -498,6 +501,7 @@
 				BAFD46F71D109E4D005A4A63 /* CoreDataStack.swift in Sources */,
 				BA339EEC1CF3A05C004A0613 /* PNSTwitterController.swift in Sources */,
 				BAA43D1D1D14AEF10011AD3B /* FavoritesManager.swift in Sources */,
+				BAEE21391D26280500F77589 /* PNSClient.swift in Sources */,
 				BA4C4CD01CF4A77100BC53DA /* PNSArticleController.swift in Sources */,
 				BA71B54E1D21FBA00081F3C5 /* FavoritesDetailViewController.swift in Sources */,
 				BA9653FF1CD158DC00ACEE28 /* VideoModel.swift in Sources */,
