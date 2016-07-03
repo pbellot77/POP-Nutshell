@@ -45,15 +45,15 @@ class PNSViewController: UIViewController {
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
-        
+        let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
+        cell.videoThumbnail.image = UIImage(named: video.videoThumbnail)
+        cell.titleLabel.text = video.videoTitle
+        cell.descriptionLabel.text = video.videoDescription
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
+}// End of Class
+
+extension PNSViewController: UITableViewDataSource {
+
     // Tableview Delegate methods
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
@@ -75,9 +75,6 @@ class PNSViewController: UIViewController {
         let label = cell.viewWithTag(2) as! UILabel
         label.text = videoTitle
         
-    //TODO: Remove the networking from cellForRowAtIndexPath and add it to the client
-        // Construct the video thumbnail url
-                
         return cell
     }
     
@@ -95,6 +92,7 @@ class PNSViewController: UIViewController {
             favoritedVideo.videoId = video.videoId
             favoritedVideo.videoThumbnail = video.videoThumbnail
             favoritedVideo.videoTitle = video.videoTitle
+            favoritedVideo.isFavorite = video.isFavorite
             
             let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
@@ -122,7 +120,8 @@ class PNSViewController: UIViewController {
         
         return [favoriteButton, shareButton]
     }
-    
+}
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Take note of which video the user selected
@@ -140,5 +139,3 @@ class PNSViewController: UIViewController {
         // Set the selected video property of the destination view controller
         detailViewController.selectedVideo = self.selectedVideo
     }
-} // End of Class
-
