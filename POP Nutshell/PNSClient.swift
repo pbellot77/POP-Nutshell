@@ -40,7 +40,7 @@ class PNSClient: NSObject {
     }
     //create a thumbnail
     func createThumbnail() {
-        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video.videoId! + "/hqdefault.jpg"
+        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + videoId + "/hqdefault.jpg"
         
         // Create an NSURL object
         if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {

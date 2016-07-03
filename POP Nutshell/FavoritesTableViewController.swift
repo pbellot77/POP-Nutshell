@@ -52,7 +52,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(favoritesCellIndentifier)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier)!
         let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
         
         let videoTitle = favoritedVideo.videoTitle

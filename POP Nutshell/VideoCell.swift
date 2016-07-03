@@ -10,15 +10,15 @@ import UIKit
 
 class VideoCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel = UILabel!
-    @IBOutlet weak var descriptionLabel = UILabel!
-    @IBOutlet weak var videoThumbnail = UIImageView!
+    @IBOutlet weak var titleLabel = UILabel!()
+    @IBOutlet weak var descriptionLabel = UILabel!()
+    weak var videoThumbnail = UIImageView!()
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        titleLabel.text = nil
-        descriptionLabel.text = nil
-        videoThumbnail.image = nil
+        titleLabel!.text = nil
+        descriptionLabel!.text = nil
+        videoThumbnail!.image = nil
     }
 }

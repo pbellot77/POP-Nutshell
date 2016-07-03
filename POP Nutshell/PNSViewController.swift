@@ -29,7 +29,6 @@ class PNSViewController: UIViewController {
         let videoTitleSort = NSSortDescriptor(key: "videoTitle", ascending: false)
         let videoThumbnailSort = NSSortDescriptor(key: "videoThumbnail", ascending: false)
         let videoDescriptionSort = NSSortDescriptor(key: "videoDescription", ascending: false)
-        let favoritedVideoSort = NSSortDescriptor(Bool)
         
         fetchRequest.sortDescriptors = [videoIdSort, videoTitleSort, videoThumbnailSort, videoDescriptionSort, favoritedVideoSort]
         
@@ -46,8 +45,8 @@ class PNSViewController: UIViewController {
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
-        cell.videoThumbnail.image = UIImage(named: video.videoThumbnail)
-        cell.titleLabel.text = video.videoTitle
+        cell.videoThumbnail!.image = UIImage(named: video.videoThumbnail!)
+        cell.titleLabel!.text = video.videoTitle
     }
 }// End of Class
 
@@ -61,18 +60,13 @@ extension PNSViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return videos.count
+        return fetchedResultsController.sections!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BasicCell", forIndexPath: indexPath)
-        let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
-        let videoTitle = video.videoTitle
-        let thumbnail = video.videoThumbnail
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! VideoCell
         
-        // Get the label for the cell
-        let label = cell.viewWithTag(2) as! UILabel
-        label.text = videoTitle
+        configureCell(cell, indexPath: indexPath)
         
         return cell
     }
@@ -83,10 +77,9 @@ extension PNSViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
-            
-            if video.isFavorite = true {
-            
             let video = self.videos[indexPath.row]
+            
+            if video.isFavorite == true {
             
             let favoritedVideo = DataHelper.sharedInstance.createVideoFavorite()
             favoritedVideo.videoDescription = video.videoDescription
@@ -100,6 +93,8 @@ extension PNSViewController: UITableViewDataSource {
             
             self.presentViewController(alert, animated: true, completion: nil)
         }
+            self.coreDataStack.saveContext()
+            tableView.setEditing(false, animated: true)
     }
         favoriteButton.backgroundColor = UIColor.blueColor()
         
@@ -116,6 +111,7 @@ extension PNSViewController: UITableViewDataSource {
             let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)
             self.presentViewController(activityViewController, animated: true, completion: nil)
             
+            tableView.setEditing(false, animated: true)
         }
         shareButton.backgroundColor = UIColor.lightGrayColor()
         
@@ -141,5 +137,44 @@ extension PNSViewController: UITableViewDelegate {
         
         // Set the selected video property of the destination view controller
         detailViewController.selectedVideo = self.selectedVideo
+    }
+}
+
+extension PNSViewController: NSFetchedResultsControllerDelegate {
+    
+    func controllerWillChangeContent(controller: NSFetchedResultsController) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+            switch type {
+            case .Insert:
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+            case .Delete:
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+            case .Update:
+                let cell = tableView.cellForRowAtIndexPath(indexPath!) as! VideoCell
+                configureCell(cell, indexPath: indexPath!)
+            case .Move:
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+        }
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        tableView.endUpdates()
+    }
+    
+    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        
+        let indexSet = NSIndexSet(index: sectionIndex)
+        switch type {
+            case .Insert:
+                tableView.insertSections(indexSet, withRowAnimation: .Automatic)
+            case .Delete:
+                tableView.deleteSections(indexSet, withRowAnimation: .Automatic)
+        default :
+            break
+        }
     }
 }
