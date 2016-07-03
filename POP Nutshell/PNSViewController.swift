@@ -9,54 +9,41 @@
 import UIKit
 import CoreData
 
-//TODO: Delete VideoModelDelegate by using NSFetchResultsControllerDelegate
-class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+private let cellIdentifier = "BasicCell"
+
+class PNSViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
     var videos: [Video] = [Video]()
     var selectedVideo: Video?
     let model: PNSClient = PNSClient()
-    let coreDataStack = CoreDataStack.sharedInstance
+    var coreDataStack: CoreDataStack!
     var context: NSManagedObjectContext!
-    
-     var fetchedResultsController: NSFetchedResultsController = {
-        let videoFetchRequest = NSFetchRequest(entityName: "Video")
-        let videoIDSortDescriptor = NSSortDescriptor(key: "videoId", ascending: true)
-        let videoTitleSortDescriptor = NSSortDescriptor(key: "videoTitle", ascending: false)
-        let videoDescriptionSortDescriptor = NSSortDescriptor(key: "videoDescription", ascending: false)
-        let videoThumbnailSortDescriptor = NSSortDescriptor(key: "videoThumbnail", ascending: false)
-        videoFetchRequest.sortDescriptors = [videoIDSortDescriptor, videoTitleSortDescriptor, videoDescriptionSortDescriptor, videoThumbnailSortDescriptor]
-        
-        let frc = NSFetchedResultsController(fetchRequest: videoFetchRequest, managedObjectContext: CoreDataStack.sharedInstance, sectionNameKeyPath: "", cacheName: nil)
-        
-        frc.delegate = self
-        
-        return frc
-    }()
+    var fetchedResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let fetchRequest = NSFetchRequest(entityName: "Video")
+        let videoIdSort = NSSortDescriptor(key: "videoId", ascending: false)
+        let videoTitleSort = NSSortDescriptor(key: "videoTitle", ascending: false)
+        let videoThumbnailSort = NSSortDescriptor(key: "videoThumbnail", ascending: false)
+        let videoDescriptionSort = NSSortDescriptor(key: "videoDescription", ascending: false)
+        
+        fetchRequest.sortDescriptors = [videoIdSort, videoTitleSort, videoThumbnailSort, videoDescriptionSort]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.context, sectionNameKeyPath: "videoId", cacheName: "pnsVideos")
+        
+        fetchedResultsController.delegate = self
+        
         do {
             try fetchedResultsController.performFetch()
-        } catch {
-            print("Error occured during fetch")
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
         }
-        
-        tableView.dataSource = self
-        
     }
     
-    public func controllerWillChangeContent(controller: NSFetchedResultsController){
-        self.tableView.beginUpdates()
-    }
-    
-    public func controller(controller: NSFetchedResultsController, didChangeObject anyObject: AnyObject, atIndexPath indexPath: NSIndexPath?, foChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        
-        
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
