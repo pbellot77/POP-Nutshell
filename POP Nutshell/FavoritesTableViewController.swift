@@ -9,11 +9,12 @@
 import UIKit
 import CoreData
 
+private let cellIdentifier = "favoriteCell"
+
 class FavoritesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
-    private let favoritesCellIndentifier = "FavoriteCell"
     private let favoritesManager = FavoritesManager.sharedInstance
     var favVideos: [Video] = [Video]()
     var currentVideo: Video?
