@@ -44,6 +44,10 @@ class PNSViewController: UIViewController {
         }
     }
     
+    func configureCell(cell: VideoCell, indexPath: NSIndexPath){
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,33 +77,7 @@ class PNSViewController: UIViewController {
         
     //TODO: Remove the networking from cellForRowAtIndexPath and add it to the client
         // Construct the video thumbnail url
-        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video.videoID + "/hqdefault.jpg"
-        
-        // Create an NSURL object
-        if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {
-            
-            // Create an NSURLRequest object
-            let request = NSURLRequest(URL: videoThumbnailUrl)
-            
-            // Create NSURLSession
-            let session = NSURLSession.sharedSession()
-            
-            // Create a datatask and pass in the request
-            let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
                 
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                
-                // Get a reference to the image view element of the cell
-                let imageView = cell.viewWithTag(1) as! UIImageView
-                
-                // Create an image object from the data and assign it into the imageview
-                imageView.image = UIImage(data: data!)
-                })
-            })
-            
-            dataTask.resume()
-        }
-        
         return cell
     }
     
