@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+/* PNSViewController should get the objects from core data, display the videos in the PNSVideoDetailViewController, and add favorites to the FavoritesTableViewController */
+
 private let cellIdentifier = "BasicCell"
 
 class PNSViewController: UIViewController {

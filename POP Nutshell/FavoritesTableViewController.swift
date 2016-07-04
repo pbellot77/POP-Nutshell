@@ -9,13 +9,15 @@
 import UIKit
 import CoreData
 
+/* Only favorited videos should be pushed to the FavoritesTableViewController. Network requests for the thumbnail should be handled by the PNSClient.*/
+
 private let cellIdentifier = "favoriteCell"
 
 class FavoritesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
-    private let favoritesManager = FavoritesManager.sharedInstance
+    private let dataHelper = DataHelper.sharedInstance
     var favVideos: [Video] = [Video]()
     var currentVideo: Video?
     var favData: Array<Video> = []
@@ -44,7 +46,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     //MARK: - FavoritesTableView DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favoritesManager.getAllFavoritedVideos().count
+        return dataHelper.getAllFavoritedVideos().count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -52,8 +54,8 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIndentifier)!
-        let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
+        let favoritedVideo = dataHelper.getAllFavoritedVideos()[indexPath.row]
         
         let videoTitle = favoritedVideo.videoTitle
         let label = cell.viewWithTag(3) as! UILabel
@@ -90,8 +92,8 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
         case .Delete:
-            let favoritesManager:FavoritesManager = FavoritesManager.sharedInstance
-            let context:NSManagedObjectContext = favoritesManager.coreDataStack.context
+            let dataHelper: DataHelper = DataHelper.sharedInstance
+            let context:NSManagedObjectContext = dataHelper.coreDataStack.context
             context.deleteObject(favData[indexPath.row])
             favData.removeAtIndex(indexPath.row)
             do {

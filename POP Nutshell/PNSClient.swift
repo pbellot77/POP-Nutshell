@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import Alamofire
 
+/* This is where all network request should be happening. The networking to get the videos from youtube and the requests for the thumbnail */
+
 class PNSClient: NSObject {
     
     let dataHelper = DataHelper.sharedInstance

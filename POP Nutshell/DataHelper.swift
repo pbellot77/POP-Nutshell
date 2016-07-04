@@ -8,11 +8,13 @@
 import Foundation
 import CoreData
 
+/* This is where the JSON will be handled. Formally Favorites Manager */
+
 class DataHelper: NSObject {
     var coreDataStack = CoreDataStack.sharedInstance
     var pnsClient = PNSClient.sharedInstance
     
-    let context: NSManagedObjectContext
+    let context: NSManagedObjectContext!
     
     init(context: NSManagedObjectContext) {
         self.context = context
