@@ -28,10 +28,6 @@ class DataHelper: NSObject {
         var videoArray = PNSClient().videoArray
         let video = PNSClient().getFeedVideos()
         
-        if let JSON = PNSClient().getFeedVideos().reponse.result.value {
-            var arrayOfVideos = [Video]()
-        }
-        
         for video in JSON["items"] as! NSArray {
             print(video)
             
