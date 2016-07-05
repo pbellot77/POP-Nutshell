@@ -21,8 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let dataHelper = DataHelper(context: coreDataStack.context)
         dataHelper.seedDataStore()
         
-        dataHelper.printAllVideos()
-        
         return true
     }
 

@@ -6,22 +6,20 @@
 //  Copyright © 2016 Bell OS, LLC. All rights reserved.
 //
 
-import Foundation
+
 import UIKit
 import Alamofire
 
-/* This is where all network request should be happening. The networking to get the videos from youtube and the requests for the thumbnail */
-
 class PNSClient: NSObject {
     
-    let dataHelper = DataHelper.sharedInstance
-    
-    var videoArray = [Video]()
+    var pnsVideo = Video()
     
     func getFeedVideos() {
         
         // Fetch the videos dynamically through the YouTube Data API
-        Alamofire.request(.GET, Constants.YouTubeURL, parameters: [Parameters.Part: Parameters.Snippet, Parameters.PlaylistId: Constants.UPLOADS_PLAYLIST_ID, Parameters.Key: Constants.API_KEY, Parameters.MaxResults : 50], encoding: .URL, headers: nil).responseJSON { (response) in
+        Alamofire.request(.GET, Constants.YouTubeURL, parameters: [Parameters.Part: Parameters.Snippet, Parameters.PlaylistId: Constants.UPLOADS_PLAYLIST_ID, Parameters.Key: Constants.API_KEY, Parameters.MaxResults : 50], encoding: .URL, headers: nil)
+            .validate()
+            .responseJSON { (response) -> Void in
             
             switch response.result {
             case .Success(let JSON):
@@ -36,13 +34,23 @@ class PNSClient: NSObject {
             }
             
             if let JSON = response.result.value {
-                var arrayOfVideos = [Video]()
+                
+                for video in JSON["items"] as! NSArray {
+                    print(video)
+                    
+                    let videoObj = self.pnsVideo
+                    videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
+                    videoObj.videoTitle = video.valueForKeyPath("snippet.title") as? String
+                    videoObj.videoDescription = video.valueForKeyPath("snippet.description") as? String
+                    if let highUrl = video.valueForKeyPath("snippet.thumbnails.high.url") as? String {
+                        videoObj.videoThumbnailUrl = highUrl
+                }
             }
         }
     }
     //create a thumbnail
     func createThumbnail() {
-        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + videoId + "/hqdefault.jpg"
+        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + pnsVideo.videoId! + "/hqdefault.jpg"
         
         // Create an NSURL object
         if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {
@@ -70,11 +78,11 @@ class PNSClient: NSObject {
         }
     }
     
-    class var sharedInstance: PNSClient {
+    var sharedInstance: PNSClient {
         struct Singleton {
             static let instance: PNSClient = PNSClient()
         }
         return Singleton.instance
     }
-    
+}
 }// End of class

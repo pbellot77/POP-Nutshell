@@ -29,10 +29,10 @@ class PNSViewController: UIViewController {
         let fetchRequest = NSFetchRequest(entityName: "Video")
         let videoIdSort = NSSortDescriptor(key: "videoId", ascending: false)
         let videoTitleSort = NSSortDescriptor(key: "videoTitle", ascending: false)
-        let videoThumbnailSort = NSSortDescriptor(key: "videoThumbnail", ascending: false)
+        let videoThumbnailSort = NSSortDescriptor(key: "videoThumbnailUrl", ascending: false)
         let videoDescriptionSort = NSSortDescriptor(key: "videoDescription", ascending: false)
         
-        fetchRequest.sortDescriptors = [videoIdSort, videoTitleSort, videoThumbnailSort, videoDescriptionSort, favoritedVideoSort]
+        fetchRequest.sortDescriptors = [videoIdSort, videoTitleSort, videoThumbnailSort, videoDescriptionSort]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.context, sectionNameKeyPath: "videoId", cacheName: "pnsVideos")
         
@@ -47,7 +47,7 @@ class PNSViewController: UIViewController {
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
-        cell.videoThumbnail!.image = UIImage(named: video.videoThumbnail!)
+        cell.videoThumbnail!.image = UIImage(named: video.videoThumbnailUrl!)
         cell.titleLabel!.text = video.videoTitle
     }
 }// End of Class
@@ -86,7 +86,7 @@ extension PNSViewController: UITableViewDataSource {
             let favoritedVideo = DataHelper.sharedInstance.createVideoFavorite()
             favoritedVideo.videoDescription = video.videoDescription
             favoritedVideo.videoId = video.videoId
-            favoritedVideo.videoThumbnail = video.videoThumbnail
+            favoritedVideo.videoThumbnailUrl = video.videoThumbnailUrl
             favoritedVideo.videoTitle = video.videoTitle
             
             let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
@@ -107,7 +107,7 @@ extension PNSViewController: UITableViewDataSource {
             
             let sharedVideo = DataHelper.sharedInstance.createVideoFavorite()
             sharedVideo.videoId = shareItem.videoId
-            sharedVideo.videoThumbnail = shareItem.videoThumbnail
+            sharedVideo.videoThumbnailUrl = shareItem.videoThumbnailUrl
             sharedVideo.videoTitle = shareItem.videoTitle
             
             let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)

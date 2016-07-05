@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		576067FE82498A757BC8A3BD /* Pods_POP_Nutshell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD22C9D8E38B21AAF032A3D5 /* Pods_POP_Nutshell.framework */; };
+		576067FE82498A757BC8A3BD /* Pods_POP_Nutshell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD22C9D8E38B21AAF032A3D5 /* Pods_POP_Nutshell.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		BA339EEC1CF3A05C004A0613 /* PNSTwitterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA339EEB1CF3A05C004A0613 /* PNSTwitterController.swift */; };
 		BA4C4CD01CF4A77100BC53DA /* PNSArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4C4CCF1CF4A77100BC53DA /* PNSArticleController.swift */; };
 		BA573F371CD7A70B00BEED8E /* PNSVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA573F361CD7A70B00BEED8E /* PNSVideoDetailViewController.swift */; };

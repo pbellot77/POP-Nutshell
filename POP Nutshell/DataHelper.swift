@@ -12,7 +12,6 @@ import CoreData
 
 class DataHelper: NSObject {
     var coreDataStack = CoreDataStack.sharedInstance
-    var pnsClient = PNSClient.sharedInstance
     
     let context: NSManagedObjectContext!
     
@@ -25,32 +24,12 @@ class DataHelper: NSObject {
     }
     
     private func seedVideos() {
-        var videoArray = PNSClient().videoArray
-        let video = PNSClient().getFeedVideos()
-        
-        for video in JSON["items"] as! NSArray {
-            print(video)
-            
-            let videoObj = Video()
-            videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
-            videoObj.videoTitle = video.valueForKeyPath("snippet.title") as? String
-            videoObj.videoDescription = video.valueForKeyPath("snippet.description") as? String
-            if let highUrl = video.valueForKeyPath("snippet.thumbnails.high.url") as? String {
-                videoObj.videoThumbnail = highUrl
-            }
-            
-            arrayOfVideos.append(videoObj)
-        }
-        
-        // When all the video objects have been constructed, assign the array to the VideoModel property
-        self.videoArray = arrayOfVideos
         
         do {
             try context.save()
         } catch _{
         }
     }
-
 
     //MARK: - Insert
     func insertEntityForName(entityName: String) -> AnyObject {
@@ -75,7 +54,7 @@ class DataHelper: NSObject {
     
     class var sharedInstance: DataHelper {
         struct Singleton {
-            static let instance: DataHelper = DataHelper(context: NSManagedObjectContext)
+            static let instance: DataHelper = DataHelper()
         }
         return Singleton.instance
     }
