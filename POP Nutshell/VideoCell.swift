@@ -12,13 +12,13 @@ class VideoCell: UITableViewCell {
 
     weak var titleLabel = UILabel()
     weak var descriptionLabel = UILabel()
-    weak var videoThumbnail = UIImageView()
+    weak var videoThumbnailUrl = UIImageView()
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         titleLabel!.text = nil
         descriptionLabel!.text = nil
-        videoThumbnail!.image = nil
+        videoThumbnailUrl!.image = nil
     }
 }

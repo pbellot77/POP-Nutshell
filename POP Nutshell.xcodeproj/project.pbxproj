@@ -165,9 +165,9 @@
 				BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */,
 				BA9653FC1CD157FB00ACEE28 /* PNSVideo+CoreDataProperties.swift */,
 				BAEE21361D261F6200F77589 /* PNSVideo.swift */,
-				BAFD46F41D10560A005A4A63 /* PNSConvience.swift */,
 				BAFD46F61D109E4D005A4A63 /* CoreDataStack.swift */,
 				BAEE21381D26280500F77589 /* PNSClient.swift */,
+				BAFD46F41D10560A005A4A63 /* PNSConvience.swift */,
 				BAA43D1C1D14AEF10011AD3B /* DataHelper.swift */,
 				BAA43D1E1D15EEAF0011AD3B /* Video.xcdatamodeld */,
 			);

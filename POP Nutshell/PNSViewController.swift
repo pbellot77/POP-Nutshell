@@ -47,7 +47,7 @@ class PNSViewController: UIViewController {
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
-        cell.videoThumbnail!.image = UIImage(named: video.videoThumbnailUrl!)
+        cell.videoThumbnailUrl!.image = UIImage(named: video.videoThumbnailUrl!)
         cell.titleLabel!.text = video.videoTitle
     }
 }// End of Class
