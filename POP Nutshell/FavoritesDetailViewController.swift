@@ -10,7 +10,6 @@ import UIKit
 
 class FavoritesDetailViewController: UIViewController {
     
-    
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

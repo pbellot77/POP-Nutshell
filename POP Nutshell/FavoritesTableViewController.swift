@@ -17,7 +17,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
-    private let dataHelper = DataHelper.sharedInstance
+    private let favoritesManager = FavoritesManager.sharedInstance
     var favVideos: [Video] = [Video]()
     var currentVideo: Video?
     var favData: Array<Video> = []
@@ -29,7 +29,6 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewWillAppear(animated: Bool) {
         favoritesTableView.reloadData()
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -44,9 +43,15 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         // Dispose of any resources that can be recreated.
     }
     
+    func configureCell(cell: FavoriteCell, indexPath: NSIndexPath){
+        let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
+        cell.videoThumbnailUrl!.image = UIImage(named: video.videoThumbnailUrl!)
+        cell.titleLabel!.text = video.videoTitle
+    }
+    
     //MARK: - FavoritesTableView DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataHelper.getAllFavoritedVideos().count
+        return favoritesManager.getAllFavoritedVideos().count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -55,7 +60,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
-        let favoritedVideo = dataHelper.getAllFavoritedVideos()[indexPath.row]
+        let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
         
         let videoTitle = favoritedVideo.videoTitle
         let label = cell.viewWithTag(3) as! UILabel
@@ -92,8 +97,8 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         switch editingStyle {
         case .Delete:
-            let dataHelper: DataHelper = DataHelper.sharedInstance
-            let context:NSManagedObjectContext = dataHelper.coreDataStack.context
+            let favoritesManager: FavoritesManager = FavoritesManager.sharedInstance
+            let context:NSManagedObjectContext = favoritesManager.coreDataStack.context
             context.deleteObject(favData[indexPath.row])
             favData.removeAtIndex(indexPath.row)
             do {
@@ -111,7 +116,6 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentVideo = favData[indexPath.row]
         performSegueWithIdentifier("toDetail", sender: self)
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

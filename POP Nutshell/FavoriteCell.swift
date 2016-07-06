@@ -11,12 +11,14 @@ import UIKit
 class FavoriteCell: UITableViewCell {
 
     weak var titleLabel = UILabel()
+    weak var descriptionLabel = UILabel()
     weak var videoThumbnail = UIImageView()
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         titleLabel!.text = nil
+        descriptionLabel!.text = nil
         videoThumbnail!.image = nil
     }
 }

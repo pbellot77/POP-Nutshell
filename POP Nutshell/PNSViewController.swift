@@ -81,9 +81,7 @@ extension PNSViewController: UITableViewDataSource {
             print("favorite button tapped")
             let video = self.videos[indexPath.row]
             
-            if video.isFavorite == true {
-            
-            let favoritedVideo = DataHelper.sharedInstance.createVideoFavorite()
+            let favoritedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
             favoritedVideo.videoDescription = video.videoDescription
             favoritedVideo.videoId = video.videoId
             favoritedVideo.videoThumbnailUrl = video.videoThumbnailUrl
@@ -93,6 +91,8 @@ extension PNSViewController: UITableViewDataSource {
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
             alert.addAction(okAction)
             
+            if video.isFavorite == true {
+                
             self.presentViewController(alert, animated: true, completion: nil)
         }
             self.coreDataStack.saveContext()
@@ -105,7 +105,7 @@ extension PNSViewController: UITableViewDataSource {
             
             let shareItem = self.videos[indexPath.row]
             
-            let sharedVideo = DataHelper.sharedInstance.createVideoFavorite()
+            let sharedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
             sharedVideo.videoId = shareItem.videoId
             sharedVideo.videoThumbnailUrl = shareItem.videoThumbnailUrl
             sharedVideo.videoTitle = shareItem.videoTitle
