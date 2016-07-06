@@ -168,7 +168,6 @@ extension PNSViewController: NSFetchedResultsControllerDelegate {
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-        
         let indexSet = NSIndexSet(index: sectionIndex)
         switch type {
             case .Insert:

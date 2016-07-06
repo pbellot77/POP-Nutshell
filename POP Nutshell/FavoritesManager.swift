@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-/* This is where the JSON will be handled. Formally Favorites Manager */
+/* This is where the favorites will be handled once added to favorites */
 
 class FavoritesManager: NSObject {
     var coreDataStack = CoreDataStack.sharedInstance
