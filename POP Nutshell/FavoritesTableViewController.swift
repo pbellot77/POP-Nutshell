@@ -44,8 +44,8 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func configureCell(cell: FavoriteCell, indexPath: NSIndexPath){
-        let video = FavoritesManager.objectAtIndexPath(indexPath) as! Video
-        cell.videoThumbnailUrl!.image = UIImage(named: video.videoThumbnailUrl!)
+        let video = favoritesManager.getAllFavoritedVideos()[indexPath.row]
+        cell.videoThumbnail!.image = UIImage(named: video.videoThumbnailUrl!)
         cell.titleLabel!.text = video.videoTitle
     }
     
