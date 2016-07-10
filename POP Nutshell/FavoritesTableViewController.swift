@@ -13,7 +13,7 @@ import CoreData
 
 private let cellIdentifier = "favoriteCell"
 
-class FavoritesTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FavoritesTableViewController: UIViewController {
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
@@ -48,6 +48,9 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
         cell.videoThumbnail!.image = UIImage(named: video.videoThumbnailUrl!)
         cell.titleLabel!.text = video.videoTitle
     }
+}
+
+extension FavoritesTableViewController: UITableViewDataSource {
     
     //MARK: - FavoritesTableView DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,33 +62,9 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)!
-        let favoritedVideo = favoritesManager.getAllFavoritedVideos()[indexPath.row]
+        let cell = tableView.dequeueReusableCellWithIdentifier("cellIdentifier", forIndexPath: indexPath) 
         
-        let videoTitle = favoritedVideo.videoTitle
-        let label = cell.viewWithTag(3) as! UILabel
-        label.text = videoTitle
-        
-    //TODO: Remove networking from cellForRowAtIndexPath and add it to the network client
-        // Add thumbnail
-        let thumbnailString = "https://i.ytimg.com/vi/" + favoritedVideo.videoId! + "/hqdefault.jpg"
-        if let videoThumbnailUrl = NSURL(string: thumbnailString) {
-            let request = NSURLRequest(URL: videoThumbnailUrl)
-            let session = NSURLSession.sharedSession()
-            let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-                
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    
-                    // Get a reference to the image view element of the cell
-                    let imageView = cell.viewWithTag(4) as! UIImageView
-                    
-                    // Create an image object from the data and assign it into the imageview
-                    imageView.image = UIImage(data: data!)
-                })
-            })
-            favData.append(favoritedVideo)
-            dataTask.resume()
-        }
+        configureCell(FavoriteCell(), indexPath: indexPath)
         
         return cell
     }
@@ -112,7 +91,10 @@ class FavoritesTableViewController: UIViewController, UITableViewDataSource, UIT
             return 
         }
     }
-    
+}
+
+extension FavoritesTableViewController: UITableViewDelegate {
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentVideo = favData[indexPath.row]
         performSegueWithIdentifier("toDetail", sender: self)

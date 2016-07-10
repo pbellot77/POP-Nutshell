@@ -34,6 +34,8 @@ class PNSViewController: UIViewController {
         
         fetchRequest.sortDescriptors = [videoIdSort, videoTitleSort, videoThumbnailSort, videoDescriptionSort]
         
+        coreDataStack = CoreDataStack.sharedInstance
+        
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.context, sectionNameKeyPath: "videoId", cacheName: "pnsVideos")
         
         fetchedResultsController.delegate = self

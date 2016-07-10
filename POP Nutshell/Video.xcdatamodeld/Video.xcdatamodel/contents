@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G19a" minimumToolsVersion="Xcode 7.0">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G26a" minimumToolsVersion="Xcode 7.0">
     <entity name="Video" representedClassName=".Video" syncable="YES">
         <attribute name="isFavorite" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="videoDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoThumbnail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="videoThumbnailUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoTitle" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <fetchRequest name="FetchRequest" entity="Video"/>
     <elements>
-        <element name="Video" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Video" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

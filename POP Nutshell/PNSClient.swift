@@ -38,7 +38,7 @@ class PNSClient: NSObject {
                 for video in JSON["items"] as! NSArray {
                     print(video)
                     
-                    let videoObj = self.pnsVideo
+                    let videoObj = Video()
                     videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
                     videoObj.videoTitle = video.valueForKeyPath("snippet.title") as? String
                     videoObj.videoDescription = video.valueForKeyPath("snippet.description") as? String

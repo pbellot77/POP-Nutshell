@@ -16,4 +16,5 @@ extension Video {
     @NSManaged var videoThumbnailUrl: String?
     @NSManaged var videoDescription: String?
     @NSManaged var isFavorite: Bool
+    @NSManaged var videoThumbnail: String?
 }
