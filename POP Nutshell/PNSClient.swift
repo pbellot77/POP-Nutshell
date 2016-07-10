@@ -10,9 +10,14 @@
 import UIKit
 import Alamofire
 
+protocol FetchResultsControllerDelegate {
+    func dataReady()
+}
+
 class PNSClient: NSObject {
     
-    var pnsVideo = Video()
+    var pnsVideos = [Video]()
+    var delegate: FetchResultsControllerDelegate?
     
     func getFeedVideos() {
         
@@ -35,6 +40,8 @@ class PNSClient: NSObject {
             
             if let JSON = response.result.value {
                 
+                var arrayOfPNSVideos = [Video]()
+                
                 for video in JSON["items"] as! NSArray {
                     print(video)
                     
@@ -44,7 +51,15 @@ class PNSClient: NSObject {
                     videoObj.videoDescription = video.valueForKeyPath("snippet.description") as? String
                     if let highUrl = video.valueForKeyPath("snippet.thumbnails.high.url") as? String {
                         videoObj.videoThumbnailUrl = highUrl
+                        
+                    arrayOfPNSVideos.append(videoObj)
                 }
+                
+                self.pnsVideos = arrayOfPNSVideos
+                    
+                if self.delegate != nil {
+                    self.delegate?.dataReady()
+                    }
             }
         }
     }

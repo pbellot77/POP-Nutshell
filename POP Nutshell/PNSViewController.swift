@@ -19,12 +19,16 @@ class PNSViewController: UIViewController {
     
     var videos: [Video] = [Video]()
     var selectedVideo: Video?
+    let pnsVideos:PNSClient = PNSClient()
     var coreDataStack: CoreDataStack!
     var context: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let pnsVideos = PNSClient()
+        pnsVideos.getFeedVideos()
         
         let fetchRequest = NSFetchRequest(entityName: "Video")
         let videoIdSort = NSSortDescriptor(key: "videoId", ascending: false)
@@ -45,6 +49,11 @@ class PNSViewController: UIViewController {
         } catch let error as NSError {
             print("Error: \(error.localizedDescription)")
         }
+    }
+    
+    func dataReady(){
+        videos = self.pnsVideos.pnsVideos
+        tableView.reloadData()
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
