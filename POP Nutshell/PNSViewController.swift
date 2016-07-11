@@ -19,7 +19,7 @@ class PNSViewController: UIViewController {
     
     var videos: [Video] = [Video]()
     var selectedVideo: Video?
-    let pnsVideos:PNSClient = PNSClient()
+    let pnsClient:PNSClient = PNSClient()
     var coreDataStack: CoreDataStack!
     var context: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController!
@@ -52,7 +52,7 @@ class PNSViewController: UIViewController {
     }
     
     func dataReady(){
-        videos = self.pnsVideos.pnsVideos
+        videos = self.pnsClient.pnsVideos
         tableView.reloadData()
     }
     
