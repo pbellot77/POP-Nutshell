@@ -40,7 +40,7 @@ class PNSViewController: UIViewController {
         
         coreDataStack = CoreDataStack.sharedInstance
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.context, sectionNameKeyPath: "videoId", cacheName: "pnsVideos")
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchedResultsController.delegate = self
         

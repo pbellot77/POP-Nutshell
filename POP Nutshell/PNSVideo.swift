@@ -12,5 +12,17 @@ import CoreData
 @objc (Video)
 class Video: NSManagedObject {
     
+    convenience init(videoId: String?, videoTitle: String?, videoThumbnailUrl: String?, videoDescription: String?, videoThumbnail: String?, isFavorite: Bool, context: NSManagedObjectContext) {
         
+        let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: context)
+        self.init(entity: entity!, insertIntoManagedObjectContext: context)
+        
+        self.videoId = videoId
+        self.videoTitle = videoTitle
+        self.videoThumbnailUrl = videoThumbnailUrl
+        self.videoDescription = videoDescription
+        self.videoThumbnail = videoThumbnail
+        self.isFavorite = false
+    }
+ 
 }
