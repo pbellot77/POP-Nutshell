@@ -9,6 +9,7 @@
 
 import UIKit
 import Alamofire
+import CoreData
 
 protocol FetchResultsControllerDelegate {
     func dataReady()
@@ -18,6 +19,7 @@ class PNSClient: NSObject {
     
     var pnsVideos = [Video]()
     var delegate: FetchResultsControllerDelegate?
+    let coreDataStack = CoreDataStack.sharedInstance
     
     func getFeedVideos() {
         
