@@ -19,7 +19,7 @@ class PNSClient: NSObject {
     
     var pnsVideos = [NSManagedObject]()
     var delegate: FetchResultsControllerDelegate?
-    let coreDataStack = CoreDataStack.sharedInstance
+    let coreDataStack = CoreDataStack()
     
     func getFeedVideos() {
         
@@ -42,12 +42,12 @@ class PNSClient: NSObject {
             
             if let JSON = response.result.value {
                 
-                //var arrayOfPNSVideos = [Video]()
+                var arrayOfPNSVideos = [Video]()
                 
                 for video in JSON["items"] as! NSArray {
                     print(video)
                     
-                    let managedContext = self.coreDataStack.context
+                    let managedContext = self.coreDataStack.managedObjectContext
                     let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: managedContext)!
                     let videoObj = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as? Video
                     
@@ -65,7 +65,7 @@ class PNSClient: NSObject {
                         }
                     }
                 
-                //self.pnsVideos = arrayOfPNSVideos
+                self.pnsVideos = arrayOfPNSVideos
                     
                 if self.delegate != nil {
                     self.delegate?.dataReady()

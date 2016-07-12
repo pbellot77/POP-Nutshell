@@ -6,66 +6,52 @@
 //  Copyright © 2016 Bell OS, LLC. All rights reserved.
 //
 
+import UIKit
 import CoreData
 
-class CoreDataStack {
+class CoreDataStack: NSObject {
     
-    let modelName = "POP Nutshell"
-    
-    private lazy var applicationDocumentsDirectory: NSURL = {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count - 1]
-    }()
-    
-    lazy var context: NSManagedObjectContext = {
-        var managedObjectContext = NSManagedObjectContext (concurrencyType: .MainQueueConcurrencyType)
+    var managedObjectContext: NSManagedObjectContext
+    override init() {
         
-        managedObjectContext.persistentStoreCoordinator = self.psc
-        return managedObjectContext
-    }()
-    
-    private lazy var psc: NSPersistentStoreCoordinator = {
-        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent(self.modelName)
-        var failureReason = "There was an error creating or loading the application's saved data."
-        do {
-            let options = [NSMigratePersistentStoresAutomaticallyOption : true]
-            
-            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
-        } catch {
-            var dict = [String: AnyObject]()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            
-            dict[NSUnderlyingErrorKey] = error as NSError
-            let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
-            NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
-            abort()
+        // This resource is the same name as your xcdatamodeld contained in your project.
+        guard let modelURL = NSBundle.mainBundle().URLForResource("Video", withExtension:"momd") else {
+            fatalError("Error loading model from bundle")
         }
-        return coordinator
-    }()
-    
-    private lazy var managedObjectModel: NSManagedObjectModel = {
-        let modelURL = NSBundle.mainBundle().URLForResource(self.modelName, withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
-    }()
-    
-    func saveContext() {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch let error as NSError {
-                print("Error: \(error.localizedDescription)")
-                abort()
+        
+        // The managed object model for the application. It is a fatal error for the application not to be able to find and load its model.
+        guard let mom = NSManagedObjectModel(contentsOfURL: modelURL) else {
+            fatalError("Error initializing mom from: \(modelURL)")
+        }
+        
+        let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
+        managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = psc
+       
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+                
+                let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+                let docURL = urls[urls.endIndex-1]
+                /* The directory the application uses to store the Core Data store file.
+                 This code uses a file named "DataModel.sqlite" in the application's documents directory.
+                 */
+                
+                let storeURL = docURL.URLByAppendingPathComponent("Video.sqlite")
+                do {
+                    try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+                } catch {
+                    fatalError("Error migrating store: \(error)")
             }
         }
     }
     
-    class var sharedInstance: CoreDataStack {
-        struct Static {
-            static let instance: CoreDataStack = CoreDataStack()
+    func saveContext() {
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Error: \(error.localizedDescription)")
+            }
         }
-        return Static.instance
     }
-    
 }// End of Class

@@ -21,7 +21,6 @@ class PNSViewController: UIViewController {
     var selectedVideo: Video?
     let pnsClient:PNSClient = PNSClient()
     var coreDataStack: CoreDataStack!
-    var context: NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
@@ -38,9 +37,7 @@ class PNSViewController: UIViewController {
         
         fetchRequest.sortDescriptors = [videoIdSort, videoTitleSort, videoThumbnailSort, videoDescriptionSort]
         
-        coreDataStack = CoreDataStack.sharedInstance
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchedResultsController.delegate = self
         
@@ -52,6 +49,7 @@ class PNSViewController: UIViewController {
     }
     
     func dataReady(){
+        self.pnsClient
         tableView.reloadData()
     }
     
@@ -72,7 +70,7 @@ extension PNSViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.sections!.count
+        return (fetchedResultsController.sections?.count)!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

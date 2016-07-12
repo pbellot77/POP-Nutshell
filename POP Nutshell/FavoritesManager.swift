@@ -12,21 +12,21 @@ import CoreData
 
 class FavoritesManager: NSObject {
     
-    var coreDataStack = CoreDataStack.sharedInstance
+    var coreDataStack = CoreDataStack()
     
     //MARK: - Insert
     private func insertEntityForName(entityName: String) -> AnyObject {
-        return NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: coreDataStack.context)
+        return NSEntityDescription.insertNewObjectForEntityForName(entityName, inManagedObjectContext: coreDataStack.managedObjectContext)
     }
     
     //MARK: - Delete
     func deleteFavoritedVideo(video: Video) {
-        coreDataStack.context.deleteObject(video)
+        coreDataStack.managedObjectContext.deleteObject(video)
     }
     
        //MARK: - Get video
     func getAllFavoritedVideos() -> [Video] {
-        return try! coreDataStack.context.executeFetchRequest(NSFetchRequest(entityName: "Video")) as! [Video] 
+        return try! coreDataStack.managedObjectContext.executeFetchRequest(NSFetchRequest(entityName: "Video")) as! [Video]
     }
     
     //MARK: - Create a favorite video

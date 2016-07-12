@@ -77,7 +77,7 @@ extension FavoritesTableViewController: UITableViewDataSource {
         switch editingStyle {
         case .Delete:
             let favoritesManager: FavoritesManager = FavoritesManager.sharedInstance
-            let context:NSManagedObjectContext = favoritesManager.coreDataStack.context
+            let context:NSManagedObjectContext = favoritesManager.coreDataStack.managedObjectContext
             context.deleteObject(favData[indexPath.row])
             favData.removeAtIndex(indexPath.row)
             do {
