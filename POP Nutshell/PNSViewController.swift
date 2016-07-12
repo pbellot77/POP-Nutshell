@@ -20,7 +20,7 @@ class PNSViewController: UIViewController {
     var videos: [Video] = [Video]()
     var selectedVideo: Video?
     let pnsClient:PNSClient = PNSClient()
-    var coreDataStack: CoreDataStack!
+    var coreDataStack = CoreDataStack()
     var fetchedResultsController: NSFetchedResultsController!
     
     override func viewDidLoad() {
@@ -70,7 +70,7 @@ extension PNSViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (fetchedResultsController.sections?.count)!
+        return fetchedResultsController.sections!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

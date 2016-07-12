@@ -47,9 +47,9 @@ class PNSClient: NSObject {
                 for video in JSON["items"] as! NSArray {
                     print(video)
                     
-                    let managedContext = self.coreDataStack.managedObjectContext
-                    let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: managedContext)!
-                    let videoObj = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Video
+                    //let managedContext = self.coreDataStack.managedObjectContext
+                    let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: self.coreDataStack.managedObjectContext)!
+                    let videoObj = NSManagedObject(entity: entity, insertIntoManagedObjectContext: self.coreDataStack.managedObjectContext) as! Video
                     
                     videoObj.videoId = videoObj.valueForKeyPath("snippet.resourceId.videoId") as? String
                     videoObj.videoTitle = videoObj.valueForKeyPath("snippet.title") as? String
@@ -58,7 +58,7 @@ class PNSClient: NSObject {
                         videoObj.videoThumbnailUrl = highUrl
                     
                         do {
-                            try managedContext.save()
+                            try self.coreDataStack.managedObjectContext.save()
                             self.pnsVideos.append(videoObj)
                         } catch let error as NSError {
                             print("Could not save \(error), \(error.userInfo)")
