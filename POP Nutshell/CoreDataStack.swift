@@ -2,7 +2,7 @@
 //  CoreDataStack.swift
 //  POP Nutshell
 //
-//  Created by Patrick Bellot on 6/14/16.
+//  Created by Patrick Bellot on 6/14/16, written using Apple Documentation https://developer.apple.com/library/prerelease/content/documentation/Cocoa/Conceptual/CoreData/InitializingtheCoreDataStack.html#//apple_ref/doc/uid/TP40001075-CH4-SW1.
 //  Copyright © 2016 Bell OS, LLC. All rights reserved.
 //
 
