@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-@objc (Video)
 class Video: NSManagedObject {
     
     convenience init(videoId: String?, videoTitle: String?, videoThumbnailUrl: String?, videoDescription: String?, videoThumbnail: String?, isFavorite: Bool, context: NSManagedObjectContext) {

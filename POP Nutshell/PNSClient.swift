@@ -51,10 +51,10 @@ class PNSClient: NSObject {
                     let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: self.coreDataStack.managedObjectContext)!
                     let videoObj = NSManagedObject(entity: entity, insertIntoManagedObjectContext: self.coreDataStack.managedObjectContext) as! Video
                     
-                    videoObj.videoId = videoObj.valueForKeyPath("snippet.resourceId.videoId") as? String
-                    videoObj.videoTitle = videoObj.valueForKeyPath("snippet.title") as? String
-                    videoObj.videoDescription = videoObj.valueForKeyPath("snippet.description") as? String
-                    if let highUrl = videoObj.valueForKeyPath("snippet.thumbnails.high.url") as? String {
+                    videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
+                    videoObj.videoTitle = video.valueForKeyPath("snippet.title") as? String
+                    videoObj.videoDescription = video.valueForKeyPath("snippet.description") as? String
+                    if let highUrl = video.valueForKeyPath("snippet.thumbnails.high.url") as? String {
                         videoObj.videoThumbnailUrl = highUrl
                     
                         do {
