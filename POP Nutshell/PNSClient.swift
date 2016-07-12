@@ -44,7 +44,7 @@ class PNSClient: NSObject {
                 
                 let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: self.coreDataStack.context)
                 
-                var arrayOfPNSVideos = [Video]()
+                //var arrayOfPNSVideos = [Video]()
                 
                 for video in JSON["items"] as! NSArray {
                     print(video)
@@ -63,7 +63,7 @@ class PNSClient: NSObject {
                     video.videoThumbnailUrl = videoThumbnailUrl
                 }
                 
-                self.pnsVideos = arrayOfPNSVideos
+                //self.pnsVideos = arrayOfPNSVideos
                     
                 if self.delegate != nil {
                     self.delegate?.dataReady()
