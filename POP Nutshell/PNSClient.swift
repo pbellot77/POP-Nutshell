@@ -49,17 +49,17 @@ class PNSClient: NSObject {
                     
                     let managedContext = self.coreDataStack.managedObjectContext
                     let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: managedContext)!
-                    let videoObj = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as? Video
+                    let videoObj = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as! Video
                     
-                    videoObj!.videoId = videoObj!.valueForKeyPath("snippet.resourceId.videoId") as? String
-                    videoObj!.videoTitle = videoObj!.valueForKeyPath("snippet.title") as? String
-                    videoObj!.videoDescription = videoObj!.valueForKeyPath("snippet.description") as? String
-                    if let highUrl = videoObj!.valueForKeyPath("snippet.thumbnails.high.url") as? String {
-                        videoObj!.videoThumbnailUrl = highUrl
+                    videoObj.videoId = videoObj.valueForKeyPath("snippet.resourceId.videoId") as? String
+                    videoObj.videoTitle = videoObj.valueForKeyPath("snippet.title") as? String
+                    videoObj.videoDescription = videoObj.valueForKeyPath("snippet.description") as? String
+                    if let highUrl = videoObj.valueForKeyPath("snippet.thumbnails.high.url") as? String {
+                        videoObj.videoThumbnailUrl = highUrl
                     
                         do {
                             try managedContext.save()
-                            self.pnsVideos.append(videoObj!)
+                            self.pnsVideos.append(videoObj)
                         } catch let error as NSError {
                             print("Could not save \(error), \(error.userInfo)")
                         }
