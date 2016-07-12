@@ -42,19 +42,25 @@ class PNSClient: NSObject {
             
             if let JSON = response.result.value {
                 
+                let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: self.coreDataStack.context)
+                
                 var arrayOfPNSVideos = [Video]()
                 
                 for video in JSON["items"] as! NSArray {
                     print(video)
                     
-                    let videoObj = Video()
-                    videoObj.videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
-                    videoObj.videoTitle = video.valueForKeyPath("snippet.title") as? String
-                    videoObj.videoDescription = video.valueForKeyPath("snippet.description") as? String
+                    let videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
+                    let videoTitle = video.valueForKeyPath("snippet.title") as? String
+                    let videoDescription = video.valueForKeyPath("snippet.description") as? String
                     if let highUrl = video.valueForKeyPath("snippet.thumbnails.high.url") as? String {
-                        videoObj.videoThumbnailUrl = highUrl
+                        let videoThumbnailUrl = highUrl
                         
-                    arrayOfPNSVideos.append(videoObj)
+                    let video = Video(entity: entity!, insertIntoManagedObjectContext: self.coreDataStack.context)
+                        
+                    video.videoId = videoId
+                    video.videoTitle = videoTitle
+                    video.videoDescription = videoDescription
+                    video.videoThumbnailUrl = videoThumbnailUrl
                 }
                 
                 self.pnsVideos = arrayOfPNSVideos
