@@ -52,7 +52,6 @@ class PNSViewController: UIViewController {
     }
     
     func dataReady(){
-        videos = self.pnsClient.pnsVideos
         tableView.reloadData()
     }
     

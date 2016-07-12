@@ -17,7 +17,7 @@ protocol FetchResultsControllerDelegate {
 
 class PNSClient: NSObject {
     
-    var pnsVideos = [Video]()
+    var pnsVideos = [NSManagedObject]()
     var delegate: FetchResultsControllerDelegate?
     let coreDataStack = CoreDataStack.sharedInstance
     
@@ -42,26 +42,28 @@ class PNSClient: NSObject {
             
             if let JSON = response.result.value {
                 
-                let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: self.coreDataStack.context)
-                
                 //var arrayOfPNSVideos = [Video]()
                 
                 for video in JSON["items"] as! NSArray {
                     print(video)
                     
-                    let videoId = video.valueForKeyPath("snippet.resourceId.videoId") as? String
-                    let videoTitle = video.valueForKeyPath("snippet.title") as? String
-                    let videoDescription = video.valueForKeyPath("snippet.description") as? String
-                    if let highUrl = video.valueForKeyPath("snippet.thumbnails.high.url") as? String {
-                        let videoThumbnailUrl = highUrl
-                        
-                    let video = Video(entity: entity!, insertIntoManagedObjectContext: self.coreDataStack.context)
-                        
-                    video.videoId = videoId
-                    video.videoTitle = videoTitle
-                    video.videoDescription = videoDescription
-                    video.videoThumbnailUrl = videoThumbnailUrl
-                }
+                    let managedContext = self.coreDataStack.context
+                    let entity = NSEntityDescription.entityForName("Video", inManagedObjectContext: managedContext)!
+                    let videoObj = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedContext) as? Video
+                    
+                    videoObj!.videoId = videoObj!.valueForKeyPath("snippet.resourceId.videoId") as? String
+                    videoObj!.videoTitle = videoObj!.valueForKeyPath("snippet.title") as? String
+                    videoObj!.videoDescription = videoObj!.valueForKeyPath("snippet.description") as? String
+                    if let highUrl = videoObj!.valueForKeyPath("snippet.thumbnails.high.url") as? String {
+                        videoObj!.videoThumbnailUrl = highUrl
+                    
+                        do {
+                            try managedContext.save()
+                            self.pnsVideos.append(videoObj!)
+                        } catch let error as NSError {
+                            print("Could not save \(error), \(error.userInfo)")
+                        }
+                    }
                 
                 //self.pnsVideos = arrayOfPNSVideos
                     

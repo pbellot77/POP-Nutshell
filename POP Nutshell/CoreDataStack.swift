@@ -10,7 +10,7 @@ import CoreData
 
 class CoreDataStack {
     
-    let modelName = "Video"
+    let modelName = "POP Nutshell"
     
     private lazy var applicationDocumentsDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
