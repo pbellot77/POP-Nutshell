@@ -11,12 +11,12 @@ import UIKit
 class VideoCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var videoThumbnail: UIImageView!
+    @IBOutlet weak var videoThumbnailUrl: UIImageView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         titleLabel!.text = nil
-        videoThumbnail!.image = nil
+        videoThumbnailUrl!.image = nil
     }
 }

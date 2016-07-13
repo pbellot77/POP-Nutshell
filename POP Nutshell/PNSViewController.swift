@@ -52,7 +52,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             print("Error: \(error.localizedDescription)")
         }
         
-        //dataReady()
+        dataReady()
     }
     
     func dataReady(){
@@ -62,14 +62,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
-        if (video.valueForKey("videoThumbnail") as? String) != nil {
-            cell.videoThumbnail.image = UIImage(named: video.videoThumbnail!)
-        }
-        
-        if (video.valueForKey("videoTitle") as? String) != nil {
-            cell.titleLabel.text = video.videoTitle
-        }
-        
+        cell.titleLabel!.text = video.valueForKey("videoTitle") as? String
+        cell.videoThumbnailUrl!.image = UIImage(contentsOfFile: "videoThumbnailUrl")
         cell.backgroundColor = UIColor.clearColor()
     }
 
@@ -81,12 +75,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let sections = fetchedResultsController.sections {
-            let currentSection = sections[section]
-            return currentSection.numberOfObjects
-        }
-        
-        return 0
+        let numberOfRowsInSection = fetchedResultsController.sections?[section].numberOfObjects
+        return numberOfRowsInSection!
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
