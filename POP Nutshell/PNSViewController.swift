@@ -26,6 +26,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         let pnsVideos = PNSClient()
         pnsVideos.getFeedVideos()
         
