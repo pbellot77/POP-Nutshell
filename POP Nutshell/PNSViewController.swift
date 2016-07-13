@@ -26,8 +26,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+        print(NSManagedObject)
         
         let pnsVideos = PNSClient()
         pnsVideos.getFeedVideos()
@@ -40,15 +39,20 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         fetchRequest.sortDescriptors = [videoIdSort, videoTitleSort, videoThumbnailSort, videoDescriptionSort]
         
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: coreDataStack.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        let moc = self.coreDataStack.managedObjectContext
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchedResultsController.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Error: \(error.localizedDescription)")
         }
+        
+        //dataReady()
     }
     
     func dataReady(){
@@ -58,8 +62,14 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
-        cell.videoThumbnailUrl!.image = UIImage(named: video.videoThumbnailUrl!)
-        cell.titleLabel!.text = video.videoTitle
+        if (video.valueForKey("videoThumbnail") as? String) != nil {
+            cell.videoThumbnail.image = UIImage(named: video.videoThumbnail!)
+        }
+        
+        if (video.valueForKey("videoTitle") as? String) != nil {
+            cell.titleLabel.text = video.videoTitle
+        }
+        
         cell.backgroundColor = UIColor.clearColor()
     }
 
@@ -71,7 +81,12 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fetchedResultsController.sections!.count
+        if let sections = fetchedResultsController.sections {
+            let currentSection = sections[section]
+            return currentSection.numberOfObjects
+        }
+        
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
