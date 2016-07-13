@@ -11,9 +11,9 @@ import CoreData
 
 /* PNSViewController should get the objects from core data, display the videos in the PNSVideoDetailViewController, and add favorites to the FavoritesTableViewController */
 
-private let cellIdentifier = "BasicCell"
+private let cellIdentifier = "VideoCell"
 
-class PNSViewController: UIViewController {
+class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -57,10 +57,8 @@ class PNSViewController: UIViewController {
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.videoThumbnailUrl!.image = UIImage(named: video.videoThumbnailUrl!)
         cell.titleLabel!.text = video.videoTitle
+        cell.backgroundColor = UIColor.clearColor()
     }
-}// End of Class
-
-extension PNSViewController: UITableViewDataSource {
 
     // Tableview Delegate methods
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -127,9 +125,6 @@ extension PNSViewController: UITableViewDataSource {
         
         return [favoriteButton, shareButton]
     }
-}
-
-extension PNSViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         

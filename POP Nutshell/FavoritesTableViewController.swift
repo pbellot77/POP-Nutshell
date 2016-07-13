@@ -11,7 +11,7 @@ import CoreData
 
 /* Only favorited videos should be pushed to the FavoritesTableViewController. Network requests for the thumbnail should be handled by the PNSClient.*/
 
-private let cellIdentifier = "favoriteCell"
+private let cellIdentifier = "FavoriteCell"
 
 class FavoritesTableViewController: UIViewController {
     
@@ -45,7 +45,7 @@ class FavoritesTableViewController: UIViewController {
     
     func configureCell(cell: FavoriteCell, indexPath: NSIndexPath){
         let video = favoritesManager.getAllFavoritedVideos()[indexPath.row]
-        cell.videoThumbnail!.image = UIImage(named: video.videoThumbnailUrl!)
+        cell.videoThumbnailUrl!.image = UIImage(named: video.videoThumbnailUrl!)
         cell.titleLabel!.text = video.videoTitle
     }
 }
