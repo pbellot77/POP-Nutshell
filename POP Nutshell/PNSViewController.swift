@@ -43,7 +43,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         let moc = sharedInstance.managedObjectContext
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
-        
+                
         fetchedResultsController.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -57,12 +57,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         dataReady()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        tableView.reloadData()
-    }
-    
     func dataReady(){
-        self.pnsClient
+        self.pnsClient.getFeedVideos()
         tableView.reloadData()
     }
     
@@ -76,7 +72,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             cell.videoThumbnailUrl!.image = UIImage(data: imageData)
         }
     
-        cell.textLabel?.backgroundColor = UIColor.lightGrayColor()
+        cell.textLabel?.backgroundColor = UIColor.darkGrayColor()
     }
 
     // Tableview Delegate methods
@@ -149,8 +145,12 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Take note of which video the user selected
-        selectedVideo = self.videos[indexPath.row]
-        
+        if videos.count > 0 {
+            selectedVideo = self.videos[indexPath.row]
+            tableView.reloadData()
+        } else {
+            tableView.reloadData()
+        }
         // Call the segue
         performSegueWithIdentifier("goToDetail", sender: self)
     }
