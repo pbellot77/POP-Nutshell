@@ -12,12 +12,13 @@ import CoreData
 /* Only favorited videos should be pushed to the FavoritesTableViewController. Network requests for the thumbnail should be handled by the PNSClient.*/
 
 private let cellIdentifier = "FavoriteCell"
+private let favoritesManager = FavoritesManager.sharedInstance
 
 class FavoritesTableViewController: UIViewController {
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
-    private let favoritesManager = FavoritesManager.sharedInstance
+    
     var favVideos: [Video] = [Video]()
     var currentVideo: Video?
     var favData: Array<Video> = []

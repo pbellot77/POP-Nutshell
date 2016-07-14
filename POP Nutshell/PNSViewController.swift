@@ -57,6 +57,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         dataReady()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func dataReady(){
         self.pnsClient
         tableView.reloadData()
@@ -71,9 +75,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         if let imageData = NSData(contentsOfURL: imageURL!) {
             cell.videoThumbnailUrl!.image = UIImage(data: imageData)
         }
-        
-        //cell.videoThumbnailUrl!.image = UIImage(contentsOfFile: "videoThumbnailUrl")
-        cell.backgroundColor = UIColor.clearColor()
+    
+        cell.textLabel?.backgroundColor = UIColor.lightGrayColor()
     }
 
     // Tableview Delegate methods
