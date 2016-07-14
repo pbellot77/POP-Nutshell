@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 class CoreDataStack: NSObject {
     
@@ -53,5 +54,12 @@ class CoreDataStack: NSObject {
                 print("Error: \(error.localizedDescription)")
             }
         }
+    }
+    
+    class CoreDataStack {
+        
+        static let sharedInstance = CoreDataStack()
+        
+        private init() {}
     }
 }// End of Class

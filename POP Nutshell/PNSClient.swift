@@ -42,7 +42,7 @@ class PNSClient: NSObject {
             
             if let JSON = response.result.value {
                 
-                var arrayOfPNSVideos = [Video]()
+                let arrayOfPNSVideos = [Video]()
                 
                 for video in JSON["items"] as! NSArray {
                     print(video)
@@ -74,11 +74,9 @@ class PNSClient: NSObject {
         }
     }
        
-    var sharedInstance: PNSClient {
-        struct Singleton {
-            static let instance: PNSClient = PNSClient()
+    class PNSClient {
+            static let instance = PNSClient()
+            private init() {}
         }
-        return Singleton.instance
     }
-}
 }// End of class

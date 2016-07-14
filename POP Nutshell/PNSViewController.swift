@@ -12,6 +12,8 @@ import CoreData
 /* PNSViewController should get the objects from core data, display the videos in the PNSVideoDetailViewController, and add favorites to the FavoritesTableViewController */
 
 private let cellIdentifier = "VideoCell"
+private let sharedInstance = CoreDataStack()
+private let instance = PNSClient()
 
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -19,9 +21,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     var videos: [Video] = [Video]()
     var selectedVideo: Video?
-    let pnsClient:PNSClient = PNSClient()
-    var coreDataStack = CoreDataStack()
+    let pnsClient = PNSClient()
     var fetchedResultsController: NSFetchedResultsController!
+    let coreDataStack = CoreDataStack()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         fetchRequest.sortDescriptors = [videoIdSort, videoTitleSort, videoThumbnailSort, videoDescriptionSort]
         
-        let moc = self.coreDataStack.managedObjectContext
+        let moc = sharedInstance.managedObjectContext
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
         
         fetchedResultsController.delegate = self
@@ -63,7 +65,14 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.valueForKey("videoTitle") as? String
-        cell.videoThumbnailUrl!.image = UIImage(contentsOfFile: "videoThumbnailUrl")
+        let videoId = video.valueForKey("videoId") as? String
+        
+        let imageURL = NSURL(string: "https://i.ytimg.com/vi/" + videoId! + "/hqdefault.jpg")
+        if let imageData = NSData(contentsOfURL: imageURL!) {
+            cell.videoThumbnailUrl!.image = UIImage(data: imageData)
+        }
+        
+        //cell.videoThumbnailUrl!.image = UIImage(contentsOfFile: "videoThumbnailUrl")
         cell.backgroundColor = UIColor.clearColor()
     }
 
