@@ -2,23 +2,31 @@
 //  AppDelegate.swift
 //  POP Nutshell
 //
-//  Created by Patrick Bellot on 4/27/16.
+//  Created by Patrick Bellot on 4/27/16 and collaberated with Andy Bargh - https://www.andybargh.com.
 //  Copyright © 2016 Bell OS, LLC. All rights reserved.
 //
 
 import UIKit
 import CoreData
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coreDataStack: CoreDataStack!
+    
+    var coreDataStack: CoreDataStack?
+    var apiService: YouTubeService?
+    var syncEngine: YouTubeSyncEngine?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        coreDataStack = CoreDataStack()
+        self.coreDataStack = CoreDataStack()
+        self.apiService = YouTubeService()
+        self.syncEngine = YouTubeSyncEngine(context: self.coreDataStack!.managedObjectContext, service: self.apiService!)
+        
+        self.syncEngine!.sync()
         return true
     }
 
@@ -28,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        coreDataStack.saveContext()
+        
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -40,6 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(application: UIApplication) {
-        coreDataStack.saveContext()
+        self.coreDataStack?.saveContext()
     }
 }

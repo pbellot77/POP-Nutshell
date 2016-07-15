@@ -19,7 +19,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
 
     @IBOutlet weak var tableView: UITableView!
     
-    var videos: [Video] = [Video]()
     var selectedVideo: Video?
     let pnsClient = PNSClient()
     var fetchedResultsController: NSFetchedResultsController!
@@ -101,7 +100,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
-            let video = self.videos[indexPath.row]
+            let video = fetchedResultsController.objectAtIndexPath(indexPath)
             
             let favoritedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
             favoritedVideo.videoDescription = video.videoDescription
@@ -125,7 +124,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let shareButton = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
             print("share button tapped")
             
-            let shareItem = self.videos[indexPath.row]
+            let shareItem = fetchedResultsController.objectAtIndexPath(indexPath)
             
             let sharedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
             sharedVideo.videoId = shareItem.videoId
@@ -145,12 +144,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Take note of which video the user selected
-        if videos.count > 0 {
-            selectedVideo = self.videos[indexPath.row]
-            tableView.reloadData()
-        } else {
-            tableView.reloadData()
-        }
+        let selectedVideo = fetchedResultsController.objectAtIndexPath(indexPath)
         // Call the segue
         performSegueWithIdentifier("goToDetail", sender: self)
     }
