@@ -13,14 +13,13 @@ import CoreData
 
 private let cellIdentifier = "VideoCell"
 private let sharedInstance = CoreDataStack()
-private let instance = PNSClient()
 
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var selectedVideo: Video?
-    let pnsClient = PNSClient()
+ 
     var fetchedResultsController: NSFetchedResultsController!
     let coreDataStack = CoreDataStack()
     
@@ -28,9 +27,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         super.viewDidLoad()
         
         print(NSManagedObject)
-        
-        let pnsVideos = PNSClient()
-        pnsVideos.getFeedVideos()
         
         let fetchRequest = NSFetchRequest(entityName: "Video")
         let videoIdSort = NSSortDescriptor(key: "videoId", ascending: false)
@@ -54,11 +50,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         
         dataReady()
-    }
-    
-    func dataReady(){
-        self.pnsClient.getFeedVideos()
-        tableView.reloadData()
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
@@ -100,22 +91,20 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
-            let video = fetchedResultsController.objectAtIndexPath(indexPath)
+            let video = self.fetchedResultsController.objectAtIndexPath(indexPath)
             
             let favoritedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
             favoritedVideo.videoDescription = video.videoDescription
-            favoritedVideo.videoId = video.videoId
-            favoritedVideo.videoThumbnailUrl = video.videoThumbnailUrl
+            favoritedVideo.id = video.videoId
+            favoritedVideo.thumbnail = video.videoThumbnailUrl
             favoritedVideo.videoTitle = video.videoTitle
             
             let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
             alert.addAction(okAction)
-            
-            if video.isFavorite == true {
                 
             self.presentViewController(alert, animated: true, completion: nil)
-        }
+    
             self.coreDataStack.saveContext()
             tableView.setEditing(false, animated: true)
     }
@@ -124,7 +113,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let shareButton = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
             print("share button tapped")
             
-            let shareItem = fetchedResultsController.objectAtIndexPath(indexPath)
+            let shareItem = self.fetchedResultsController.objectAtIndexPath(indexPath)
             
             let sharedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
             sharedVideo.videoId = shareItem.videoId

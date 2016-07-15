@@ -95,7 +95,7 @@ class Video: NSManagedObject {
                                       inContext: context)
             thumbnails.addObject(thumbnail)
         }
-        self.thumbnails = thumbnails
+        //self.thumbnails = thumbnails
         
         // Fetch and associate or create and associated a channel
         if let channelId = snippet["channelId"].string,
