@@ -7,7 +7,8 @@ target 'POP Nutshell' do
 
   # Pods for POP Nutshell
   
-  pod 'Alamofire', '~> 3.3'
+  pod 'Alamofire', '~> 3.4.1'
+  pod 'SwiftyJSON'
   
   target 'POP NutshellTests' do
     inherit! :search_paths
