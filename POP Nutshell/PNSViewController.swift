@@ -37,6 +37,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         frc.delegate = self
         
+        
         return frc
     }()
     
@@ -91,18 +92,15 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             print("favorite button tapped")
             let video = self.fetchedResultsController.objectAtIndexPath(indexPath)
             
-            let favoritedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
-            favoritedVideo.videoDescription = video.videoDescription
-            favoritedVideo.id = video.videoId
-            favoritedVideo.thumbnail = video.videoThumbnailUrl
-            favoritedVideo.videoTitle = video.videoTitle
+            let favoritedVideo = Video()
+                if favoritedVideo.isFavorite == true {
+                    let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
+                    let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
+                    alert.addAction(okAction)
+                    
+                    self.presentViewController(alert, animated: true, completion: nil)
+            }
             
-            let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
-            alert.addAction(okAction)
-                
-            self.presentViewController(alert, animated: true, completion: nil)
-    
             self.coreDataStack.saveContext()
             tableView.setEditing(false, animated: true)
     }

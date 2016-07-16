@@ -25,15 +25,17 @@ class Video: NSManagedObject {
      - returns: The Video object with the given id or nil otherwise.
      */
     
-    static func with(id: String, inContext context: NSManagedObjectContext) -> Video? {
+    static func with(id: String, isFavorite: NSNumber, inContext context: NSManagedObjectContext) -> Video? {
         
         let entityDescription = NSEntityDescription.entityForName(
             "Video", inManagedObjectContext: context)!
         let fetchRequest = NSFetchRequest()
         
         fetchRequest.entity = entityDescription
-        let predicate = NSPredicate(format: "id == %@", id)
-        fetchRequest.predicate = predicate
+        let iDPredicate = NSPredicate(format: "id == %@", id)
+        let favoritePredicate = NSPredicate(format: "isFavorite == %@", isFavorite)
+        let compound = NSCompoundPredicate.init(andPredicateWithSubpredicates: [iDPredicate, favoritePredicate])
+        fetchRequest.predicate = compound
         fetchRequest.fetchLimit = 1 // Limit it to a max of 1 result. (Should only ever be one)
         
         do {
@@ -92,8 +94,9 @@ class Video: NSManagedObject {
                                     height: height, rawURL: rawURL,
                                      video: self, inContext: context)
             thumbnails.addObject(thumbnail)
+             self.thumbnails = thumbnail // Throws compiler error outside of scope
         }
-        self.thumbnails = thumbnails
+       
         
         // Fetch and associate or create and associated a channel
         if let channelId = snippet["channelId"].string,
