@@ -55,9 +55,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.title
-        let videoId = video.id
+        _ = video.id
         
-        let imageURL = NSURL(string: "https://i.ytimg.com/vi/" + videoId! + "/hqdefault.jpg")
+        let imageURL = NSURL(string: (video.thumbnails?.url)!)
         if let imageData = NSData(contentsOfURL: imageURL!) {
             cell.videoThumbnailUrl!.image = UIImage(data: imageData)
         }
