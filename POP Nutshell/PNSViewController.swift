@@ -12,57 +12,55 @@ import CoreData
 /* PNSViewController should get the objects from core data, display the videos in the PNSVideoDetailViewController, and add favorites to the FavoritesTableViewController */
 
 private let cellIdentifier = "VideoCell"
-private let sharedInstance = CoreDataStack()
 
-class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedVideo: Video?
- 
-    var fetchedResultsController: NSFetchedResultsController!
-    let coreDataStack = CoreDataStack()
+    var coreDataStack: CoreDataStack!
+    var context: NSManagedObjectContext!
+    var selectedVideo: Video!
+    
+    lazy var fetchedResultsController: NSFetchedResultsController = {
+        let videoFetchRequest = NSFetchRequest(entityName: "Video")
+        let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
+        let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
+        let iDSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnail.url", ascending: false)
+        videoFetchRequest.sortDescriptors = [titleSortDescriptor, publishedSortDescriptor, iDSortDescriptor, thumbnailSortDescriptor]
+        
+        let frc = NSFetchedResultsController(
+            fetchRequest: videoFetchRequest,
+            managedObjectContext: self.context,
+            sectionNameKeyPath: "thumbnail.url",
+            cacheName: nil)
+        
+        frc.delegate = self
+        
+        return frc
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(NSManagedObject)
         
-        let fetchRequest = NSFetchRequest(entityName: "Video")
-        let videoIdSort = NSSortDescriptor(key: "videoId", ascending: false)
-        let videoTitleSort = NSSortDescriptor(key: "videoTitle", ascending: false)
-        let videoThumbnailSort = NSSortDescriptor(key: "videoThumbnailUrl", ascending: false)
-        let videoDescriptionSort = NSSortDescriptor(key: "videoDescription", ascending: false)
-        
-        fetchRequest.sortDescriptors = [videoIdSort, videoTitleSort, videoThumbnailSort, videoDescriptionSort]
-        
-        let moc = sharedInstance.managedObjectContext
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
-                
-        fetchedResultsController.delegate = self
-        tableView.delegate = self
-        tableView.dataSource = self
-        
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
             print("Error: \(error.localizedDescription)")
         }
-        
-        dataReady()
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
-        cell.titleLabel!.text = video.valueForKey("videoTitle") as? String
-        let videoId = video.valueForKey("videoId") as? String
+        cell.titleLabel!.text = video.title
+        let videoId = video.id
         
         let imageURL = NSURL(string: "https://i.ytimg.com/vi/" + videoId! + "/hqdefault.jpg")
         if let imageData = NSData(contentsOfURL: imageURL!) {
             cell.videoThumbnailUrl!.image = UIImage(data: imageData)
         }
-    
-        cell.textLabel?.backgroundColor = UIColor.darkGrayColor()
     }
 
     // Tableview Delegate methods
@@ -133,7 +131,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Take note of which video the user selected
-        let selectedVideo = fetchedResultsController.objectAtIndexPath(indexPath)
+        selectedVideo = fetchedResultsController.objectAtIndexPath(indexPath) as? Video
         // Call the segue
         performSegueWithIdentifier("goToDetail", sender: self)
     }
@@ -146,9 +144,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         // Set the selected video property of the destination view controller
         detailViewController.selectedVideo = self.selectedVideo
     }
-}
-
-extension PNSViewController: NSFetchedResultsControllerDelegate {
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         tableView.beginUpdates()

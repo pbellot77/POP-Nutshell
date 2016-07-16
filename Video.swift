@@ -46,7 +46,6 @@ class Video: NSManagedObject {
         }
     }
     
-    
     /**
      A convenience initiailser that allows a Video object to be created from
      a JSON blob retrieved via the YouTubeService.
@@ -90,12 +89,11 @@ class Video: NSManagedObject {
             let rawURL = data["url"].string
             
             let thumbnail = Thumbnail(size: size, width: width,
-                                      height: height, rawURL: rawURL,
-                                      video: self,
-                                      inContext: context)
+                                    height: height, rawURL: rawURL,
+                                     video: self, inContext: context)
             thumbnails.addObject(thumbnail)
         }
-        //self.thumbnails = thumbnails
+        self.thumbnails = thumbnails
         
         // Fetch and associate or create and associated a channel
         if let channelId = snippet["channelId"].string,
@@ -106,5 +104,4 @@ class Video: NSManagedObject {
             self.channel = channel
         }
     }
-
 }

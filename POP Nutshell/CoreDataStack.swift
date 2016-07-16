@@ -86,7 +86,7 @@ class CoreDataStack: NSObject {
         // aren't currently faulted in. To force it to notify interested clients
         // that such objects have been refreshed (i.e NSFetchResultsController)
         // we need to force them to be faulted in ahead of the merge.
-        // see: https://mikeabdullah.net/merging-saved-changes-betwe.html
+        // see: http://www.mikeabdullah.net/merging-saved-changes-betwe.html
         
         print("Merging NSManagedObjectContext changes")
         
