@@ -15,11 +15,12 @@ private let cellIdentifier = "VideoCell"
 
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
+    let coreDataStack = CoreDataStack()
+    let context = NSManagedObjectContext()
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var coreDataStack: CoreDataStack!
-    var context: NSManagedObjectContext!
-    var selectedVideo: Video!
+    var selectedVideo: Video
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
@@ -128,7 +129,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Take note of which video the user selected
-        selectedVideo = fetchedResultsController.objectAtIndexPath(indexPath) as? Video
+        selectedVideo = (fetchedResultsController.objectAtIndexPath(indexPath) as? Video)!
         // Call the segue
         performSegueWithIdentifier("goToDetail", sender: self)
     }

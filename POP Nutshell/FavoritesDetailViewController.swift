@@ -30,12 +30,12 @@ class FavoritesDetailViewController: UIViewController {
        
         if let favVid = currentVideo {
         
-        titleLabel.text = favVid.videoTitle
+        titleLabel.text = favVid.title
         descriptionLabel.text = favVid.videoDescription
         
         let width = self.view.frame.size.width
         let height = width/320 * 180
-        let videoId: String = favVid.videoId!
+        let videoId: String = favVid.id!
         
         // Adjust the height of the webView constraint
         self.webViewHeightConstraint.constant = height

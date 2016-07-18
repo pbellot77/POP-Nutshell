@@ -14,7 +14,7 @@ import CoreData
 private let cellIdentifier = "FavoriteCell"
 private let favoritesManager = FavoritesManager.sharedInstance
 
-class FavoritesTableViewController: UIViewController {
+class FavoritesTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
@@ -45,12 +45,13 @@ class FavoritesTableViewController: UIViewController {
     
     func configureCell(cell: FavoriteCell, indexPath: NSIndexPath){
         let video = favoritesManager.getAllFavoritedVideos()[indexPath.row]
-        cell.videoThumbnailUrl!.image = UIImage(named: video.videoThumbnailUrl!)
-        cell.titleLabel!.text = video.videoTitle
+        cell.titleLabel!.text = video.title
+        
+        let imageURL = NSURL(string: (video.thumbnails?.url)!)
+        if let imageData = NSData(contentsOfURL: imageURL!) {
+            cell.videoThumbnailUrl!.image = UIImage(data: imageData)
     }
 }
-
-extension FavoritesTableViewController: UITableViewDataSource {
     
     //MARK: - FavoritesTableView DataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -91,9 +92,6 @@ extension FavoritesTableViewController: UITableViewDataSource {
             return 
         }
     }
-}
-
-extension FavoritesTableViewController: UITableViewDelegate {
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         currentVideo = favData[indexPath.row]
