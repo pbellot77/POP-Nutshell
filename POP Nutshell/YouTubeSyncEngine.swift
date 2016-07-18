@@ -10,7 +10,6 @@
 import CoreData
 import Foundation
 import SwiftyJSON
-import Alamofire
 
 class YouTubeSyncEngine {
     
@@ -40,7 +39,7 @@ class YouTubeSyncEngine {
     func processData(result: Result<JSON>) {
         
         // Ensure that the data was retrieved successfully.
-        guard case let .Success(jsonData) = result else {
+        guard case let .success(jsonData) = result else {
             // If it wasn't, there won't be anything to process.  We've already
             // printed the error in the Service code.
             return
