@@ -39,7 +39,7 @@ class YouTubeSyncEngine {
     func processData(result: Result<JSON>) {
         
         // Ensure that the data was retrieved successfully.
-        guard case let .success(jsonData) = result else {
+        guard case let .Success(jsonData) = result else {
             // If it wasn't, there won't be anything to process.  We've already
             // printed the error in the Service code.
             return
@@ -73,7 +73,7 @@ class YouTubeSyncEngine {
                 }
                 
                 // Retrieve the existing video or create a new one.
-                let video = Video.with(id, inContext: privateContext) ??
+                let video = Video.with(id, isFavorite: false, isShared: false, inContext: privateContext) ??
                     Video(data: item, context: privateContext)
                 
                 print("Video: \(video)")

@@ -18,7 +18,6 @@ class FavoritesTableViewController: UIViewController {
     
     @IBOutlet weak var favoritesTableView: UITableView!
     
-    
     var favVideos: [Video] = [Video]()
     var currentVideo: Video?
     var favData: Array<Video> = []

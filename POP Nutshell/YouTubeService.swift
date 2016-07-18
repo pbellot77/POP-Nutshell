@@ -11,8 +11,8 @@ import Alamofire
 import SwiftyJSON
 
 public enum Result<T> {
-    case sucess(T)
-    case failure(ErrorType)
+    case Success(T)
+    case Failure(ErrorType)
 }
 
 struct Constants {
@@ -47,7 +47,7 @@ class YouTubeService {
                 
                 guard response.result.isSuccess else {
                     print("Error while fetching YouTube videos: \(response.result.error)")
-                    completion(Result<JSON>.failure(response.result.error!))
+                    completion(Result<JSON>.Failure(response.result.error!))
                     return
                 }
                 
@@ -56,7 +56,7 @@ class YouTubeService {
                     return
                 }
                 
-                completion(Result<JSON>.sucess(JSON(value)))
+                completion(Result<JSON>.Success(JSON(value)))
         }
     }
 }
