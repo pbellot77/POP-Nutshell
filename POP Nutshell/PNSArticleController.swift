@@ -16,7 +16,7 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let url = PNSClient.Constants.POPNutshellURL
+        let url = "http://www.popnutshell.com/articles.html"
         let requestUrl = NSURL(string: url)
         let request = NSURLRequest(URL: requestUrl!)
         articleView.loadRequest(request)

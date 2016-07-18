@@ -20,7 +20,6 @@ struct Constants {
     static let APIKey = "AIzaSyD4vD0hzDQb_6YZ5e8c74RqxT7-Mc0Vb2o"
     static let UploadsPlaylistId = "UUFVIFIL74C2zW-9tABzKCAg"
     static let YouTubeURL = "https://www.googleapis.com/youtube/v3/playlistItems"
-    static let POPNutshellURL = "http://www.popnutshell.com/articles.html"
 }
     
 struct Parameters {
@@ -57,7 +56,7 @@ class YouTubeService {
                     return
                 }
                 
-                completion(Result<JSON>.success(JSON(value)))
+                completion(Result<JSON>.sucess(JSON(value)))
         }
     }
 }

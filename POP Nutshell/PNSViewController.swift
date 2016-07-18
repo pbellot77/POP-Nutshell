@@ -90,7 +90,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
-            let video = self.fetchedResultsController.objectAtIndexPath(indexPath)
+            
+            _ = self.fetchedResultsController.objectAtIndexPath(indexPath)
             
             let favoritedVideo = Video()
                 if favoritedVideo.isFavorite == true {
@@ -109,15 +110,13 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let shareButton = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
             print("share button tapped")
             
-            let shareItem = self.fetchedResultsController.objectAtIndexPath(indexPath)
+            _ = self.fetchedResultsController.objectAtIndexPath(indexPath)
             
-            let sharedVideo = FavoritesManager.sharedInstance.createVideoFavorite()
-            sharedVideo.videoId = shareItem.videoId
-            sharedVideo.videoThumbnailUrl = shareItem.videoThumbnailUrl
-            sharedVideo.videoTitle = shareItem.videoTitle
-            
-            let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)
-            self.presentViewController(activityViewController, animated: true, completion: nil)
+            let sharedVideo = Video()
+                if sharedVideo == true {
+                    let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)
+                    self.presentViewController(activityViewController, animated: true, completion: nil)
+            }
             
             tableView.setEditing(false, animated: true)
         }

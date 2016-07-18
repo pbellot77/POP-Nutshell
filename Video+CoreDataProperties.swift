@@ -18,6 +18,7 @@ extension Video {
     @NSManaged var title: String?
     @NSManaged var publishedAt: NSDate?
     @NSManaged var isFavorite: NSNumber?
+    @NSManaged var isShared: NSNumber?
     @NSManaged var id: String?
     @NSManaged var channel: Channel?
     @NSManaged var thumbnails: Thumbnail?
