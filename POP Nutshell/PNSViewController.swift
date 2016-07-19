@@ -15,37 +15,39 @@ private let cellIdentifier = "VideoCell"
 
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
-    let coreDataStack = CoreDataStack()
-    let context = NSManagedObjectContext()
-    
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedVideo: Video
+    var coreDataStack: CoreDataStack!
+    var context: NSManagedObjectContext!
+    var selectedVideo: Video!
+    var fetchedResultsController: NSFetchedResultsController!
     
-    lazy var fetchedResultsController: NSFetchedResultsController = {
-        let videoFetchRequest = NSFetchRequest(entityName: "Video")
-        let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
-        let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
-        let iDSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
-        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnail.url", ascending: false)
-        videoFetchRequest.sortDescriptors = [titleSortDescriptor, publishedSortDescriptor, iDSortDescriptor, thumbnailSortDescriptor]
-        
-        let frc = NSFetchedResultsController(
-            fetchRequest: videoFetchRequest,
-            managedObjectContext: self.context,
-            sectionNameKeyPath: "thumbnail.url",
-            cacheName: nil)
-        
-        frc.delegate = self
-        
-        
-        return frc
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(NSManagedObject)
+        
+        let fetchedResultsController: NSFetchedResultsController = {
+            let videoFetchRequest = NSFetchRequest(entityName: "Video")
+            let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
+            let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
+            let iDSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+            let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnail.url", ascending: false)
+            videoFetchRequest.sortDescriptors = [titleSortDescriptor, publishedSortDescriptor, iDSortDescriptor, thumbnailSortDescriptor]
+            
+            let frc = NSFetchedResultsController(
+                fetchRequest: videoFetchRequest,
+                managedObjectContext: self.context,
+                sectionNameKeyPath: "thumbnail.url",
+                cacheName: nil)
+            
+            frc.delegate = self
+            
+            
+            return frc
+        }()
+        
         
         do {
             try fetchedResultsController.performFetch()
@@ -129,7 +131,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Take note of which video the user selected
-        selectedVideo = (fetchedResultsController.objectAtIndexPath(indexPath) as? Video)!
+        selectedVideo = fetchedResultsController.objectAtIndexPath(indexPath) as? Video
         // Call the segue
         performSegueWithIdentifier("goToDetail", sender: self)
     }

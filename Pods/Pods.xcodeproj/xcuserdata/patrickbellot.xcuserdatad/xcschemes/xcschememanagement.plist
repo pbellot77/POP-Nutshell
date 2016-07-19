@@ -11,6 +11,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>MaterialKit.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
 		<key>Pods-POP Nutshell.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -45,6 +50,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>12CAF1FE9AAEA478B611250434CC68CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>73850773DC05DB0F801C716B2A9E95F5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
 		<dict>
 			<key>primary</key>
@@ -56,6 +71,11 @@
 			<true/>
 		</dict>
 		<key>BB0454F1C31ABA3D6631C4D14992A220</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D58E169CA71F52CA8394961698943401</key>
 		<dict>
 			<key>primary</key>
 			<true/>
