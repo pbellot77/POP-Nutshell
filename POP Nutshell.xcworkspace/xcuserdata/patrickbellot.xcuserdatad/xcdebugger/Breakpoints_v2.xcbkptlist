@@ -4,17 +4,27 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            scope = "0"
+            stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "POP Nutshell/YouTubeService.swift"
-            timestampString = "490655293.29983"
+            timestampString = "490725898.871889"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "fetchData(completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "POP Nutshell/YouTubeService.swift"
-            timestampString = "490656091.891871"
+            timestampString = "490725900.863204"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "fetchData(completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -41,14 +51,172 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "POP Nutshell/YouTubeSyncEngine.swift"
-            timestampString = "490655335.769573"
+            filePath = "POP Nutshell/YouTubeService.swift"
+            timestampString = "490725904.631882"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "fetchData(completionHandler:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "POP_Nutshell.YouTubeService.fetchData (completionHandler : (POP_Nutshell.Result&lt;SwiftyJSON.JSON&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "POP Nutshell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patrickbellot/Desktop/iOS%20Projects/POP%20Nutshell/POP%20Nutshell/YouTubeService.swift"
+                  timestampString = "490725972.326469"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "905">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "POP_Nutshell.YouTubeService.(fetchData (completionHandler : (POP_Nutshell.Result&lt;SwiftyJSON.JSON&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "POP Nutshell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patrickbellot/Desktop/iOS%20Projects/POP%20Nutshell/POP%20Nutshell/YouTubeService.swift"
+                  timestampString = "490725972.32675"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "151">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "POP Nutshell/CoreDataStack.swift"
+            timestampString = "490725961.737362"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
             endingLineNumber = "17"
-            landmarkName = "YouTubeSyncEngine"
+            landmarkName = "CoreDataStack"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "POP_Nutshell.CoreDataStack.modelName.getter : Swift.String"
+                  moduleName = "POP Nutshell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patrickbellot/Desktop/iOS%20Projects/POP%20Nutshell/POP%20Nutshell/CoreDataStack.swift"
+                  timestampString = "490725972.328305"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "41">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "POP_Nutshell.CoreDataStack.init () -&gt; POP_Nutshell.CoreDataStack"
+                  moduleName = "POP Nutshell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patrickbellot/Desktop/iOS%20Projects/POP%20Nutshell/POP%20Nutshell/CoreDataStack.swift"
+                  timestampString = "490725972.32844"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "34">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "POP Nutshell/CoreDataStack.swift"
+            timestampString = "490725965.911489"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "managedObjectModel"
+            landmarkType = "19">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "POP_Nutshell.CoreDataStack.init () -&gt; POP_Nutshell.CoreDataStack"
+                  moduleName = "POP Nutshell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patrickbellot/Desktop/iOS%20Projects/POP%20Nutshell/POP%20Nutshell/CoreDataStack.swift"
+                  timestampString = "490725972.329856"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "POP_Nutshell.CoreDataStack.(managedObjectModel in _E7909AAA0379CC60B029707EC4383AC5).getter : __ObjC.NSManagedObjectModel"
+                  moduleName = "POP Nutshell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patrickbellot/Desktop/iOS%20Projects/POP%20Nutshell/POP%20Nutshell/CoreDataStack.swift"
+                  timestampString = "490725972.329991"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "208">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "POP_Nutshell.CoreDataStack.(managedObjectModel in _E7909AAA0379CC60B029707EC4383AC5).setter : __ObjC.NSManagedObjectModel"
+                  moduleName = "POP Nutshell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patrickbellot/Desktop/iOS%20Projects/POP%20Nutshell/POP%20Nutshell/CoreDataStack.swift"
+                  timestampString = "490725972.330103"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "28"
+                  endingLineNumber = "28"
+                  offsetFromSymbolStart = "54">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "POP_Nutshell.CoreDataStack.((managedObjectModel in _E7909AAA0379CC60B029707EC4383AC5).getter : __ObjC.NSManagedObjectModel).(closure #1)"
+                  moduleName = "POP Nutshell"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/patrickbellot/Desktop/iOS%20Projects/POP%20Nutshell/POP%20Nutshell/CoreDataStack.swift"
+                  timestampString = "490725972.330214"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "15">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

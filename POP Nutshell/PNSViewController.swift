@@ -9,18 +9,18 @@
 import UIKit
 import CoreData
 
-/* PNSViewController should get the objects from core data, display the videos in the PNSVideoDetailViewController, and add favorites to the FavoritesTableViewController */
-
 private let cellIdentifier = "VideoCell"
 
-class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
+class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
     var coreDataStack: CoreDataStack!
-    var context: NSManagedObjectContext!
+    var fetchRequest: NSFetchRequest!
     var selectedVideo: Video!
-    var fetchedResultsController: NSFetchedResultsController!
+//    var fetchedResultsController: NSFetchedResultsController!
+    var asyncFetchRequest: NSAsynchronousFetchRequest!
+    var videos: [Video]! = []
     
     
     override func viewDidLoad() {
@@ -28,38 +28,43 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         print(NSManagedObject)
         
-        let fetchedResultsController: NSFetchedResultsController = {
-            let videoFetchRequest = NSFetchRequest(entityName: "Video")
-            let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
-            let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
-            let iDSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
-            let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnail.url", ascending: false)
-            videoFetchRequest.sortDescriptors = [titleSortDescriptor,
-                                                 publishedSortDescriptor,
-                                                 iDSortDescriptor,
-                                                 thumbnailSortDescriptor]
-            
-            let frc = NSFetchedResultsController(
-                fetchRequest: videoFetchRequest,
-                managedObjectContext: self.context,
-                sectionNameKeyPath: "thumbnail.url",
-                cacheName: nil)
-            
-            frc.delegate = self
-            
-            return frc
-        }()
+//        let fetchedResultsController: NSFetchedResultsController = {
+//            let videoFetchRequest = NSFetchRequest(entityName: "Video")
+//            let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
+//            let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
+//            let iDSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+//            let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnail.url", ascending: false)
+//            videoFetchRequest.sortDescriptors = [titleSortDescriptor,
+//                                                 publishedSortDescriptor,
+//                                                 iDSortDescriptor,
+//                                                 thumbnailSortDescriptor]
+//            
+//            let frc = NSFetchedResultsController(
+//                fetchRequest: videoFetchRequest,
+//                managedObjectContext: self.context,
+//                sectionNameKeyPath: "thumbnail.url",
+//                cacheName: nil)
+//            
+//            frc.delegate = self
+//            
+//            return frc
+//        }()
         
-        
+        fetchRequest = NSFetchRequest(entityName: "Video")
+        asyncFetchRequest = NSAsynchronousFetchRequest(fetchRequest: fetchRequest) {
+            [unowned self] (result: NSAsynchronousFetchResult!) -> Void in
+                self.videos = result.finalResult as! [Video]
+                self.tableView.reloadData()
+        }
         do {
-            try fetchedResultsController.performFetch()
+            try coreDataStack.managedObjectContext.executeRequest(asyncFetchRequest)
         } catch let error as NSError {
-            print("Error: \(error.localizedDescription)")
+            print("Could not fetch \(error), \(error.userInfo)")
         }
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
-        let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
+        let video = videos[indexPath.row]
         cell.titleLabel!.text = video.title
         _ = video.id
         
@@ -77,8 +82,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numberOfRowsInSection = fetchedResultsController.sections?[section].numberOfObjects
-        return numberOfRowsInSection!
+//        let numberOfRowsInSection = fetchedResultsController.sections?[section].numberOfObjects
+//        return numberOfRowsInSection!
+        return videos.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -95,8 +101,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
         let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
             print("favorite button tapped")
-            
-            _ = self.fetchedResultsController.objectAtIndexPath(indexPath)
             
             let favoritedVideo = Video()
                 if favoritedVideo.isFavorite == true {
@@ -115,10 +119,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let shareButton = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
             print("share button tapped")
             
-            _ = self.fetchedResultsController.objectAtIndexPath(indexPath)
-            
             let sharedVideo = Video()
-                if sharedVideo == true {
+                if sharedVideo.isShared == true {
                     let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)
                     self.presentViewController(activityViewController, animated: true, completion: nil)
             }
@@ -133,7 +135,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         // Take note of which video the user selected
-        selectedVideo = fetchedResultsController.objectAtIndexPath(indexPath) as? Video
+        selectedVideo = videos[indexPath.row]
         // Call the segue
         performSegueWithIdentifier("goToDetail", sender: self)
     }
