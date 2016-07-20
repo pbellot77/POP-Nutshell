@@ -25,7 +25,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
         let iDSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
-        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnail.url", ascending: false)
+        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnails", ascending: false)
         videoFetchRequest.sortDescriptors = [titleSortDescriptor,
                                              publishedSortDescriptor,
                                              iDSortDescriptor,
@@ -34,7 +34,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let frc = NSFetchedResultsController(
             fetchRequest: videoFetchRequest,
             managedObjectContext: self.context,
-            sectionNameKeyPath: "thumbnail.url",
+            sectionNameKeyPath: nil,
             cacheName: nil)
             
             frc.delegate = self
