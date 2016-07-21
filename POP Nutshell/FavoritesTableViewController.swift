@@ -49,7 +49,7 @@ class FavoritesTableViewController: UIViewController, UITableViewDelegate, UITab
         
         let imageURL = NSURL(string: (video.thumbnails?.url)!)
         if let imageData = NSData(contentsOfURL: imageURL!) {
-            cell.videoThumbnailUrl!.image = UIImage(data: imageData)
+            cell.favoritesThumbnail!.image = UIImage(data: imageData)
     }
 }
     

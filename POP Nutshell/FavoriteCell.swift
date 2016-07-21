@@ -11,12 +11,12 @@ import UIKit
 class FavoriteCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var videoThumbnailUrl: UIImageView!
+    @IBOutlet weak var favoritesThumbnail: UIImageView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         titleLabel!.text = nil
-        videoThumbnailUrl!.image = nil
+        favoritesThumbnail!.image = nil
     }
 }

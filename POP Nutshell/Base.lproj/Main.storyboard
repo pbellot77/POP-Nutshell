@@ -52,11 +52,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="thumbnailUrl" destination="fSi-kh-leU" id="Mi3-72-NfS"/>
                                             <outlet property="titleLabel" destination="Jy7-sS-IFA" id="Phj-2R-sAF"/>
-                                            <outlet property="videoThumbnailUrl" destination="fSi-kh-leU" id="LNV-im-0dh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="OBv-C0-Uhq"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -414,7 +417,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavoriteCell" id="Cue-aL-jiq" customClass="FavoriteCell" customModule="POP_Nutshell" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavoriteCell" id="Cue-aL-jiq" customClass="FavoriteCell" customModule="POP_Nutshell">
                                         <rect key="frame" x="0.0" y="92" width="600" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cue-aL-jiq" id="qbp-ns-7Mm">
@@ -445,8 +448,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="favoritesThumbnail" destination="MPQ-8w-Z1O" id="WJO-lO-igp"/>
                                             <outlet property="titleLabel" destination="Y2a-Hs-LSK" id="6CQ-FV-fx3"/>
-                                            <outlet property="videoThumbnail" destination="MPQ-8w-Z1O" id="If8-G5-IB7"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
