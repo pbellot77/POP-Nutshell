@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "container:"
-      name = "ManagedObjects">
-      <FileRef
-         location = "group:Channel+CoreDataProperties.swift">
-      </FileRef>
-      <FileRef
-         location = "group:Channel.swift">
-      </FileRef>
-      <FileRef
-         location = "group:Thumbnail+CoreDataProperties.swift">
-      </FileRef>
-      <FileRef
-         location = "group:Thumbnail.swift">
-      </FileRef>
-      <FileRef
-         location = "group:Video+CoreDataProperties.swift">
-      </FileRef>
-      <FileRef
-         location = "group:Video.swift">
-      </FileRef>
-   </Group>
    <FileRef
       location = "group:POP Nutshell.xcodeproj">
    </FileRef>

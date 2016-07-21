@@ -75,8 +75,9 @@ class CoreDataStack: NSObject {
     }
     
     override init() {
+        super.init()
         NSNotificationCenter.defaultCenter().addObserver(
-            CoreDataStack.self, selector: #selector(mergeChanges(from:)),
+            self, selector: #selector(mergeChanges(from:)),
                                     name: NSManagedObjectContextObjectsDidChangeNotification,
                                   object: nil)
     }
