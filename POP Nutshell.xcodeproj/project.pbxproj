@@ -683,6 +683,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "POP Nutshell/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.patrickBellot.POP-Nutshell";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -702,6 +703,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
 				);
 				INFOPLIST_FILE = "POP Nutshell/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.patrickBellot.POP-Nutshell";
 				PRODUCT_NAME = "$(TARGET_NAME)";
