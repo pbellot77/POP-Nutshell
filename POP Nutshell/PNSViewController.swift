@@ -96,13 +96,13 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             print("favorite button tapped")
             
             let favoritedVideo = Video()
-                if favoritedVideo.isFavorite == true {
-                    let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
-                    let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
-                    alert.addAction(okAction)
+            favoritedVideo.isFavorite = true
+            
+            let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
+            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
+            alert.addAction(okAction)
                     
-                    self.presentViewController(alert, animated: true, completion: nil)
-            }
+            self.presentViewController(alert, animated: true, completion: nil)
             
             self.coreDataStack.saveContext()
             tableView.setEditing(false, animated: true)
@@ -113,10 +113,11 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             print("share button tapped")
             
             let sharedVideo = Video()
-                if sharedVideo.isShared == true {
-                    let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)
-                    self.presentViewController(activityViewController, animated: true, completion: nil)
-            }
+            sharedVideo.isShared = true
+            
+            let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)
+            self.presentViewController(activityViewController, animated: true, completion: nil)
+            
             
             tableView.setEditing(false, animated: true)
         }
