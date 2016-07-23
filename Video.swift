@@ -79,13 +79,13 @@ class Video: NSManagedObject {
         }
         
         // Create associated thumbnails
-        let jsonThumbnails = snippet["thumbnails"]
+        let jsonThumbnails = snippet["thumbnails.high"]
         let thumbnails = NSMutableSet()
         for thumbnail in jsonThumbnails {
             
             let (size, data) = thumbnail
-            let width = data["width"].count
-            let height = data["height"].count
+            let width = data["unsigned integer.width"].count
+            let height = data["unsigned interger.height"].count
             let rawURL = data["url"].string
             
             let thumbnail = Thumbnail(size: size, width: width,

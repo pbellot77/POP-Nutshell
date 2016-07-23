@@ -52,7 +52,7 @@ class Thumbnail: NSManagedObject {
      - returns: A Thumbnail object.
      */
     
-    convenience init(size: String, width: Int?, height: Int?, rawURL: String?, video: Video,
+    convenience init(size: String?, width: Int?, height: Int?, rawURL: String?, video: Video,
                      inContext context: NSManagedObjectContext) {
         
         let entityDescription = NSEntityDescription.entityForName(
@@ -71,5 +71,4 @@ class Thumbnail: NSManagedObject {
                 "\\", withString: "")
         }
     }
-
 }
