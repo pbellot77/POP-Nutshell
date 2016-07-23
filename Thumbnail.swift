@@ -15,6 +15,13 @@ class Thumbnail: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
     
+struct Resolution {
+    
+    static let Res = "high"
+    static let ResWidth = 480
+    static let ResHeight = 360
+    
+    }
     /**
      Convenience initialiser that allows a Thumbnail to be created from a given
      set of parameters.  For further details see:

@@ -12,7 +12,7 @@ class VideoCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImage: UIImageView!
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         

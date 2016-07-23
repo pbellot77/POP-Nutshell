@@ -26,7 +26,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
         let idSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
         let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
-        videoFetchRequest.sortDescriptors = [publishedSortDescriptor, idSortDescriptor, titleSortDescriptor]
+        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnails.url", ascending: false)
+        videoFetchRequest.sortDescriptors = [publishedSortDescriptor, idSortDescriptor, titleSortDescriptor, thumbnailSortDescriptor]
             
         let frc = NSFetchedResultsController(
             fetchRequest: videoFetchRequest,
@@ -60,8 +61,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.title
         
-        let url = NSURL(string: (video.thumbnails?.url)!)
-        if let imageData = NSData(contentsOfURL: url!) {
+        let url = NSURL(fileURLWithPath: (video.thumbnails?.url)!)
+        if let imageData = NSData(contentsOfURL: url) {
             cell.imageView!.image = UIImage(data: imageData)
         }
     }
