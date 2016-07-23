@@ -19,17 +19,16 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var fetchRequest: NSFetchRequest!
     var context: NSManagedObjectContext!
     var selectedVideo: Video!
+    var thumbnail: Thumbnail!
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
         let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
         let iDSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
-        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnails", ascending: false)
         videoFetchRequest.sortDescriptors = [titleSortDescriptor,
                                              publishedSortDescriptor,
-                                             iDSortDescriptor,
-                                             thumbnailSortDescriptor]
+                                             iDSortDescriptor]
             
         let frc = NSFetchedResultsController(
             fetchRequest: videoFetchRequest,
@@ -63,7 +62,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         let url = NSURL(string: (video.thumbnails?.url)!)
         if let imageData = NSData(contentsOfURL: url!) {
-            cell.thumbnailUrl.image = UIImage(data: imageData)
+            cell.imageView!.image = UIImage(data: imageData)
         }
     }
 
