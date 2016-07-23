@@ -61,8 +61,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.title
         
-        let imageURL = NSURL(string: (video.thumbnails?.url)!)
-        if let imageData = NSData(contentsOfURL: imageURL!) {
+        let url = NSURL(string: (video.thumbnails?.url)!)
+        if let imageData = NSData(contentsOfURL: url!) {
             cell.thumbnailUrl.image = UIImage(data: imageData)
         }
     }
@@ -92,22 +92,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-        let favoriteButton = UITableViewRowAction(style: .Normal, title: "Add to Favorites") { action, index in
-            print("favorite button tapped")
-            
-            let favoritedVideo = Video()
-            favoritedVideo.isFavorite = true
-            
-            let alert = UIAlertController(title: "Saved", message: "Video added to Favorites", preferredStyle: UIAlertControllerStyle.Alert)
-            let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in })
-            alert.addAction(okAction)
-                    
-            self.presentViewController(alert, animated: true, completion: nil)
-            
-            self.coreDataStack.saveContext()
-            tableView.setEditing(false, animated: true)
-    }
-        favoriteButton.backgroundColor = UIColor.blueColor()
         
         let shareButton = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
             print("share button tapped")
@@ -123,7 +107,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         shareButton.backgroundColor = UIColor.lightGrayColor()
         
-        return [favoriteButton, shareButton]
+        return [shareButton]
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
