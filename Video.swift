@@ -94,7 +94,7 @@ class Video: NSManagedObject {
                                     height: height, rawURL: rawURL,
                                      video: self, inContext: context)
             thumbnails.addObject(thumbnail)
-             self.thumbnails = thumbnail // Throws compiler error outside of scope
+            self.thumbnails = thumbnail // Throws compiler error outside of scope
         }
        
         

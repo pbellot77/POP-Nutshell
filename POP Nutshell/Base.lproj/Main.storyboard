@@ -62,7 +62,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="thumbnailUrl" destination="fSi-kh-leU" id="Mi3-72-NfS"/>
+                                            <outlet property="thumbnailImage" destination="fSi-kh-leU" id="Ghc-W9-e0C"/>
                                             <outlet property="titleLabel" destination="Jy7-sS-IFA" id="Phj-2R-sAF"/>
                                         </connections>
                                     </tableViewCell>

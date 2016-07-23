@@ -19,16 +19,13 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var fetchRequest: NSFetchRequest!
     var context: NSManagedObjectContext!
     var selectedVideo: Video!
-    var thumbnail: Thumbnail!
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
-        let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
-        let iDSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
-        videoFetchRequest.sortDescriptors = [titleSortDescriptor,
-                                             publishedSortDescriptor,
-                                             iDSortDescriptor]
+        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnails", ascending: false)
+        videoFetchRequest.sortDescriptors = [publishedSortDescriptor,
+                                             thumbnailSortDescriptor]
             
         let frc = NSFetchedResultsController(
             fetchRequest: videoFetchRequest,
@@ -51,8 +48,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
    
         do {
             try fetchedResultsController.performFetch()
-        } catch {
-            print("An error occured")
+        } catch let error as NSError {
+            print("\(error), \(error.userInfo)")
         }
     }
 
@@ -60,7 +57,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.title
         
-        let url = NSURL(string: (video.thumbnails?.url)!)
+        let url = NSURL(string: "video.thumbnail.url")
         if let imageData = NSData(contentsOfURL: url!) {
             cell.imageView!.image = UIImage(data: imageData)
         }
@@ -133,15 +130,15 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
             switch type {
             case .Insert:
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             case .Delete:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             case .Update:
                 let cell = tableView.cellForRowAtIndexPath(indexPath!) as! VideoCell
                 configureCell(cell, indexPath: indexPath!)
             case .Move:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Automatic)
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Automatic)
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
         }
     }
     
@@ -153,9 +150,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let indexSet = NSIndexSet(index: sectionIndex)
         switch type {
             case .Insert:
-                tableView.insertSections(indexSet, withRowAnimation: .Automatic)
+                tableView.insertSections(indexSet, withRowAnimation: .Fade)
             case .Delete:
-                tableView.deleteSections(indexSet, withRowAnimation: .Automatic)
+                tableView.deleteSections(indexSet, withRowAnimation: .Fade)
         default :
             break
         }
