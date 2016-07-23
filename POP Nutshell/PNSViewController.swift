@@ -22,11 +22,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
-        let primarySortDescriptor = NSSortDescriptor(key: "thumbnails", ascending: false)
-        let iDSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+        let idSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
-        
-        videoFetchRequest.sortDescriptors = [primarySortDescriptor, iDSortDescriptor, publishedSortDescriptor]
+        let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
+        videoFetchRequest.sortDescriptors = [publishedSortDescriptor, idSortDescriptor, titleSortDescriptor]
             
         let frc = NSFetchedResultsController(
             fetchRequest: videoFetchRequest,
@@ -57,9 +56,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.title
-        //cell.thumbnailImage.image = UIImage(contentsOfFile: "video.thumbnails.url")
         
-        let url = NSURL(string: "video.thumbnails.url")
+        let url = NSURL(string: "Thumbnail.url")
         if let imageData = NSData(contentsOfURL: url!) {
             cell.imageView!.image = UIImage(data: imageData)
         }
@@ -95,11 +93,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             print("share button tapped")
             
             let sharedVideo = Video()
-            sharedVideo.isShared = true
             
             let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)
             self.presentViewController(activityViewController, animated: true, completion: nil)
-            
             
             tableView.setEditing(false, animated: true)
         }

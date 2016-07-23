@@ -32,10 +32,8 @@ class Video: NSManagedObject {
         let fetchRequest = NSFetchRequest()
         
         fetchRequest.entity = entityDescription
-        let iDPredicate = NSPredicate(format: "id == %@", id)
-        let titlePredicate = NSPredicate(format: "title == %@", title)
-        let compound = NSCompoundPredicate.init(andPredicateWithSubpredicates: [iDPredicate, titlePredicate])
-        fetchRequest.predicate = compound
+        let predicate = NSPredicate(format: "id == %@", id)
+        fetchRequest.predicate = predicate
         fetchRequest.fetchLimit = 1 // Limit it to a max of 1 result. (Should only ever be one)
         
         do {
