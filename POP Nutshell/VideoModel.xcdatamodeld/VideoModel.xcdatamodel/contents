@@ -14,7 +14,6 @@
     </entity>
     <entity name="Video" representedClassName=".Video" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="isShared" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="publishedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoDescription" optional="YES" attributeType="String" syncable="YES"/>
@@ -24,6 +23,6 @@
     <elements>
         <element name="Channel" positionX="241" positionY="-9" width="128" height="88"/>
         <element name="Thumbnail" positionX="-342" positionY="222" width="128" height="118"/>
-        <element name="Video" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Video" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

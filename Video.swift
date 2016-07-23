@@ -25,7 +25,7 @@ class Video: NSManagedObject {
      - returns: The Video object with the given id or nil otherwise.
      */
     
-    static func with(id: String, isShared: NSNumber, inContext context: NSManagedObjectContext) -> Video? {
+    static func with(id: String, title: String, inContext context: NSManagedObjectContext) -> Video? {
         
         let entityDescription = NSEntityDescription.entityForName(
             "Video", inManagedObjectContext: context)!
@@ -33,8 +33,8 @@ class Video: NSManagedObject {
         
         fetchRequest.entity = entityDescription
         let iDPredicate = NSPredicate(format: "id == %@", id)
-        let sharePredicate = NSPredicate(format: "isShared == %@", isShared)
-        let compound = NSCompoundPredicate.init(andPredicateWithSubpredicates: [iDPredicate, sharePredicate])
+        let titlePredicate = NSPredicate(format: "title == %@", title)
+        let compound = NSCompoundPredicate.init(andPredicateWithSubpredicates: [iDPredicate, titlePredicate])
         fetchRequest.predicate = compound
         fetchRequest.fetchLimit = 1 // Limit it to a max of 1 result. (Should only ever be one)
         
