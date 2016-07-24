@@ -13,10 +13,12 @@ class VideoCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var thumbnailImage: UIImageView!
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
+    override func awakeFromNib() {
+        super.awakeFromNib()
         
-        titleLabel!.text = nil
-        thumbnailImage!.image = nil
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
 }

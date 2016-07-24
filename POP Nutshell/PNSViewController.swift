@@ -26,7 +26,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
         let idSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
         let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
-        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnails.url", ascending: false)
+        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnails", ascending: false)
         videoFetchRequest.sortDescriptors = [publishedSortDescriptor, idSortDescriptor, titleSortDescriptor, thumbnailSortDescriptor]
             
         let frc = NSFetchedResultsController(
