@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Xcode 7.0">
-    <entity name="Channel" representedClassName=".Channel" parentEntity="Video" syncable="YES">
+    <entity name="Channel" representedClassName=".Channel" syncable="YES">
         <attribute name="channelId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="channelTitle" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="videos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Video" inverseName="channel" inverseEntity="Video" syncable="YES"/>
     </entity>
-    <entity name="Thumbnail" representedClassName=".Thumbnail" parentEntity="Video" syncable="YES">
+    <entity name="Thumbnail" representedClassName=".Thumbnail" syncable="YES">
         <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,8 +21,8 @@
         <relationship name="thumbnails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Thumbnail" inverseName="video" inverseEntity="Thumbnail" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Channel" positionX="241" positionY="-9" width="128" height="88"/>
-        <element name="Thumbnail" positionX="-342" positionY="222" width="128" height="118"/>
+        <element name="Channel" positionX="241" positionY="11" width="128" height="88"/>
+        <element name="Thumbnail" positionX="-371" positionY="-1" width="128" height="118"/>
         <element name="Video" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

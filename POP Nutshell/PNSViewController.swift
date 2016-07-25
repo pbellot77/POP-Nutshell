@@ -16,11 +16,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBOutlet weak var tableView: UITableView!
     
-    var coreDataStack: CoreDataStack!
     var fetchRequest: NSFetchRequest!
     var context: NSManagedObjectContext!
     var selectedVideo: Video!
-    var thumbnail: Thumbnail!
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
@@ -74,7 +72,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             let session = NSURLSession.sharedSession()
             
             // Create a datatask and pass in the request
-            let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            let dataTask = session.dataTaskWithRequest(request,
+                                                        completionHandler: { (data: NSData?,
+                                                        response: NSURLResponse?,
+                                                        error: NSError?) -> Void in
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
@@ -88,6 +89,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             dataTask.resume()
         }
+        
+//        let url = NSURL(string:"https://i.ytimg.com/vi/" + video.id! + "/hqdefault.jpg")
+//        let imageData = NSData(contentsOfURL: url!)
+//        cell.imageView?.image = UIImage(data: imageData!)
     }
 
     // Tableview Delegate methods
@@ -125,7 +130,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             tableView.setEditing(false, animated: true)
         }
-        shareButton.backgroundColor = UIColor.lightGrayColor()
+        shareButton.backgroundColor = UIColor.blueColor()
         
         return [shareButton]
     }
