@@ -60,15 +60,5 @@ class YouTubeService {
                 
                 completion(Result<JSON>.Success(JSON(value)))
         }
-    }
-    
-    interal func fetchThumbnail(completionHandler completion: Result<JSON> -> Void) {
-        
-        Alamofire.request(.Get,
-            Constants.YouTubeURL,
-            parameters: [
-                Parameters.Part : Parameters.Snippet,
-                Parameters.PlaylistId : Constants.UploadsPlaylistId,
-                Parameters.Key : Constants.APIKey,
-    }
+    }    
 }

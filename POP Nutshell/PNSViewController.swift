@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Alamofire
 
 private let cellIdentifier = "VideoCell"
 
@@ -23,11 +24,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
-        let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: true)
+        let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: false)
         let idSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
         let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
-        let thumbnailSortDescriptor = NSSortDescriptor(key: "thumbnails", ascending: false)
-        videoFetchRequest.sortDescriptors = [publishedSortDescriptor, idSortDescriptor, titleSortDescriptor, thumbnailSortDescriptor]
+        videoFetchRequest.sortDescriptors = [publishedSortDescriptor, idSortDescriptor, titleSortDescriptor]
             
         let frc = NSFetchedResultsController(
             fetchRequest: videoFetchRequest,
@@ -61,9 +61,32 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.title
         
-        let url = NSURL(fileURLWithPath: (video.thumbnails?.url)!)
-        if let imageData = NSData(contentsOfURL: url) {
-            cell.imageView!.image = UIImage(data: imageData)
+        // Construct the video thumbnail url
+        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video.id! + "/hqdefault.jpg"
+        
+        // Create an NSURL object
+        if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {
+            
+            // Create an NSURLRequest object
+            let request = NSURLRequest(URL: videoThumbnailUrl)
+            
+            // Create NSURLSession
+            let session = NSURLSession.sharedSession()
+            
+            // Create a datatask and pass in the request
+            let dataTask = session.dataTaskWithRequest(request, completionHandler: { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    // Get a reference to the image view element of the cell
+                    let imageView = cell.viewWithTag(1) as! UIImageView
+                    
+                    // Create an image object from the data and assign it into the imageview
+                    imageView.image = UIImage(data: data!)
+                })
+            })
+            
+            dataTask.resume()
         }
     }
 
@@ -77,7 +100,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInSection = fetchedResultsController.sections?[section].numberOfObjects
         return numberOfRowsInSection!
-        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -129,7 +151,12 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.beginUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+    func controller(controller: NSFetchedResultsController,
+                    didChangeObject anObject: AnyObject,
+                    atIndexPath indexPath: NSIndexPath?,
+                    forChangeType type: NSFetchedResultsChangeType,
+                    newIndexPath: NSIndexPath?) {
+        
             switch type {
             case .Insert:
                 tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
@@ -148,7 +175,11 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         tableView.endUpdates()
     }
     
-    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+    func controller(controller: NSFetchedResultsController,
+                    didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
+                    atIndex sectionIndex: Int,
+                    forChangeType type: NSFetchedResultsChangeType) {
+        
         let indexSet = NSIndexSet(index: sectionIndex)
         switch type {
             case .Insert:
@@ -160,3 +191,5 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
 }
+
+
