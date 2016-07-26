@@ -68,6 +68,7 @@ class Video: NSManagedObject {
         let snippet = data["snippet"]
         self.title = snippet["title"].string
         self.videoDescription = snippet["description"].string
+        self.videoId = snippet["resourceId","videoId"].string
         
         // Extract the publishedAt date
         let dateFormatter = NSDateFormatter()

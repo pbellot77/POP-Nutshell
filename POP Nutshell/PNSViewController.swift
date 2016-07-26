@@ -61,7 +61,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         cell.titleLabel!.text = video.title
         
         // Construct the video thumbnail url
-        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video.id! + "/hqdefault.jpg"
+        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video.videoId! + "/hqdefault.jpg"
         
         // Create an NSURL object
         if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {
@@ -89,11 +89,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             })
             
             dataTask.resume()
-        }
-        
-//        let url = NSURL(string:"https://i.ytimg.com/vi/" + video.id! + "/hqdefault.jpg")
-//        let imageData = NSData(contentsOfURL: url!)
-//        cell.imageView?.image = UIImage(data: imageData!)
+        }        
     }
 
     // Tableview Delegate methods
@@ -197,5 +193,3 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
 }
-
-
