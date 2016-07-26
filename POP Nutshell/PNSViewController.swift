@@ -17,9 +17,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @IBOutlet weak var tableView: UITableView!
     
     var fetchRequest: NSFetchRequest!
-    var context: NSManagedObjectContext!
     var selectedVideo: Video!
-    
+    var context: NSManagedObjectContext!
+    var service: YouTubeService!
+
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: false)
