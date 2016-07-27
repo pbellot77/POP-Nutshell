@@ -15,13 +15,6 @@ class Thumbnail: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
     
-struct Resolution {
-    
-    static let Res = "high"
-    static let ResWidth = 480
-    static let ResHeight = 360
-    
-    }
     /**
      Convenience initialiser that allows a Thumbnail to be created from a given
      set of parameters.  For further details see:
@@ -59,7 +52,7 @@ struct Resolution {
      - returns: A Thumbnail object.
      */
     
-    convenience init(size: String?, width: Int?, height: Int?, rawURL: String?, video: Video,
+    convenience init(size: String?, width: Int?, height: Int?, rawURL: String?, high: String?, video: Video,
                      inContext context: NSManagedObjectContext) {
         
         let entityDescription = NSEntityDescription.entityForName(
@@ -72,6 +65,7 @@ struct Resolution {
         self.size = size
         self.width = width
         self.height = height
+        self.high = high
         
         if let rawURL = rawURL {
             self.url = rawURL.stringByReplacingOccurrencesOfString(

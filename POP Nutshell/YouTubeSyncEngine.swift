@@ -68,12 +68,12 @@ class YouTubeSyncEngine {
             for (_, item) in jsonData["items"] {
                 
                 // Extract the id element.
-                guard let id = item["id"].string else {
+                guard let videoId = item["videoId"].string else {
                     continue
                 }
                 
                 // Retrieve the existing video or create a new one.
-                let video = Video.with(id, title: "title", inContext: privateContext) ??
+                let video = Video.with(videoId, title: "title", inContext: privateContext) ??
                     Video(data: item, context: privateContext)
                 
                 print("Video: \(video)")

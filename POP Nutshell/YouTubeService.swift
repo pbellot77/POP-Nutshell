@@ -29,8 +29,6 @@ struct Parameters {
     static let PlaylistId = "playlistId"
     static let Key = "key"
     static let MaxResults = "maxResults"
-    static let Resolution = "high"
-    
 }
 
 class YouTubeService {

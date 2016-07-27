@@ -25,14 +25,14 @@ class Video: NSManagedObject {
      - returns: The Video object with the given id or nil otherwise.
      */
     
-    static func with(id: String, title: String, inContext context: NSManagedObjectContext) -> Video? {
+    static func with(videoId: String, title: String, inContext context: NSManagedObjectContext) -> Video? {
         
         let entityDescription = NSEntityDescription.entityForName(
             "Video", inManagedObjectContext: context)!
         let fetchRequest = NSFetchRequest()
         
         fetchRequest.entity = entityDescription
-        let predicate = NSPredicate(format: "id == %@", id)
+        let predicate = NSPredicate(format: "videoId == %@", videoId)
         fetchRequest.predicate = predicate
         fetchRequest.fetchLimit = 1 // Limit it to a max of 1 result. (Should only ever be one)
         
@@ -88,9 +88,11 @@ class Video: NSManagedObject {
             let width = data["width"].count
             let height = data["height"].count
             let rawURL = data["url"].string
+            let high = data["thumbnails","high"].string
+            
             
             let thumbnail = Thumbnail(size: size, width: width,
-                                    height: height, rawURL: rawURL,
+                                      height: height, rawURL: rawURL, high: high,
                                      video: self, inContext: context)
             thumbnails.addObject(thumbnail)
             self.thumbnails = thumbnail // Throws compiler error outside of scope
