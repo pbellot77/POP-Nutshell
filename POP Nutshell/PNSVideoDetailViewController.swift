@@ -36,7 +36,7 @@ class PNSVideoDetailViewController: UIViewController {
             
             let width = self.view.frame.size.width
             let height = width/320 * 180
-            let videoId: String = vid.id!
+            let videoId: String = vid.videoId!
             
             // Adjust the height of the webView constraint
             self.webViewHeightConstraint.constant = height

@@ -64,7 +64,7 @@ class Video: NSManagedObject {
                   insertIntoManagedObjectContext: context)
         
         // Extract general video information.
-        self.id = data["id"].string
+        self.id = data["videoId"].string
         let snippet = data["snippet"]
         self.title = snippet["title"].string
         self.videoDescription = snippet["description"].string
@@ -88,7 +88,7 @@ class Video: NSManagedObject {
             let width = data["width"].count
             let height = data["height"].count
             let rawURL = data["url"].string
-            let high = data["thumbnails","high"].string
+            let high = data["thumbnails","high","url"].string
             
             
             let thumbnail = Thumbnail(size: size, width: width,

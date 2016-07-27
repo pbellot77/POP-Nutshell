@@ -24,7 +24,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: false)
-        let idSortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+        let idSortDescriptor = NSSortDescriptor(key: "videoId", ascending: false)
         let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
         videoFetchRequest.sortDescriptors = [publishedSortDescriptor, idSortDescriptor, titleSortDescriptor]
             
@@ -53,13 +53,18 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             print("\(error), \(error.userInfo)")
         }
         
-        tableView.reloadData()
+        //tableView.reloadData()
     }
-
+    
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.title
         
+//        if let imageURL = NSURL(string: "https://i.ytimg.com/vi/" + video.videoId! + "/hqdefault.jpg"){
+//          if let imageData = NSData(contentsOfURL: imageURL){
+//              cell.thumbnailImage.image = UIImage(data: imageData)
+//            }
+//        }
         // Construct the video thumbnail url
         let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video.videoId! + "/hqdefault.jpg"
         
