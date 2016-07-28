@@ -57,8 +57,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
-        let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
-        cell.titleLabel!.text = video.title
+        let video = fetchedResultsController.objectAtIndexPath(indexPath) as? Video
+        cell.titleLabel!.text = video!.title
         
 //        if let imageURL = NSURL(string: "https://i.ytimg.com/vi/" + video.videoId! + "/hqdefault.jpg"){
 //          if let imageData = NSData(contentsOfURL: imageURL){
@@ -66,7 +66,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
 //            }
 //        }
         // Construct the video thumbnail url
-        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video.videoId! + "/hqdefault.jpg"
+        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video!.videoId! + "/hqdefault.jpg"
         
         // Create an NSURL object
         if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {
@@ -86,7 +86,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
                     // Get a reference to the image view element of the cell
-                    let imageView = cell.viewWithTag(1) as! UIImageView
+                    let imageView = cell.thumbnailImage as UIImageView
                     
                     // Create an image object from the data and assign it into the imageview
                     imageView.image = UIImage(data: data!)

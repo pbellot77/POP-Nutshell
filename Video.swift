@@ -25,7 +25,7 @@ class Video: NSManagedObject {
      - returns: The Video object with the given id or nil otherwise.
      */
     
-    static func with(id: String, title: String, inContext context: NSManagedObjectContext) -> Video? {
+    static func with(id: String, videoId: String, title: String, inContext context: NSManagedObjectContext) -> Video? {
         
         let entityDescription = NSEntityDescription.entityForName(
             "Video", inManagedObjectContext: context)!
