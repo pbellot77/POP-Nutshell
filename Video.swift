@@ -25,14 +25,14 @@ class Video: NSManagedObject {
      - returns: The Video object with the given id or nil otherwise.
      */
     
-    static func with(videoId: String, title: String, inContext context: NSManagedObjectContext) -> Video? {
+    static func with(id: String, title: String, inContext context: NSManagedObjectContext) -> Video? {
         
         let entityDescription = NSEntityDescription.entityForName(
             "Video", inManagedObjectContext: context)!
         let fetchRequest = NSFetchRequest()
         
         fetchRequest.entity = entityDescription
-        let predicate = NSPredicate(format: "videoId == %@", videoId)
+        let predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.predicate = predicate
         fetchRequest.fetchLimit = 1 // Limit it to a max of 1 result. (Should only ever be one)
         
@@ -64,7 +64,7 @@ class Video: NSManagedObject {
                   insertIntoManagedObjectContext: context)
         
         // Extract general video information.
-        self.id = data["videoId"].string
+        self.id = data["id"].string
         let snippet = data["snippet"]
         self.title = snippet["title"].string
         self.videoDescription = snippet["description"].string
@@ -87,8 +87,8 @@ class Video: NSManagedObject {
             let (size, data) = thumbnail
             let width = data["width", 480].count
             let height = data["height", 360].count
-            let rawURL = data["url"].string
-            let high = data["thumbnails","high","url"].string
+            let rawURL = data["high","url"].string
+            let high = data["high","url"].string
             
             
             let thumbnail = Thumbnail(size: size, width: width,

@@ -53,7 +53,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             print("\(error), \(error.userInfo)")
         }
         
-        //tableView.reloadData()
+        tableView.reloadData()
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
