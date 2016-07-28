@@ -24,9 +24,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: false)
-        let idSortDescriptor = NSSortDescriptor(key: "videoId", ascending: false)
-        let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: false)
-        videoFetchRequest.sortDescriptors = [publishedSortDescriptor, idSortDescriptor, titleSortDescriptor]
+        videoFetchRequest.sortDescriptors = [publishedSortDescriptor]
             
         let frc = NSFetchedResultsController(
             fetchRequest: videoFetchRequest,
@@ -49,11 +47,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
    
         do {
             try fetchedResultsController.performFetch()
+            tableView.reloadData()
         } catch let error as NSError {
             print("\(error), \(error.userInfo)")
         }
-        
-        tableView.reloadData()
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){

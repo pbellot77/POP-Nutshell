@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var coreDataStack: CoreDataStack?
     var apiService: YouTubeService?
     var syncEngine: YouTubeSyncEngine?
+    var pnsController: PNSViewController?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -25,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.coreDataStack = CoreDataStack()
         self.apiService = YouTubeService()
         self.syncEngine = YouTubeSyncEngine(context: self.coreDataStack!.managedObjectContext, service: self.apiService!)
-        
+        self.pnsController = PNSViewController()
         self.syncEngine!.sync()
         return true
     }

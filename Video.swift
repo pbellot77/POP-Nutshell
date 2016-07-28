@@ -30,7 +30,6 @@ class Video: NSManagedObject {
         let entityDescription = NSEntityDescription.entityForName(
             "Video", inManagedObjectContext: context)!
         let fetchRequest = NSFetchRequest()
-        
         fetchRequest.entity = entityDescription
         let predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.predicate = predicate
