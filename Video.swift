@@ -85,8 +85,8 @@ class Video: NSManagedObject {
         for thumbnail in jsonThumbnails {
             
             let (size, data) = thumbnail
-            let width = data["width"].count
-            let height = data["height"].count
+            let width = data["width", 480].count
+            let height = data["height", 360].count
             let rawURL = data["url"].string
             let high = data["thumbnails","high","url"].string
             
