@@ -137,8 +137,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             print("share button tapped")
             
             let sharedVideo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Video
+            let title = sharedVideo?.title
+            let thumbnail = sharedVideo?.thumbnails
             
-            let activityViewController = UIActivityViewController(activityItems: [sharedVideo!], applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: [title!, thumbnail!], applicationActivities: nil)
             self.presentViewController(activityViewController, animated: true, completion: nil)
             
             tableView.setEditing(false, animated: true)
