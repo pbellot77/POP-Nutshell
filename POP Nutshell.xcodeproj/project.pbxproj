@@ -174,10 +174,7 @@
 		BA2ECB481CDA997D0023EE4B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */,
 				BA25861D1D329C0700A4DFC0 /* Core Data Model */,
-				BAEE21381D26280500F77589 /* YouTubeSyncEngine.swift */,
-				BAFD46F41D10560A005A4A63 /* YouTubeService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -216,6 +213,7 @@
 		BA9653CD1CD1553A00ACEE28 /* POP Nutshell */ = {
 			isa = PBXGroup;
 			children = (
+				BADA8CC91D4BAFF2002EE008 /* Network */,
 				BA2ECB481CDA997D0023EE4B /* Model */,
 				BA2ECB491CDA99960023EE4B /* View */,
 				BA2ECB471CDA99620023EE4B /* Controllers */,
@@ -241,6 +239,16 @@
 				BA9653F01CD1553A00ACEE28 /* Info.plist */,
 			);
 			path = "POP NutshellUITests";
+			sourceTree = "<group>";
+		};
+		BADA8CC91D4BAFF2002EE008 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				BAEE21381D26280500F77589 /* YouTubeSyncEngine.swift */,
+				BAFD46F41D10560A005A4A63 /* YouTubeService.swift */,
+				BA9653CE1CD1553A00ACEE28 /* AppDelegate.swift */,
+			);
+			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

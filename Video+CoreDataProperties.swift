@@ -20,6 +20,6 @@ extension Video {
     @NSManaged var id: String?
     @NSManaged var videoId: String?
     @NSManaged var channel: Channel?
-    @NSManaged var thumbnails: Thumbnail?
+    @NSManaged var thumbnails: NSSet?
 
 }

@@ -18,7 +18,6 @@ extension Thumbnail {
     @NSManaged var url: String?
     @NSManaged var size: String?
     @NSManaged var height: NSNumber?
-    @NSManaged var high: String?
     @NSManaged var video: Video?
 
 }

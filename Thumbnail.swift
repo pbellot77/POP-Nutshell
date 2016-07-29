@@ -52,7 +52,7 @@ class Thumbnail: NSManagedObject {
      - returns: A Thumbnail object.
      */
     
-    convenience init(size: String?, width: Int?, height: Int?, rawURL: String?, high: String?, video: Video,
+    convenience init(size: String?, width: Int?, height: Int?, rawURL: String?, video: Video,
                      inContext context: NSManagedObjectContext) {
         
         let entityDescription = NSEntityDescription.entityForName(
@@ -65,7 +65,6 @@ class Thumbnail: NSManagedObject {
         self.size = size
         self.width = width
         self.height = height
-        self.high = high
         
         if let rawURL = rawURL {
             self.url = rawURL.stringByReplacingOccurrencesOfString(

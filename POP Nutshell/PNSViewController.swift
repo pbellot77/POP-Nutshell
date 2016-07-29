@@ -19,7 +19,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var fetchRequest: NSFetchRequest!
     var selectedVideo: Video!
     var context: NSManagedObjectContext!
-    var service: YouTubeService!
 
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
@@ -47,26 +46,39 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
    
         do {
             try fetchedResultsController.performFetch()
-            tableView.reloadData()
         } catch let error as NSError {
             print("\(error), \(error.userInfo)")
         }
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
-        let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video 
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("\(error), \(error.userInfo)")
+        }
+        
+        let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.title
         
-//        if let imageURL = NSURL(string: "https://i.ytimg.com/vi/" + video.videoId! + "/hqdefault.jpg"){
-//          if let imageData = NSData(contentsOfURL: imageURL){
-//              cell.thumbnailImage.image = UIImage(data: imageData)
-//            }
-//        }
         // Construct the video thumbnail url
-        let videoThumbnailUrlString = "https://i.ytimg.com/vi/" + video.videoId! + "/hqdefault.jpg"
+        guard let filteredThumbs = (video.thumbnails?.allObjects as? [Thumbnail])?.filter({$0.size == "default"}) else {
+            // Potentially add default image...
+            return
+        }
+        
+        guard filteredThumbs.count > 0  else {
+            return
+        }
+        
+        let defaultThumb = filteredThumbs[0]
+        guard let url = defaultThumb.url else {
+            return
+        }
         
         // Create an NSURL object
-        if let videoThumbnailUrl = NSURL(string: videoThumbnailUrlString) {
+        if let videoThumbnailUrl = NSURL(string: url) {
             
             // Create an NSURLRequest object
             let request = NSURLRequest(URL: videoThumbnailUrl)
@@ -76,22 +88,22 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             // Create a datatask and pass in the request
             let dataTask = session.dataTaskWithRequest(request,
-                                                        completionHandler: { (data: NSData?,
+                                                       completionHandler: { (data: NSData?,
                                                         response: NSURLResponse?,
                                                         error: NSError?) -> Void in
-                
+                                                        
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    
+                                                            
                     // Get a reference to the image view element of the cell
                     let imageView = cell.thumbnailImage as UIImageView
-                    
+                                                            
                     // Create an image object from the data and assign it into the imageview
                     imageView.image = UIImage(data: data!)
                 })
             })
             
             dataTask.resume()
-        }        
+        }
     }
 
     // Tableview Delegate methods

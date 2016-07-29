@@ -7,7 +7,6 @@
     </entity>
     <entity name="Thumbnail" representedClassName=".Thumbnail" syncable="YES">
         <attribute name="height" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
-        <attribute name="high" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="width" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
@@ -24,7 +23,7 @@
     </entity>
     <elements>
         <element name="Channel" positionX="241" positionY="11" width="128" height="88"/>
-        <element name="Thumbnail" positionX="-371" positionY="-1" width="128" height="135"/>
+        <element name="Thumbnail" positionX="-371" positionY="-1" width="128" height="120"/>
         <element name="Video" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

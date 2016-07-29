@@ -72,11 +72,8 @@ class YouTubeSyncEngine {
                     continue
                 }
                 
-                guard let videoId = item["snippet","resourceId","videoId"].string else {
-                    continue
-                }
                 // Retrieve the existing video or create a new one.
-                let video = Video.with(id, videoId: videoId, title: "title", inContext: privateContext) ??
+                let video = Video.with(id, title: "title", inContext: privateContext) ??
                     Video(data: item, context: privateContext)
                 
                 print("Video: \(video)")

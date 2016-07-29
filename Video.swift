@@ -10,10 +10,9 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-
 class Video: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
+    
+    // Insert code here to add functionality to your managed object subclass
     
     /**
      Used to search for a video with a given YouTube ID.
@@ -25,7 +24,7 @@ class Video: NSManagedObject {
      - returns: The Video object with the given id or nil otherwise.
      */
     
-    static func with(id: String, videoId: String, title: String, inContext context: NSManagedObjectContext) -> Video? {
+    static func with(id: String, title: String, inContext context: NSManagedObjectContext) -> Video? {
         
         let entityDescription = NSEntityDescription.entityForName(
             "Video", inManagedObjectContext: context)!
@@ -67,7 +66,7 @@ class Video: NSManagedObject {
         let snippet = data["snippet"]
         self.title = snippet["title"].string
         self.videoDescription = snippet["description"].string
-        self.videoId = snippet["resourceId","videoId"].string
+        self.videoId = snippet["resourceId", "videoId"].string
         
         // Extract the publishedAt date
         let dateFormatter = NSDateFormatter()
@@ -83,20 +82,19 @@ class Video: NSManagedObject {
         let thumbnails = NSMutableSet()
         for thumbnail in jsonThumbnails {
             
-            let (size, data) = thumbnail
-            let width = data["width", 480].count
-            let height = data["height", 360].count
-            let rawURL = data["high","url"].string
-            let high = data["high","url"].string
-            
+            let (size, thumbData) = thumbnail
+            let width = thumbData["width"].int
+            let height = thumbData["height"].int
+            let rawURL = thumbData["url"].string
             
             let thumbnail = Thumbnail(size: size, width: width,
-                                      height: height, rawURL: rawURL, high: high,
-                                     video: self, inContext: context)
+                                      height: height, rawURL: rawURL,
+                                      video: self, inContext: context)
             thumbnails.addObject(thumbnail)
-            self.thumbnails = thumbnail // Throws compiler error outside of scope
         }
-       
+        
+        self.thumbnails = thumbnails // Throws compiler error outside of scope
+        
         
         // Fetch and associate or create and associated a channel
         if let channelId = snippet["channelId"].string,
