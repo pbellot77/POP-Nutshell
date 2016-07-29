@@ -49,6 +49,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         } catch let error as NSError {
             print("\(error), \(error.userInfo)")
         }
+        tableView.reloadData()
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
@@ -63,7 +64,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         cell.titleLabel!.text = video.title
         
         // Construct the video thumbnail url
-        guard let filteredThumbs = (video.thumbnails?.allObjects as? [Thumbnail])?.filter({$0.size == "default"}) else {
+        guard let filteredThumbs = (video.thumbnails?.allObjects as? [Thumbnail])?.filter({$0.size == "high"}) else {
             // Potentially add default image...
             return
         }
@@ -104,6 +105,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             dataTask.resume()
         }
+        return
     }
 
     // Tableview Delegate methods
@@ -164,7 +166,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
+        let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
+        if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9){
+            tableView?.beginUpdates()
+        }
     }
     
     func controller(controller: NSFetchedResultsController,
@@ -188,13 +193,19 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
+        let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
+            if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9) == false {
+                tableView?.reloadData()
+                return
+        }
+        tableView?.endUpdates()
     }
     
     func controller(controller: NSFetchedResultsController,
                     didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
                     atIndex sectionIndex: Int,
                     forChangeType type: NSFetchedResultsChangeType) {
+        
         
         let indexSet = NSIndexSet(index: sectionIndex)
         switch type {
