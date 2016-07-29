@@ -177,6 +177,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     atIndexPath indexPath: NSIndexPath?,
                     forChangeType type: NSFetchedResultsChangeType,
                     newIndexPath: NSIndexPath?) {
+        let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
+        if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9) == false { return }
         
             switch type {
             case .Insert:
@@ -205,6 +207,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
                     didChangeSection sectionInfo: NSFetchedResultsSectionInfo,
                     atIndex sectionIndex: Int,
                     forChangeType type: NSFetchedResultsChangeType) {
+        let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
+        if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9) == false { return }
         
         
         let indexSet = NSIndexSet(index: sectionIndex)
