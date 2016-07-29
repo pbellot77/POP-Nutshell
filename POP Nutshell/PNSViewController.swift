@@ -105,7 +105,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             dataTask.resume()
         }
-        return
+        cell.reloadInputViews()
     }
 
     // Tableview Delegate methods
@@ -136,9 +136,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         let shareButton = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
             print("share button tapped")
             
-            let sharedVideo = Video()
+            let sharedVideo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Video
             
-            let activityViewController = UIActivityViewController(activityItems: [sharedVideo], applicationActivities: nil)
+            let activityViewController = UIActivityViewController(activityItems: [sharedVideo!], applicationActivities: nil)
             self.presentViewController(activityViewController, animated: true, completion: nil)
             
             tableView.setEditing(false, animated: true)
@@ -181,16 +181,20 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9) == false { return }
         
             switch type {
+            case .Update:
+                if let indexPath = indexPath {
+                    let cell = tableView.cellForRowAtIndexPath(indexPath) as! VideoCell
+                    configureCell(cell, indexPath: indexPath)
+                }
             case .Insert:
                 tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             case .Delete:
                 tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-            case .Update:
-                let cell = tableView.cellForRowAtIndexPath(indexPath!) as! VideoCell
-                configureCell(cell, indexPath: indexPath!)
             case .Move:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+                if indexPath != newIndexPath {
+                    tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                    tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            }
         }
     }
     
