@@ -49,7 +49,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         } catch let error as NSError {
             print("\(error), \(error.userInfo)")
         }
-        tableView.reloadData()
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
@@ -69,14 +68,10 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             return
         }
         
-        guard filteredThumbs.count > 0  else {
-            return
-        }
+        guard filteredThumbs.count > 0  else { return }
         
-        let defaultThumb = filteredThumbs[0]
-        guard let url = defaultThumb.url else {
-            return
-        }
+        let highThumb = filteredThumbs[0]
+        guard let url = highThumb.url else { return }
         
         // Create an NSURL object
         if let videoThumbnailUrl = NSURL(string: url) {
@@ -105,7 +100,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             dataTask.resume()
         }
-        cell.reloadInputViews()
     }
 
     // Tableview Delegate methods
@@ -138,7 +132,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             let sharedVideo = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Video
             let title = sharedVideo?.title
-            let thumbnail = sharedVideo?.thumbnails
+            let thumbnail = sharedVideo?.thumbnails?.allObjects as? [Thumbnail]
             
             let activityViewController = UIActivityViewController(activityItems: [title!, thumbnail!], applicationActivities: nil)
             self.presentViewController(activityViewController, animated: true, completion: nil)
@@ -195,6 +189,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             case .Move:
                 if indexPath != newIndexPath {
                     tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
+                } else {
                     tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
             }
         }
