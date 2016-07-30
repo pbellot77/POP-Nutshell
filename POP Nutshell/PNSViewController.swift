@@ -46,6 +46,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
    
         do {
             try fetchedResultsController.performFetch()
+            tableView.reloadData()
         } catch let error as NSError {
             print("\(error), \(error.userInfo)")
         }
@@ -164,7 +165,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
         if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9){
-            tableView?.beginUpdates()
+            self.tableView?.beginUpdates()
         }
     }
     
@@ -177,31 +178,21 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9) == false { return }
         
             switch type {
+            case .Insert:
+                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+            case .Delete:
+                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             case .Update:
                 if let indexPath = indexPath {
                     let cell = tableView.cellForRowAtIndexPath(indexPath) as! VideoCell
                     configureCell(cell, indexPath: indexPath)
                 }
-            case .Insert:
-                tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-            case .Delete:
-                tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             case .Move:
                 if indexPath != newIndexPath {
                     tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                } else {
                     tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+                }
             }
-        }
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
-            if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9) == false {
-                tableView?.reloadData()
-                return
-        }
-        tableView?.endUpdates()
     }
     
     func controller(controller: NSFetchedResultsController,
@@ -222,4 +213,14 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             break
         }
     }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
+        if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9) == false {
+            tableView?.reloadData()
+            return
+        }
+        self.tableView?.endUpdates()
+    }
+
 }
