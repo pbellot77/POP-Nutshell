@@ -43,7 +43,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         self.context = appDelegate.coreDataStack?.managedObjectContext
         
         print(NSManagedObject)
-   
+        
         do {
             try fetchedResultsController.performFetch()
             tableView.reloadData()
@@ -62,6 +62,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         let video = fetchedResultsController.objectAtIndexPath(indexPath) as! Video
         cell.titleLabel!.text = video.title
+        
         
         // Construct the video thumbnail url
         guard let filteredThumbs = (video.thumbnails?.allObjects as? [Thumbnail])?.filter({$0.size == "high"}) else {
@@ -162,6 +163,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         detailViewController.selectedVideo = self.selectedVideo
     }
     
+    // MARK: - FetchResultsControllerDelegate
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
         if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9){
@@ -222,5 +224,4 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         self.tableView?.endUpdates()
     }
-
 }
