@@ -12,7 +12,6 @@ import Alamofire
 import ReachabilitySwift
 
 private let cellIdentifier = "VideoCell"
-private let useClosures = false
 
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
@@ -22,7 +21,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var selectedVideo: Video!
     var context: NSManagedObjectContext!
     var reachability: Reachability?
-    
     
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
