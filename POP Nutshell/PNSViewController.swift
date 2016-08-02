@@ -99,6 +99,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         } catch let error as NSError {
             print("\(error), \(error.userInfo)")
         }
+        tableView.reloadData()
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
@@ -214,10 +215,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     // MARK: - FetchResultsControllerDelegate
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
-        if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9){
-            self.tableView?.beginUpdates()
-        }
+        tableView.beginUpdates()
     }
     
     func controller(controller: NSFetchedResultsController,
@@ -234,6 +232,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             case .Delete:
                 tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
             case .Update:
+                print("")
                 if let indexPath = indexPath {
                     let cell = tableView.cellForRowAtIndexPath(indexPath) as! VideoCell
                     configureCell(cell, indexPath: indexPath)
@@ -241,7 +240,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             case .Move:
                 if indexPath != newIndexPath {
                     tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-                    tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
+                    tableView.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
                 }
             }
     }
@@ -266,11 +265,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        let ios9 = NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)
-        if NSProcessInfo().isOperatingSystemAtLeastVersion(ios9) == false {
-            tableView?.reloadData()
-            return
-        }
-        self.tableView?.endUpdates()
+        tableView.reloadData()
     }
 }
