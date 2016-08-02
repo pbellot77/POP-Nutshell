@@ -58,5 +58,5 @@ class YouTubeService {
                 
                 completion(Result<JSON>.Success(JSON(value)))
         }
-    }    
+    }
 }

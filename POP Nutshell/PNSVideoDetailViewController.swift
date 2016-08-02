@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReachabilitySwift
 
 class PNSVideoDetailViewController: UIViewController {
 
@@ -30,7 +31,7 @@ class PNSVideoDetailViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         
         if let vid = selectedVideo {
-            
+                        
             titleLabel.text = vid.title
             descriptionLabel.text = vid.videoDescription
             

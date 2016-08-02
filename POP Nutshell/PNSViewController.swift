@@ -9,8 +9,10 @@
 import UIKit
 import CoreData
 import Alamofire
+import ReachabilitySwift
 
 private let cellIdentifier = "VideoCell"
+private let useClosures = false
 
 class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
@@ -19,7 +21,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var fetchRequest: NSFetchRequest!
     var selectedVideo: Video!
     var context: NSManagedObjectContext!
-
+    var reachability: Reachability?
+    
+    
     lazy var fetchedResultsController: NSFetchedResultsController = {
         let videoFetchRequest = NSFetchRequest(entityName: "Video")
         let publishedSortDescriptor = NSSortDescriptor(key: "publishedAt", ascending: false)
@@ -35,7 +39,55 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             
             return frc
         }()
+    
+    override func viewWillAppear(animated: Bool) {
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            print("Unable to create Reachability")
+            return
+        }
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PNSViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        do{
+            try reachability?.startNotifier()
+        }catch{
+            print("could not start reachability notifier")
+        }
+    }
+    
+    func reachabilityChanged(note: NSNotification) {
+        
+        let reachability = note.object as! Reachability
+        
+        if reachability.isReachable() {
+            if reachability.isReachableViaWiFi() {
+                print("Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+            }
+        } else {
+            print("Network not reachable")
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                print("Internet Unavailable")
+                
+                let alert = UIAlertController(title: "Internet Unavailable",
+                                              message: "Try again when connected to the Internet",
+                                              preferredStyle: .ActionSheet)
+                let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (alert) in
+                    exit(0)
+                })
+                
+                alert.addAction(okAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+        
+        reachability.stopNotifier()
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: ReachabilityChangedNotification, object: reachability)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,7 +98,6 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         do {
             try fetchedResultsController.performFetch()
-            tableView.reloadData()
         } catch let error as NSError {
             print("\(error), \(error.userInfo)")
         }

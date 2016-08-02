@@ -37,6 +37,11 @@
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
+		<key>ReachabilitySwift.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 		<key>SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -55,12 +60,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>47CF272258A1D99FE158802A3F3F2060</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4C97BFC99AA2E7A67737DBC6D14CF25C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>73850773DC05DB0F801C716B2A9E95F5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7A235377FFE5496F0EEBF02F6CA5CB7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
