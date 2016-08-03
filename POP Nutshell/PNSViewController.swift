@@ -72,11 +72,17 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 
                 let alert = UIAlertController(title: "Internet Unavailable",
                                               message: "Try again when connected to the Internet",
-                                              preferredStyle: .ActionSheet)
-                let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (alert) in
-                    exit(0)
-                })
+                                              preferredStyle: .Alert)
+                let tryAction = UIAlertAction(title: "Try Again", style: .Default) {(action) -> Void in
+                    print("You selected Try Again")
+                }
                 
+                let okAction = UIAlertAction(title: "OK", style: .Default) { (alert) in
+                    print("You selected OK")
+                    exit(0)
+                }
+                
+                alert.addAction(tryAction)
                 alert.addAction(okAction)
                 self.presentViewController(alert, animated: true, completion: nil)
             }

@@ -18,9 +18,61 @@ class PNSVideoDetailViewController: UIViewController {
     @IBOutlet weak var webViewHeightConstraint: NSLayoutConstraint!
     
     var selectedVideo: Video?
+    var reachability: Reachability?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let reachability: Reachability
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            print("Unable to create Reachability")
+            return
+        }
+        
+        reachability.whenReachable = { reachability in
+            // this is called on a background thread, but UI updates must
+            // be on the main thread, like this:
+            dispatch_async(dispatch_get_main_queue()) {
+                if reachability.isReachableViaWiFi() {
+                    print("Reachable via WiFi")
+                } else {
+                    print("Reachable via Cellular")
+                }
+            }
+        }
+        reachability.whenUnreachable = { reachability in
+            // this is called on a background thread, but UI updates must
+            // be on the main thread, like this:
+            dispatch_async(dispatch_get_main_queue()) {
+                print("Not reachable")
+                let alert = UIAlertController(title: "Internet Unavailable",
+                                              message: "Try again when connected to the Internet",
+                                              preferredStyle: .Alert)
+                let tryAction = UIAlertAction(title: "Try Again", style: .Default) {(action) -> Void in
+                    print("You selected Try Again")
+                    self.webView.reload()
+                }
+                
+                let okAction = UIAlertAction(title: "OK", style: .Default) { (alert) -> Void in
+                    print("You selected OK")
+                    exit(0)
+                }
+                
+                alert.addAction(tryAction)
+                alert.addAction(okAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+        
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+        reachability.stopNotifier()
+        webView.reload()
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,10 +80,29 @@ class PNSVideoDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        let alert = UIAlertController(title: "Internet Unavailable",
+                                      message: "Try again when connected to the Internet",
+                                      preferredStyle: .Alert)
+        let tryAction = UIAlertAction(title: "Try Again", style: .Default) {(action) -> Void in
+            print("You selected Try Again")
+            self.webView.reload()
+        }
+        
+        let okAction = UIAlertAction(title: "OK", style: .Default) { (alert) -> Void in
+            print("You selected OK")
+            exit(0)
+        }
+        
+        alert.addAction(tryAction)
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         
         if let vid = selectedVideo {
-                        
+            
             titleLabel.text = vid.title
             descriptionLabel.text = vid.videoDescription
             
