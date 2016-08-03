@@ -14,7 +14,7 @@ class CoreDataStack: NSObject {
     // MARK: Properties
     
     // Set the name of the managed object model.
-    let modelName = "Pop Nutshell"
+    let modelName = "Pop_Nutshell"
     
     // Lazily load the URL of the apps documents directory. 
     // This is where we're going to store the sqlite database.

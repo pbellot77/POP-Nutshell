@@ -79,12 +79,21 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        let alert: UIAlertController = UIAlertController(title: "Error", message: "\(error)", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        activityIndicator.hidden = true
+    }
+    
     func webViewDidStartLoad(webView: UIWebView) {
+        activityIndicator.hidden = false
         activityIndicator.startAnimating()
     }
     
     func webViewDidFinishLoad(webView: UIWebView) {
         activityIndicator.stopAnimating()
+        activityIndicator.hidden = true
     }
     @IBAction func refreshButtonTapped(sender: AnyObject) {
         articleView.reload()
