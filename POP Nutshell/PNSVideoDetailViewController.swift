@@ -80,25 +80,6 @@ class PNSVideoDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
-        let alert = UIAlertController(title: "Internet Unavailable",
-                                      message: "Try again when connected to the Internet",
-                                      preferredStyle: .Alert)
-        let tryAction = UIAlertAction(title: "Try Again", style: .Default) {(action) -> Void in
-            print("You selected Try Again")
-            self.webView.reload()
-        }
-        
-        let okAction = UIAlertAction(title: "OK", style: .Default) { (alert) -> Void in
-            print("You selected OK")
-            exit(0)
-        }
-        
-        alert.addAction(tryAction)
-        alert.addAction(okAction)
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
     override func viewDidAppear(animated: Bool) {
         
         if let vid = selectedVideo {
