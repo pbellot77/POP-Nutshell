@@ -2,7 +2,9 @@
 5th Udacity Project --Capstone
 This app is the 5th project for the Udacity Nanodegree for iOS
 
-This application utilizes the YouTube API to pull videos from the POP! Nutshell YouTube channel, displays, shares, and plays them.
+This application utilizes the YouTube API to pull videos from the POP! Nutshell YouTube channel, displays and plays them.
+
+Users can also share a video by swiping left on the video, displaying the share button. Video can be shared on any social media platform available on the device.
 
 Included in the app is Cocoapods and the 3rd party library, Alamofire for network requests, SwiftyJSON for JSON handling, and ReachabilitySwift for checking internet connectivity. Please use the .xcworkspace file to run the app
 
