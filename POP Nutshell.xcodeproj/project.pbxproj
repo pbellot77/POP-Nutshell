@@ -77,6 +77,7 @@
 		BA9653EE1CD1553A00ACEE28 /* POP_NutshellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POP_NutshellUITests.swift; sourceTree = "<group>"; };
 		BA9653F01CD1553A00ACEE28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAE3A5F11D2953B300579FEF /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		BAEBA5AB1D5537C900CF82D0 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		BAEE21381D26280500F77589 /* YouTubeSyncEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeSyncEngine.swift; sourceTree = "<group>"; };
 		BAF4673E1D398F16009FB089 /* Pop_Nutshell.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pop_Nutshell.xcdatamodel; sourceTree = "<group>"; };
 		BAF467401D3991F0009FB089 /* Channel+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Channel+CoreDataProperties.swift"; path = "../Channel+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -136,6 +137,7 @@
 		58A82B5E3C4E00B00CD81ACF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BAEBA5AB1D5537C900CF82D0 /* libsqlite3.tbd */,
 				BA71B5471D201E770081F3C5 /* Social.framework */,
 				AD22C9D8E38B21AAF032A3D5 /* Pods_POP_Nutshell.framework */,
 				132BD504D048E07F33016E4B /* Pods_POP_NutshellTests.framework */,
