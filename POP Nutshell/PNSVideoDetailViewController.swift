@@ -57,7 +57,6 @@ class PNSVideoDetailViewController: UIViewController {
                 
                 let okAction = UIAlertAction(title: "OK", style: .Default) { (alert) -> Void in
                     print("You selected OK")
-                    exit(0)
                 }
                 
                 alert.addAction(tryAction)
