@@ -24,10 +24,18 @@ class CoreDataStack: NSObject {
         return urls[urls.count-1]
     }()
     
+    private lazy var storeURL: NSURL = {
+        var documentDirectory = self.applicationDocumentsDirectory
+        return documentDirectory.URLByAppendingPathComponent("\(self.modelName).sqlite")
+    }()
+    
+    private lazy var modelURL: NSURL = {
+        return NSBundle.mainBundle().URLForResource(self.modelName, withExtension: "momd")!
+    }()
+    
     // Load the managed object model from the documents directory.
     private lazy var managedObjectModel: NSManagedObjectModel = {
-       let modelURL = NSBundle.mainBundle().URLForResource(self.modelName, withExtension: "momd")!
-        
+       let modelURL = self.modelURL
         return NSManagedObjectModel(contentsOfURL: modelURL)!
     }()
     
