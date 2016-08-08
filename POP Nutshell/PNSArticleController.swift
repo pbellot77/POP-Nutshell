@@ -9,6 +9,8 @@
 import UIKit
 import ReachabilitySwift
 
+private let url = "http://www.popnutshell.com/articles.html"
+
 class PNSArticleController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var articleView: UIWebView!
@@ -18,12 +20,10 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        let url = "http://www.popnutshell.com/articles.html"
-        let requestUrl = NSURL(string: url)
-        let request = NSURLRequest(URL: requestUrl!)
-        articleView.loadRequest(request)
+    
+        articleView.loadRequest(NSURLRequest(URL: NSURL(string: url)!))
         articleView.delegate = self
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -48,6 +48,7 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
         
         if reachability.isReachable() {
             if reachability.isReachableViaWiFi() {
+                
                 print("Reachable via WiFi")
             } else {
                 print("Reachable via Cellular")
@@ -64,6 +65,7 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
                 
                 let okAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
                     print("You selected OK")
+                    self.articleView.loadRequest(NSURLRequest(URL: NSURL(string: url)!))
                 }
                 
                 alert.addAction(okAction)
@@ -88,10 +90,11 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
     
     func webViewDidFinishLoad(webView: UIWebView) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-        activityIndicator.stopAnimating()
         activityIndicator.hidden = true
+        activityIndicator.stopAnimating()
     }
+    
     @IBAction func refreshButtonTapped(sender: AnyObject) {
-        articleView.reload()
+        articleView.loadRequest(NSURLRequest(URL: NSURL(string: url)!))
     }
 } // End of Class
