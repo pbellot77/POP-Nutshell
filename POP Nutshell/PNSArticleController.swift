@@ -15,6 +15,7 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
     
     @IBOutlet weak var articleView: UIWebView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
     
     var reachability: Reachability?
     

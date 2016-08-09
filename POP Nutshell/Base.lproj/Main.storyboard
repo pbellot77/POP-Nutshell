@@ -134,6 +134,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="M2b-oT-24e" id="hi2-Mi-usf"/>
                         <outlet property="articleView" destination="X70-ny-gwy" id="86G-2y-3Hi"/>
+                        <outlet property="refreshButton" destination="hDt-Jd-qVG" id="TH5-0Q-lk9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcq-1n-Byr" userLabel="First Responder" sceneMemberID="firstResponder"/>
