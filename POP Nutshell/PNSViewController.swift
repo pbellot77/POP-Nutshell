@@ -46,7 +46,9 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             return
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PNSViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PNSViewController.reachabilityChanged(_:)),
+                                                                   name: ReachabilityChangedNotification,
+                                                                 object: reachability)
         do{
             try reachability?.startNotifier()
         }catch{
@@ -84,7 +86,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
         
         reachability.stopNotifier()
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: ReachabilityChangedNotification, object: reachability)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: ReachabilityChangedNotification,
+                                                                object: reachability)
     }
     
     override func viewDidLoad() {
@@ -138,8 +141,8 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             // Create a datatask and pass in the request
             let dataTask = session.dataTaskWithRequest(request,
                                                        completionHandler: { (data: NSData?,
-                                                        response: NSURLResponse?,
-                                                        error: NSError?) -> Void in
+                                                                response: NSURLResponse?,
+                                                                   error: NSError?) -> Void in
                                                         
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                                             
