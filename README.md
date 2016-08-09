@@ -6,6 +6,8 @@ This application utilizes the YouTube API to pull videos from the POP! Nutshell 
 
 Users can also share a video by swiping left on the video, displaying the share button. Video can be shared on any social media platform available on the device.
 
+Users can refresh videos by pulling all the videos down in the home view.
+
 Included in the app is Cocoapods and the 3rd party library, Alamofire for network requests, SwiftyJSON for JSON handling, and ReachabilitySwift for checking internet connectivity. Please use the .xcworkspace file to run the app
 
 The app also directs the user to the popnutshell.com articles section via a web request. There is also a "connect" section in this app that users can connect with the members of the popnutshell.com creative team via Twitter.
