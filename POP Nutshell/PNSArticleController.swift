@@ -60,7 +60,7 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
                 print("Internet Unavailable")
                 
                 let alert = UIAlertController(title: "Internet Unavailable",
-                                              message: "Try again when connected to the Internet and reload",
+                                              message: "Try again when connected to the Internet and refresh",
                                               preferredStyle: .Alert)
                 
                 let okAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
@@ -95,6 +95,23 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
     }
     
     @IBAction func refreshButtonTapped(sender: AnyObject) {
-        articleView.loadRequest(NSURLRequest(URL: NSURL(string: url)!))
+        if reachability?.isReachable() == true {
+            articleView.loadRequest(NSURLRequest(URL: NSURL(string: url)!))
+        } else {
+            dispatch_async(dispatch_get_main_queue()) {
+                print("Internet Unavailable")
+                
+                let alert = UIAlertController(title: "Internet Unavailable",
+                                              message: "Tap Refresh when connected to the Internet",
+                                              preferredStyle: .Alert)
+                
+                let okAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
+                    print("You selected OK")
+                }
+                
+                alert.addAction(okAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+            }
+        }
     }
 } // End of Class
