@@ -23,7 +23,6 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
     
         articleView.loadRequest(NSURLRequest(URL: NSURL(string: url)!))
         articleView.delegate = self
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -34,7 +33,7 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
             return
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PNSViewController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(PNSArticleController.reachabilityChanged(_:)),name: ReachabilityChangedNotification,object: reachability)
         do{
             try reachability?.startNotifier()
         }catch{
@@ -60,7 +59,7 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
                 print("Internet Unavailable")
                 
                 let alert = UIAlertController(title: "Internet Unavailable",
-                                              message: "Try again when connected to the Internet",
+                                              message: "Try again when connected to the Internet and reload",
                                               preferredStyle: .Alert)
                 
                 let okAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
