@@ -38,6 +38,13 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             return frc
         }()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(PNSViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+    }()
+    
     override func viewWillAppear(animated: Bool) {
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
@@ -103,7 +110,18 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         } catch let error as NSError {
             print("\(error), \(error.userInfo)")
         }
-        tableView.reloadData()
+        tableView.addSubview(self.refreshControl)
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            print("\(error), \(error.userInfo)")
+        }
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){
