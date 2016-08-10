@@ -38,14 +38,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
             return frc
         }()
     
-    lazy var refreshControl: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(PNSViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
-        
-        return refreshControl
-    }()
-    
-    override func viewWillAppear(animated: Bool) {
+        override func viewWillAppear(animated: Bool) {
         do {
             reachability = try Reachability.reachabilityForInternetConnection()
         } catch {
@@ -97,6 +90,13 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
                                                                 object: reachability)
     }
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(PNSViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+    }()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -114,6 +114,7 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
+        if reachability?.isReachable() == true {
         do {
             try fetchedResultsController.performFetch()
         } catch let error as NSError {
@@ -122,6 +123,20 @@ class PNSViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         self.tableView.reloadData()
         refreshControl.endRefreshing()
+        } else {
+            dispatch_async(dispatch_get_main_queue()) {
+                print("Internet Unavailable")
+                
+                let alert = UIAlertController(title: "Internet Unavailable", message: "Try refresh when internet is available", preferredStyle: .Alert)
+                let okAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
+                    print("OK selected")
+            }
+             
+                alert.addAction(okAction)
+                self.presentViewController(alert, animated: true, completion: nil)
+                refreshControl.endRefreshing()
+            }
+        }
     }
     
     func configureCell(cell: VideoCell, indexPath: NSIndexPath){

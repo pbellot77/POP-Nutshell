@@ -60,7 +60,7 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
                 print("Internet Unavailable")
                 
                 let alert = UIAlertController(title: "Internet Unavailable",
-                                            message: "Try again when connected to the Internet and refresh",
+                                            message: "Try again when connected to the Internet and reload",
                                      preferredStyle: .Alert)
                 
                 let okAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
@@ -102,7 +102,7 @@ class PNSArticleController: UIViewController, UIWebViewDelegate {
                 print("Internet Unavailable")
                 
                 let alert = UIAlertController(title: "Internet Unavailable",
-                                            message: "Tap Refresh when connected to the Internet",
+                                            message: "Tap Reload when connected to the Internet",
                                      preferredStyle: .Alert)
                 
                 let okAction = UIAlertAction(title: "OK", style: .Default) { (action) -> Void in
